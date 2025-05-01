@@ -1,15 +1,15 @@
 {
-    "name": "American Top Roofing",
-    "short_name": "ATR",
+    "name": "Top American Roofing",
+    "short_name": "Top American Roofing",
     "icons": [
         {
-            "src": "/favicon/android-chrome-192x192.png",
-            "sizes": "192x192",
+            "src": "/favicon/house-logo-180x180.png",
+            "sizes": "180x180",
             "type": "image/png"
         },
         {
-            "src": "/favicon/android-chrome-512x512.png",
-            "sizes": "512x512",
+            "src": "/favicon/house-logo-32x32.png",
+            "sizes": "32x32",
             "type": "image/png"
         }
     ],
