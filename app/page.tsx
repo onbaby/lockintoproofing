@@ -387,7 +387,7 @@ export default function Home() {
           </motion.div>
           <div className="absolute inset-0 -z-10 overflow-hidden">
             <video
-              src="/videos/sequence 01_6.MP4"
+              src="/videos/Sequence 01_6.mp4"
               autoPlay
               loop
               muted
@@ -930,31 +930,31 @@ export default function Home() {
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {[
                 {
-                  image: "/images/gallery/gallery1.jpg",
+                  image: "/images/gallery/gallery1.JPG",
                   title: "Roof Replacement Project"
                 },
                 {
-                  image: "/images/gallery/gallery2.jpg",
+                  image: "/images/gallery/gallery2.JPG",
                   title: "Roof Repair Project"
                 },
                 {
-                  image: "/images/gallery/gallery3.jpg",
+                  image: "/images/gallery/gallery3.JPG",
                   title: "Gutter Installation Project"
                 },
                 {
-                  image: "/images/gallery/gallery4.jpg",
+                  image: "/images/gallery/gallery4.JPG",
                   title: "Roof Inspection Project"
                 },
                 {
-                  image: "/images/gallery/gallery5.jpg",
+                  image: "/images/gallery/gallery5.JPG",
                   title: "Siding Installation Project"
                 },
                 {
-                  image: "/images/gallery/gallery6.jpg",
+                  image: "/images/gallery/gallery6.JPG",
                   title: "Gutter Repairs Project"
                 },
                 {
-                  image: "/images/gallery/gallery7.jpg",
+                  image: "/images/gallery/gallery7.JPG",
                   title: "Storm Damage Project"
                 },
                 {
