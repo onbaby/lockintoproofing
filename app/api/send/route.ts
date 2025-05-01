@@ -8,7 +8,9 @@ console.log('Debug - Environment Variables:', {
   apiKeyLength: apiKey?.length,
   fromEmail: process.env.RESEND_FROM_EMAIL,
   toEmail: process.env.RESEND_TO_EMAIL,
-  nodeEnv: process.env.NODE_ENV
+  nodeEnv: process.env.NODE_ENV,
+  timestamp: new Date().toISOString(),
+  deploymentId: process.env.VERCEL_DEPLOYMENT_ID || 'local'
 });
 
 if (!apiKey) {
