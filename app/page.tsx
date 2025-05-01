@@ -675,7 +675,7 @@ export default function Home() {
         </section>
 
         {/* How It Works Section */}
-        <section id="how-it-works" className="py-16 md:py-24">
+        <section id="how-it-works" className="py-16 md:py-24 overflow-hidden">
           <div className="container px-4 md:px-6">
             <motion.div
               className="mb-12 text-center"
@@ -690,7 +690,7 @@ export default function Home() {
               </p>
             </motion.div>
 
-            <div className="mx-auto max-w-5xl">
+            <div className="mx-auto max-w-5xl overflow-hidden">
               <div className="relative">
                 <motion.div
                   className="absolute left-[15px] top-0 h-full w-0.5 bg-gray-200 md:left-1/2 md:-ml-0.5"
@@ -735,9 +735,9 @@ export default function Home() {
                   <motion.div
                     key={index}
                     className="relative mb-8 md:mb-12"
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{
                       duration: 0.5,
                       delay: index * 0.2,
@@ -750,7 +750,7 @@ export default function Home() {
                         className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white md:absolute md:left-1/2 md:-ml-4"
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
-                        viewport={{ once: true, margin: "-100px" }}
+                        viewport={{ once: true }}
                         transition={{
                           duration: 0.3,
                           delay: index * 0.2 + 0.2,
