@@ -958,7 +958,7 @@ export default function Home() {
                   title: "Storm Damage Project"
                 },
                 {
-                  image: "/images/gallery/gallery8.jpg",
+                  image: "/images/gallery/gallery8.JPG",
                   title: "Commercial Roofing Project"
                 }
               ].map((project, index) => (
