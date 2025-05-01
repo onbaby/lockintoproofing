@@ -498,10 +498,9 @@ export default function Home() {
 
             <motion.div
               className="mt-8 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 1 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.5 }}
             >
               <div className="bg-blue-50 rounded-lg p-6">
                 <h3 className="text-xl font-bold mb-4 text-center">Additional Services We Offer</h3>
@@ -1347,11 +1346,12 @@ export default function Home() {
             <div>
               <div className="mb-6 flex items-center gap-3">
                 <Image
-                  src="/images/logowhiteversion.PNG"
+                  src="/images/logowhiteversion.png"
                   width={150}
                   height={50}
                   alt="American Top Roofing and Restoration Logo"
                   className="h-auto w-[150px]"
+                  priority
                 />
               </div>
               <p className="mb-6 text-gray-400">
