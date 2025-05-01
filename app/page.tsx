@@ -678,7 +678,7 @@ export default function Home() {
           </section>
 
           {/* How It Works Section */}
-          <section id="how-it-works" className="py-16 md:py-24 overflow-hidden">
+          <section id="how-it-works" className="py-16 md:py-24">
             <div className="container px-4 md:px-6">
               <motion.div
                 className="mb-12 text-center"
@@ -693,10 +693,10 @@ export default function Home() {
                 </p>
               </motion.div>
 
-              <div className="mx-auto max-w-5xl overflow-hidden">
+              <div className="mx-auto max-w-5xl">
                 <div className="relative">
                   <motion.div
-                    className="absolute left-[15px] top-0 h-full w-0.5 bg-gray-200 md:left-1/2 md:-ml-0.5"
+                    className="absolute left-[15px] top-0 h-full w-[1px] bg-gray-200 md:left-1/2"
                     initial={{ height: 0 }}
                     whileInView={{ height: "100%" }}
                     viewport={{ once: true }}
@@ -750,7 +750,7 @@ export default function Home() {
                     >
                       <div className="flex md:items-center md:justify-center">
                         <motion.div
-                          className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white md:absolute md:left-1/2 md:-ml-4"
+                          className="relative flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white md:absolute md:left-[calc(50%-16px)]"
                           initial={{ scale: 0 }}
                           whileInView={{ scale: 1 }}
                           viewport={{ once: true }}
