@@ -10,7 +10,16 @@ export const metadata = {
   title: "Top American Roofing - Professional Roofing Services",
   description:
     "Top American Roofing provides professional roofing services including roof replacement, repairs, and emergency services. Get a free quote today!",
-    generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: {
+    icon: '/favicon/favicon.png',
+    shortcut: '/favicon/favicon.png',
+    apple: '/favicon/apple-touch-icon.png',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/favicon/apple-touch-icon.png',
+    },
+  },
 }
 
 export default function RootLayout({
@@ -21,13 +30,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-        <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#2563eb" />
-        <meta name="msapplication-TileColor" content="#2563eb" />
-        <meta name="theme-color" content="#ffffff" />
+        <link rel="icon" href="/favicon/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
