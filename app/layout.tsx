@@ -12,8 +12,8 @@ export const metadata = {
     "Top American Roofing provides professional roofing services including roof replacement, repairs, and emergency services. Get a free quote today!",
   generator: 'v0.dev',
   icons: {
-    icon: '/favicon/favicon.png',
-    shortcut: '/favicon/favicon.png',
+    icon: '/favicon/testroblox.png',
+    shortcut: '/favicon/testroblox.png',
     apple: '/favicon/apple-touch-icon.png',
     other: {
       rel: 'apple-touch-icon-precomposed',
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon/favicon.png" />
+        <link rel="icon" href="/favicon/testroblox.png" />
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
       </head>
       <body className={inter.className}>
