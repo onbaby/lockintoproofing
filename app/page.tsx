@@ -42,6 +42,7 @@ export default function Home() {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [formValid, setFormValid] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   // Lightbox state
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -112,7 +113,10 @@ export default function Home() {
     e.preventDefault();
     setSubmitError(null);
 
+    if (isSubmitting) return; // Prevent multiple submissions
+
     if (validateForm()) {
+      setIsSubmitting(true);
       try {
         const response = await fetch('/api/send', {
           method: 'POST',
@@ -133,6 +137,8 @@ export default function Home() {
         console.error('Error submitting form:', error);
         setSubmitError(error instanceof Error ? error.message : 'Failed to submit form. Please try again.');
         setFormSubmitted(false);
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -1286,9 +1292,14 @@ export default function Home() {
                       )}
                       <button
                         type="submit"
-                        className="w-full rounded-md bg-blue-500 px-6 py-3 text-lg font-bold text-white hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105"
+                        disabled={isSubmitting}
+                        className={`w-full rounded-md px-6 py-3 text-lg font-bold text-white transition-all duration-300 ease-in-out hover:scale-105 ${
+                          isSubmitting 
+                            ? 'bg-gray-400 cursor-not-allowed' 
+                            : 'bg-blue-500 hover:bg-blue-600'
+                        }`}
                       >
-                        GET MY FREE QUOTE
+                        {isSubmitting ? 'PROCESSING...' : 'GET MY FREE QUOTE'}
                       </button>
                     </form>
                   )}
