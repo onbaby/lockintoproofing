@@ -365,7 +365,7 @@ export default function Home() {
                 {...fadeInUp}
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
-                Protect your biggest investment with American Top Roofing and Restoration, your trusted partner in Forsyth County, GA. We provide professional,
+                Protect your biggest investment with American Top Roofing and Restoration, your trusted partner in GA. We provide professional,
                 reliable, and affordable roofing services in Cumming, Buford, Suwanee, and surrounding areas.
               </motion.p>
               <motion.div

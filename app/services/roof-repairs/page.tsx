@@ -1,122 +1,42 @@
-"use client"
-
 import type React from "react"
-import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { PhoneCall, Mail, MapPin, Menu, ChevronLeft } from "lucide-react"
+import { PhoneCall, Mail, MapPin, Menu, ChevronLeft, CheckCircle, Home, Wrench, Shield, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { motion } from "framer-motion"
 import Footer from "../../components/Footer"
+import { Metadata } from 'next'
+import { MotionDiv, MotionLink } from "@/app/components/MotionWrappers"
+
+// Page-specific Metadata
+export const metadata: Metadata = {
+  title: "Roof Repair Services | Forsyth County GA | American Top Roofing",
+  description: "Fast & reliable roof repair in Forsyth County (Cumming, Buford, Suwanee). American Top Roofing fixes leaks, missing shingles, storm damage & more. Get a free repair estimate!",
+  keywords: ["roof repair", "roof leak repair", "shingle repair", "storm damage roof", "emergency roof repair", "forsyth county roofing repair", "cumming ga roof repair", "buford ga roof repair", "suwanee ga roof repair", "american top roofing"],
+};
 
 const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-  e.preventDefault(); // Prevent default link navigation
-
-  // Check if it's an internal anchor link for the homepage
+  e.preventDefault();
   if (href.startsWith('/#')) {
-    const targetId = href.substring(2); // Get the ID part (e.g., "services")
+    const targetId = href.substring(2);
     const targetElement = document.getElementById(targetId);
-
     if (targetElement) {
-      // If element exists on the current page (likely only on homepage itself), scroll smoothly
       targetElement.scrollIntoView({ behavior: 'smooth' });
     } else {
-      // If element doesn't exist on current page, navigate to the homepage URL with the hash
-      // The browser will handle scrolling to the anchor upon loading the homepage.
-      window.location.href = href; // e.g., navigate to '/#services'
+      window.location.href = href;
     }
   } else if (href.startsWith('#')) {
-    // Handle simple hash links for the *current* page
     const targetId = href.substring(1);
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth'});
+      targetElement.scrollIntoView({ behavior: 'smooth' });
     }
-  }
-   else {
-    // Handle other links (like tel:) or potentially full page navigations
+  } else {
     window.location.href = href;
   }
 };
 
 export default function RoofRepairsPage() {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
-  // Form state (Copied from app/page.tsx - adjust if contact form is different)
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    address: "",
-    service: "roof-repairs", // Pre-fill service
-    message: "",
-  })
-
-  // Form errors state (Copied from app/page.tsx)
-  const [formErrors, setFormErrors] = useState({
-    firstName: false,
-    lastName: false,
-    email: false,
-    phone: false,
-    address: false,
-    // service: false, // No need to validate pre-filled service
-  })
-
-  // Form submission state (Copied from app/page.tsx)
-  const [formSubmitted, setFormSubmitted] = useState(false)
-
-   // Handle form input changes (Copied from app/page.tsx)
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { id, value } = e.target;
-    if (id === "phone") {
-      const formattedPhone = formatPhoneNumber(value);
-      setFormData((prev) => ({ ...prev, phone: formattedPhone }));
-    } else {
-      setFormData((prev) => ({ ...prev, [id]: value }));
-    }
-    if (value.trim()) {
-      setFormErrors((prev) => ({ ...prev, [id]: false }));
-    }
-  };
-
-  // Format phone number (Copied from app/page.tsx)
-  const formatPhoneNumber = (value: string) => {
-    const phoneNumber = value.replace(/\\D/g, "");
-    if (phoneNumber.length < 4) return phoneNumber;
-    if (phoneNumber.length < 7) return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
-    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
-  };
-
-  // Validate email format (Copied from app/page.tsx)
-  const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  // Validate form (Copied and modified from app/page.tsx)
-  const validateForm = () => {
-    const errors = {
-      firstName: !formData.firstName.trim(),
-      lastName: !formData.lastName.trim(),
-      email: !formData.email.trim() || !isValidEmail(formData.email),
-      phone: !formData.phone.trim() || formData.phone.replace(/\\D/g, "").length < 10,
-      address: !formData.address.trim(),
-      // service validation removed
-    };
-    setFormErrors(errors);
-    return !Object.values(errors).some((error) => error);
-  };
-
-  // Handle form submission (Copied from app/page.tsx)
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validateForm()) {
-      console.log("Form submitted:", formData);
-      setFormSubmitted(true);
-    }
-  };
-
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -141,15 +61,14 @@ export default function RoofRepairsPage() {
           <div className="hidden items-center gap-6 md:flex">
             <div className="flex items-center gap-4">
               <a
-                href="tel:+18001234567"
+                href="tel:+14709151599"
                 className="flex items-center gap-2 text-sm font-bold text-blue-800 hover:text-blue-600"
               >
                 <PhoneCall className="h-4 w-4" />
-                (800) 123-4567
+                (470) 915-1599
               </a>
               <a
                 href="/#contact"
-                onClick={(e) => handleAnchorClick(e, "/#contact")}
                 className="rounded-md bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-600"
               >
                 GET A FREE QUOTE
@@ -176,28 +95,27 @@ export default function RoofRepairsPage() {
                 </Link>
               </div>
               <nav className="flex flex-col gap-4 py-6">
-                <a href="/#services" onClick={(e) => handleAnchorClick(e, "/#services")} className="text-lg font-medium hover:text-blue-500">Services</a>
-                <a href="/#how-it-works" onClick={(e) => handleAnchorClick(e, "/#how-it-works")} className="text-lg font-medium hover:text-blue-500">How It Works</a>
-                <a href="/#testimonials" onClick={(e) => handleAnchorClick(e, "/#testimonials")} className="text-lg font-medium hover:text-blue-500">Testimonials</a>
-                <a href="/#gallery" onClick={(e) => handleAnchorClick(e, "/#gallery")} className="text-lg font-medium hover:text-blue-500">Gallery</a>
-                <a href="/#faq" onClick={(e) => handleAnchorClick(e, "/#faq")} className="text-lg font-medium hover:text-blue-500">FAQ</a>
+                <a href="/#services" className="text-lg font-medium hover:text-blue-500">Services</a>
+                <a href="/#how-it-works" className="text-lg font-medium hover:text-blue-500">How It Works</a>
+                <a href="/#testimonials" className="text-lg font-medium hover:text-blue-500">Testimonials</a>
+                <a href="/#gallery" className="text-lg font-medium hover:text-blue-500">Gallery</a>
+                <a href="/#faq" className="text-lg font-medium hover:text-blue-500">FAQ</a>
                 <div className="mt-4 flex flex-col gap-4">
-                  <motion.a
-                    href="tel:+18001234567"
+                  <MotionLink
+                    href="tel:+14709151599"
                     className="flex items-center gap-2 text-lg font-bold text-blue-800 hover:text-blue-600"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <motion.div
+                    <MotionDiv
                       animate={{ rotate: [-10, 10, -10, 10, -10, 0], scale: [1, 1.1, 1] }}
                       transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, repeatType: "loop", repeatDelay: 3 }}
                     >
                       <PhoneCall className="h-5 w-5" />
-                    </motion.div>
-                    (800) 123-4567
-                  </motion.a>
+                    </MotionDiv>
+                    (470) 915-1599
+                  </MotionLink>
                   <a
                     href="/#contact"
-                    onClick={(e) => handleAnchorClick(e, "/#contact")}
                     className="rounded-md bg-blue-500 px-4 py-2 text-center text-lg font-bold text-white hover:bg-blue-600"
                   >
                     GET A FREE QUOTE
@@ -214,43 +132,37 @@ export default function RoofRepairsPage() {
         {/* Hero Section */}
         <section className="relative">
           <div className="absolute inset-0 bg-black/50" />
-          <motion.div
+          <MotionDiv
             className="relative mx-auto flex min-h-[400px] max-w-7xl flex-col items-center justify-center px-4 py-24 text-center text-white md:px-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <motion.h1
+            <MotionDiv
               className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              {...fadeInUp}
             >
               Roof Repair Services
-            </motion.h1>
-            <motion.p
+            </MotionDiv>
+            <MotionDiv
               className="mb-8 max-w-3xl text-lg text-gray-200 sm:text-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
+              {...fadeInUp} transition={{ delay: 0.2, duration: 0.5 }}
             >
-              Expert repairs for leaks, damaged shingles, and other issues with quick response times.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
+              Expert repairs for leaks, missing shingles, storm damage, and more in Cumming, Buford, Suwanee & surrounding areas. Quick response times!
+            </MotionDiv>
+            <MotionDiv
+              {...fadeInUp} transition={{ delay: 0.4, duration: 0.5 }}
             >
               <Link
                 href="/#contact"
                 className="rounded-md bg-blue-500 px-8 py-3 text-center text-lg font-bold text-white hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105"
               >
-                GET A FREE QUOTE
+                GET A FREE REPAIR ESTIMATE
               </Link>
-            </motion.div>
-          </motion.div>
+            </MotionDiv>
+          </MotionDiv>
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <Image src="/images/roof-repair-service.jpeg" alt="Roof Repairs" fill className="object-cover" priority />
+            <Image src="/images/roof-repair-service.jpeg" alt="Roof repair technician fixing shingles in Forsyth County" fill className="object-cover" priority />
           </div>
         </section>
 
@@ -258,149 +170,108 @@ export default function RoofRepairsPage() {
         <section className="py-16 md:py-24">
           <div className="container px-4 md:px-6">
             <div className="mx-auto max-w-4xl">
-              <Link href="/#services" className="mb-8 flex items-center text-blue-500 hover:text-blue-600">
-                <ChevronLeft className="mr-1 h-4 w-4" />
-                Back to all services
-              </Link>
+              <MotionDiv {...fadeInUp}>
+                <div className="mb-8">
+                  <Link href="/#services" className="flex items-center text-blue-500 hover:text-blue-600">
+                    <ChevronLeft className="mr-1 h-4 w-4" />
+                    Back to all services
+                  </Link>
+                </div>
 
-              <div className="mb-12">
-                <h2 className="mb-6 text-3xl font-bold">Professional Roof Repair</h2>
-                <p className="mb-4 text-lg text-gray-700">
-                  Don't let a small roof problem become a major expense. At Top American Roofing and Restoration, we
-                  provide prompt, professional roof repair services to address leaks, damaged shingles, and other
-                  roofing issues before they lead to more serious damage.
+                <h2 className="text-3xl font-bold tracking-tight mb-6 sm:text-4xl">Common Roof Problems We Repair in Forsyth County</h2>
+                <p className="mb-6 text-lg text-gray-700">
+                  Don't let minor roof damage turn into major problems! American Top Roofing provides prompt, professional roof repair services across Forsyth County, including Cumming, Buford, Suwanee, Alpharetta, and Gainesville. We handle a wide range of issues to restore the integrity of your roof and protect your home.
                 </p>
-                <p className="mb-4 text-lg text-gray-700">
-                  Our experienced team can quickly identify the source of your roofing problems and implement effective,
-                  long-lasting repairs to protect your home and extend the life of your roof.
-                </p>
-              </div>
 
-              <div className="mb-12">
-                <h3 className="mb-4 text-2xl font-bold">Common Roof Problems We Fix</h3>
-                <ul className="mb-6 space-y-3 text-lg text-gray-700">
-                  <li className="flex items-start">
-                    <span className="mr-2 text-blue-500">✓</span>
-                    <span>Leaking roofs and water damage</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2 text-blue-500">✓</span>
-                    <span>Missing, cracked, or damaged shingles</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2 text-blue-500">✓</span>
-                    <span>Damaged flashing around chimneys and vents</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2 text-blue-500">✓</span>
-                    <span>Sagging roof sections</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2 text-blue-500">✓</span>
-                    <span>Wind and storm damage</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2 text-blue-500">✓</span>
-                    <span>Ice dam formation and damage</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="mb-12">
-                <h3 className="mb-4 text-2xl font-bold">Our Roof Repair Process</h3>
-                <ol className="mb-6 space-y-6 text-lg text-gray-700">
-                  <li className="flex">
-                    <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
-                      1
-                    </span>
+                <div className="grid gap-8 md:grid-cols-2 mb-8">
+                  <div className="flex items-start gap-4">
+                    <Wrench className="mt-1 h-8 w-8 flex-shrink-0 text-blue-500" />
                     <div>
-                      <h4 className="font-bold">Thorough Inspection</h4>
-                      <p>We conduct a comprehensive inspection to identify all issues, not just the obvious ones.</p>
+                      <h3 className="text-xl font-semibold mb-1">Roof Leak Repair</h3>
+                      <p className="text-gray-600">Locating and fixing leaks caused by damaged shingles, flashing issues, or worn sealant to prevent water damage.</p>
                     </div>
-                  </li>
-                  <li className="flex">
-                    <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
-                      2
-                    </span>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <Wrench className="mt-1 h-8 w-8 flex-shrink-0 text-blue-500" />
                     <div>
-                      <h4 className="font-bold">Detailed Assessment</h4>
-                      <p>
-                        We provide a clear explanation of the problems found and recommend the most effective repair
-                        solutions.
-                      </p>
+                      <h3 className="text-xl font-semibold mb-1">Missing or Damaged Shingle Replacement</h3>
+                      <p className="text-gray-600">Replacing shingles that are cracked, curled, missing, or damaged by wind or hail.</p>
                     </div>
-                  </li>
-                  <li className="flex">
-                    <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
-                      3
-                    </span>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <Wrench className="mt-1 h-8 w-8 flex-shrink-0 text-blue-500" />
                     <div>
-                      <h4 className="font-bold">Prompt Repairs</h4>
-                      <p>Our skilled technicians perform repairs using quality materials and proven techniques.</p>
+                      <h3 className="text-xl font-semibold mb-1">Flashing Repair & Replacement</h3>
+                      <p className="text-gray-600">Repairing or replacing damaged flashing around chimneys, vents, and skylights to seal vulnerable areas.</p>
                     </div>
-                  </li>
-                  <li className="flex">
-                    <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
-                      4
-                    </span>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <Wrench className="mt-1 h-8 w-8 flex-shrink-0 text-blue-500" />
                     <div>
-                      <h4 className="font-bold">Quality Verification</h4>
-                      <p>We inspect all completed work to ensure the repairs meet our high standards.</p>
+                      <h3 className="text-xl font-semibold mb-1">Storm Damage Repair</h3>
+                      <p className="text-gray-600">Addressing damage caused by high winds, hail, or fallen debris, including emergency tarping if needed.</p>
                     </div>
-                  </li>
-                </ol>
-              </div>
-
-              <div className="mb-12">
-                <h3 className="mb-4 text-2xl font-bold">Emergency Roof Repair</h3>
-                <p className="mb-4 text-lg text-gray-700">
-                  Roof damage doesn't wait for convenient times. That's why we offer 24/7 emergency roof repair
-                  services. If you're experiencing a roof emergency due to storm damage, fallen trees, or other
-                  unexpected events, our team is ready to respond quickly to prevent further damage to your home.
-                </p>
-                <div className="rounded-lg bg-yellow-50 p-6">
-                  <h4 className="mb-2 text-xl font-bold text-center">For Emergency Roof Repairs</h4>
-                  <p className="mb-4 text-center">Call our emergency hotline immediately:</p>
-                  <div className="flex justify-center">
-                    <a
-                      href="tel:+18001234567"
-                      className="flex items-center justify-center gap-2 rounded-md bg-red-600 px-6 py-3 text-lg font-bold text-white hover:bg-red-700"
-                    >
-                      <PhoneCall className="h-5 w-5" />
-                      (800) 123-4567
-                    </a>
                   </div>
                 </div>
-              </div>
 
-              <div className="rounded-lg bg-blue-50 p-8">
-                <h3 className="mb-4 text-2xl font-bold text-center">Need Roof Repairs?</h3>
-                <p className="mb-6 text-center text-lg">
-                  Contact us today to schedule your free roof inspection and get a detailed repair estimate.
-                </p>
-                <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <h3 className="text-2xl font-bold tracking-tight mb-4 mt-10">Why Address Roof Repairs Promptly?</h3>
+                <ul className="list-disc space-y-2 pl-6 mb-6 text-gray-700">
+                  <li><strong>Prevent Further Damage:</strong> Small leaks can lead to mold, rot, and structural issues if ignored.</li>
+                  <li><strong>Maintain Energy Efficiency:</strong> Damaged roofs can compromise insulation and increase energy costs.</li>
+                  <li><strong>Extend Roof Lifespan:</strong> Timely repairs can help you avoid premature roof replacement.</li>
+                  <li><strong>Protect Home Value:</strong> A well-maintained roof is crucial for your property's value.</li>
+                </ul>
+
+                <h3 className="text-2xl font-bold tracking-tight mb-4 mt-8">Our Roof Repair Process</h3>
+                <ol className="list-decimal space-y-4 pl-6 mb-8 text-gray-700">
+                  <li><strong>Inspection:</strong> We thoroughly inspect your roof to identify the source and extent of the damage.</li>
+                  <li><strong>Assessment & Quote:</strong> We explain the necessary repairs and provide a clear, upfront estimate.</li>
+                  <li><strong>Repair Work:</strong> Our skilled technicians perform the repairs using quality materials and proven techniques.</li>
+                  <li><strong>Cleanup:</strong> We ensure the work area is clean and tidy upon completion.</li>
+                </ol>
+
+                <div className="mt-12 rounded-lg bg-blue-50 p-8">
+                  <h3 className="text-2xl font-bold tracking-tight mb-6 text-center">Why Choose American Top Roofing for Repairs in Forsyth County?</h3>
+                  <div className="grid gap-6 md:grid-cols-3">
+                    <div className="flex flex-col items-center text-center">
+                      <Clock className="h-10 w-10 mb-3 text-blue-600" />
+                      <h4 className="font-semibold mb-1">Fast Response</h4>
+                      <p className="text-sm text-gray-600">We prioritize repair calls, especially for active leaks or storm damage.</p>
+                    </div>
+                    <div className="flex flex-col items-center text-center">
+                      <Shield className="h-10 w-10 mb-3 text-blue-600" />
+                      <h4 className="font-semibold mb-1">Quality Workmanship</h4>
+                      <p className="text-sm text-gray-600">Experienced technicians ensure repairs are done right the first time.</p>
+                    </div>
+                    <div className="flex flex-col items-center text-center">
+                      <CheckCircle className="h-10 w-10 mb-3 text-blue-600" />
+                      <h4 className="font-semibold mb-1">Honest Assessments</h4>
+                      <p className="text-sm text-gray-600">We recommend only necessary repairs and provide fair pricing.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <MotionDiv
+                  className="mt-12 text-center"
+                  {...fadeInUp} transition={{ delay: 0.6, duration: 0.5 }}
+                >
                   <Link
                     href="/#contact"
-                    className="rounded-md bg-blue-500 px-8 py-3 text-center text-lg font-bold text-white hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105"
+                    className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105"
                   >
-                    GET A FREE QUOTE
+                    Schedule Your Roof Repair Estimate!
                   </Link>
-                  <a
-                    href="tel:+18001234567"
-                    className="flex items-center justify-center gap-2 rounded-md bg-blue-800 px-8 py-3 text-lg font-bold text-white hover:bg-blue-700 transition-all duration-300 ease-in-out hover:scale-105"
-                  >
-                    <PhoneCall className="h-5 w-5" />
-                    CALL US NOW
-                  </a>
-                </div>
-              </div>
+                </MotionDiv>
+              </MotionDiv>
             </div>
           </div>
         </section>
+
+        {/* REMOVED Contact Form Section */}
+        {/* <section id="contact-service" className="bg-gray-50 py-16 md:py-24"> ... </section> */}
       </main>
 
-      {/* Footer */}
-      <Footer handleAnchorClick={handleAnchorClick} />
+      <Footer />
     </div>
   )
 }
