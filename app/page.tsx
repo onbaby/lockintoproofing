@@ -234,7 +234,7 @@ export default function Home() {
                 src="/images/new-logo.png"
                 width={140}
                 height={45}
-                alt="American Top Roofing and Restoration Logo"
+                alt="American Top Roofing and Restoration Logo - Forsyth County GA"
                 className="h-auto w-[140px]"
               />
             </div>
@@ -270,7 +270,7 @@ export default function Home() {
                     src="/images/new-logo.png"
                     width={120}
                     height={40}
-                    alt="American Top Roofing and Restoration Logo"
+                    alt="American Top Roofing and Restoration Mobile Menu Logo"
                     className="h-auto w-[120px]"
                   />
                 </div>
@@ -365,8 +365,8 @@ export default function Home() {
                 {...fadeInUp}
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
-                Protect your biggest investment with Top American Roofing and Restoration. We provide professional,
-                reliable, and affordable roofing services.
+                Protect your biggest investment with American Top Roofing and Restoration, your trusted partner in Forsyth County, GA. We provide professional,
+                reliable, and affordable roofing services in Cumming, Buford, Suwanee, and surrounding areas.
               </motion.p>
               <motion.div
                 className="flex flex-col gap-4 sm:flex-row"
@@ -424,22 +424,25 @@ export default function Home() {
                 {[
                   {
                     title: "Roof Replacement",
-                    description: "Durable, weather-resistant installs using premium materials — done fast, done right.",
+                    description: "Durable, weather-resistant roof installations using premium materials for Forsyth County homes — done fast, done right.",
                     image: "/images/roofreplacement.jpeg",
                     link: "/services/roof-replacement",
+                    alt: "Professional roof replacement service in Forsyth County by American Top Roofing",
                   },
                   {
                     title: "Roof Repairs",
                     description:
-                      "Expert repairs for leaks, damaged shingles, and other issues with quick response times.",
+                      "Expert roof repairs in Cumming, GA, for leaks, damaged shingles, and other issues with quick response times.",
                     image: "/images/roofrepair.jpeg",
                     link: "/services/roof-repairs",
+                    alt: "Expert roof repair service for leaks and shingles in Forsyth County",
                   },
                   {
                     title: "Gutter Repairs",
                     description: "Professional gutter repair services to prevent water damage and foundation issues.",
                     image: "/images/gutterinstall.jpeg",
                     link: "/services/gutter-repairs",
+                    alt: "Professional gutter repair service in Cumming GA area",
                   },
                   {
                     title: "Bathroom Remodeling",
@@ -447,6 +450,7 @@ export default function Home() {
                       "Complete bathroom renovation services including fixtures, tiling, plumbing, and custom designs.",
                     image: "/images/bathroom-remodeling.jpeg",
                     link: "/services/bathroom-remodeling",
+                    alt: "Complete bathroom remodeling service in Forsyth County GA",
                   },
                   {
                     title: "Flooring",
@@ -454,12 +458,14 @@ export default function Home() {
                       "Professional installation of hardwood, laminate, tile, and vinyl flooring for any room in your home.",
                     image: "/images/flooring-installation.jpeg",
                     link: "/services/flooring",
+                    alt: "Hardwood, laminate, tile, and vinyl flooring installation in Cumming GA",
                   },
                   {
                     title: "Painting",
                     description: "Interior and exterior painting services to enhance and protect your property.",
                     image: "/images/paintingjob.jpg",
                     link: "/services/painting",
+                    alt: "Interior and exterior home painting service in Forsyth County",
                   },
                 ].map((service, index) => (
                   <div
@@ -469,7 +475,7 @@ export default function Home() {
                     <div className="relative h-0 w-full pb-[66.67%] overflow-hidden rounded-t-lg">
                       <Image
                         src={service.image || "/placeholder.svg"}
-                        alt={service.title}
+                        alt={service.alt || service.title}
                         fill
                         className="absolute inset-0 h-full w-full object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -596,7 +602,7 @@ export default function Home() {
                   }}
                 >
                   <div className="relative h-32 w-64 mb-4">
-                    <Image src="/images/google-guaranteed.png" alt="Google Guaranteed" fill className="object-contain" />
+                    <Image src="/images/google-guaranteed.png" alt="Google Guaranteed Roofing Contractor - American Top Roofing" fill className="object-contain" />
                   </div>
                   <h3 className="text-lg font-bold text-center">Google Guaranteed</h3>
                   <p className="text-sm text-center text-gray-600">Fully Bonded for Your Protection</p>
@@ -618,7 +624,7 @@ export default function Home() {
                   <div className="relative h-32 w-32 mb-4">
                     <Image
                       src="/images/gaf-certified.png"
-                      alt="GAF Certified Contractor"
+                      alt="GAF Certified Roofing Contractor - American Top Roofing"
                       fill
                       className="object-contain"
                     />
@@ -709,30 +715,35 @@ export default function Home() {
                       description:
                         "Reach out to us by phone or fill out our online form to schedule a free consultation and estimate.",
                       image: "/images/contact-us.jpeg",
+                      alt: "Step 1: Contact American Top Roofing for a free estimate",
                     },
                     {
                       title: "Free Inspection",
                       description:
                         "Our roofing experts will visit your property to assess your roofing needs and provide a detailed estimate.",
                       image: "/images/free-inspection.jpeg",
+                      alt: "Step 2: Free roof inspection in Forsyth County",
                     },
                     {
                       title: "Choose Your Options",
                       description:
                         "We'll help you select the best materials and solutions for your specific needs and budget.",
                       image: "/images/choose-options-new.jpeg",
+                      alt: "Step 3: Choose roofing materials and options",
                     },
                     {
                       title: "Professional Installation",
                       description:
                         "Our experienced team will complete your roofing project with the highest standards of quality and safety.",
                       image: "/images/professional-installation-new.jpeg",
+                      alt: "Step 4: Professional roof installation by American Top Roofing",
                     },
                     {
                       title: "Final Inspection",
                       description:
                         "We'll conduct a thorough inspection to ensure everything meets our high standards of quality.",
                       image: "/images/final-inspection.jpeg",
+                      alt: "Step 5: Final roof inspection and quality check",
                     },
                   ].map((step, index) => (
                     <motion.div
@@ -771,7 +782,7 @@ export default function Home() {
                         <div className="mb-4 overflow-hidden rounded-lg aspect-[3/2]">
                           <Image
                             src={step.image || "/placeholder.svg"}
-                            alt={step.title}
+                            alt={step.alt || step.title}
                             width={600}
                             height={400}
                             className="w-full h-full object-cover"
@@ -892,7 +903,7 @@ export default function Home() {
                       >
                         <Image
                           src={testimonial.avatar || "/placeholder.svg"}
-                          alt={testimonial.name}
+                          alt={`Customer testimonial from ${testimonial.name}`}
                           width={50}
                           height={50}
                           className="h-12 w-12 object-cover rounded-full"
@@ -934,35 +945,43 @@ export default function Home() {
                 {[
                   {
                     image: "/images/gallery/gallery1.JPG",
-                    title: "Roof Replacement Project"
+                    title: "Roof Replacement Project",
+                    alt: "Gallery Image: Completed roof replacement by American Top Roofing in Forsyth County"
                   },
                   {
                     image: "/images/gallery/gallery2.JPG",
-                    title: "Roof Repair Project"
+                    title: "Roof Repair Project",
+                    alt: "Gallery Image: Completed roof repair project in Cumming GA"
                   },
                   {
                     image: "/images/gallery/gallery3.JPG",
-                    title: "Gutter Installation Project"
+                    title: "Gutter Installation Project",
+                    alt: "Gallery Image: New gutter installation in Alpharetta GA"
                   },
                   {
                     image: "/images/gallery/gallery4.JPG",
-                    title: "Roof Inspection Project"
+                    title: "Roof Inspection Project",
+                    alt: "Gallery Image: Thorough roof inspection process"
                   },
                   {
                     image: "/images/gallery/gallery5.JPG",
-                    title: "Siding Installation Project"
+                    title: "Siding Installation Project",
+                    alt: "Gallery Image: New siding installation project in Buford GA"
                   },
                   {
                     image: "/images/gallery/gallery6.JPG",
-                    title: "Gutter Repairs Project"
+                    title: "Gutter Repairs Project",
+                    alt: "Gallery Image: Professional gutter repair work"
                   },
                   {
                     image: "/images/gallery/gallery7.JPG",
-                    title: "Storm Damage Project"
+                    title: "Storm Damage Project",
+                    alt: "Gallery Image: Roof repair after storm damage in Gainesville GA"
                   },
                   {
                     image: "/images/gallery/gallery8.JPG",
-                    title: "Commercial Roofing Project"
+                    title: "Commercial Roofing Project",
+                    alt: "Gallery Image: Commercial roofing project example"
                   }
                 ].map((project, index) => (
                   <div 
@@ -976,7 +995,7 @@ export default function Home() {
                     <div className="relative aspect-[4/3] w-full">
                       <Image
                         src={project.image}
-                        alt={project.title}
+                        alt={project.alt || project.title}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-contain bg-gray-100"
@@ -1004,7 +1023,7 @@ export default function Home() {
                     <div className="relative w-full h-full flex items-center justify-center">
                       <Image
                         src={selectedImage}
-                        alt="Enlarged view"
+                        alt="Enlarged gallery image view - American Top Roofing work example"
                         fill
                         className="object-contain"
                         sizes="100vw"
@@ -1326,7 +1345,7 @@ export default function Home() {
                   <div className="mt-8">
                     <h4 className="mb-4 text-xl font-bold">Service Areas</h4>
                     <p className="mb-2">
-                      We proudly serve the following counties in Georgia and surrounding communities:
+                      Proudly serving Forsyth County—including Cumming, Buford, and Suwanee—as well as Gainesville, Alpharetta, and neighboring communities throughout Georgia.
                     </p>
                     <div className="grid grid-cols-2 gap-2">
                       <span>Forsyth County</span>
@@ -1356,13 +1375,13 @@ export default function Home() {
                     src="/images/logowhiteversion.png"
                     width={150}
                     height={50}
-                    alt="American Top Roofing and Restoration Logo"
+                    alt="American Top Roofing and Restoration Logo White - Footer"
                     className="h-auto w-[150px]"
                     priority
                   />
                 </div>
                 <p className="mb-6 text-gray-400">
-                  Professional roofing services you can trust. Serving homeowners and businesses since 2005.
+                  Professional roofing services in Forsyth County you can trust. Serving homeowners and businesses near Cumming, Buford, and Gainesville since 2005.
                 </p>
                 <div className="flex space-x-4">
                   <a
