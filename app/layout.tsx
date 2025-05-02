@@ -89,6 +89,7 @@ export const metadata = {
   generator: 'v0.dev',
   icons: {
     icon: [
+      { url: '/favicon/favicon.ico', sizes: 'any' },
       { url: '/favicon/house-logo-32x32.png', sizes: '32x32', type: 'image/png' },
       { url: '/favicon/house-logo-180x180.png', sizes: '180x180', type: 'image/png' },
     ],
@@ -106,6 +107,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon/favicon.ico" />
         <link rel="icon" type="image/png" sizes="180x180" href="/favicon/house-logo-180x180.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/house-logo-32x32.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/house-logo-180x180.png" />
@@ -122,7 +124,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
           <Analytics />
-          <SpeedInsights/>
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

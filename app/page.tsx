@@ -371,8 +371,7 @@ export default function Home() {
                 {...fadeInUp}
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
-                Protect your biggest investment with American Top Roofing and Restoration, your trusted partner in GA. We provide professional,
-                reliable, and affordable roofing services in Cumming, Buford, Suwanee, and surrounding areas.
+                Protect and restore your biggest investment with American Top Roofing and Restoration, your trusted partner in GA. We do it better.
               </motion.p>
               <motion.div
                 className="flex flex-col gap-4 sm:flex-row"
@@ -591,7 +590,7 @@ export default function Home() {
                     />
                   </div>
                   <h3 className="text-lg font-bold text-center">BBB Accredited</h3>
-                  <p className="text-sm text-center text-gray-600">Licensed in Georgia #RLC123456</p>
+                  <p className="text-sm text-center text-gray-600"> "A" Rated Business </p>
                 </motion.div>
 
                 {/* Certification Item 2: Google Guaranteed */}
