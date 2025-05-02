@@ -3,11 +3,11 @@
 import Image from "next/image"
 import Link from "next/link"
 import { PhoneCall, Mail, MapPin } from "lucide-react"
+import type React from "react"
 
-// Removed handleAnchorClick from props
-// interface FooterProps {
-//   handleAnchorClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
-// }
+interface FooterProps {
+  handleAnchorClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void
+}
 
 // Moved handleAnchorClick inside the component
 const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -40,7 +40,7 @@ const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string)
   }
 };
 
-export default function Footer(/* Removed prop: { handleAnchorClick } */) {
+export default function Footer({ handleAnchorClick }: FooterProps) {
   return (
     <footer className="bg-[#111827] py-16 text-white">
       <div className="container px-4 md:px-6">

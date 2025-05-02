@@ -296,7 +296,7 @@ export default function FlooringPage() {
                   </li>
                 </ul>
                 <Link
-                  href="#contact"
+                  href="/#contact"
                   className="inline-block rounded-md bg-blue-500 px-6 py-3 font-bold text-white hover:bg-blue-600"
                 >
                   SCHEDULE A CONSULTATION
@@ -345,6 +345,35 @@ export default function FlooringPage() {
             </div>
           </div>
         </section>
+
+        {/* Warranty Section */}
+        <div className="container px-4 md:px-6">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-12 rounded-lg bg-blue-50 p-8">
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-500 text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
+                <h3 className="mb-4 text-2xl font-bold">1-Year Warranty</h3>
+                <p className="max-w-2xl text-lg text-gray-700">
+                  We stand behind our work with a comprehensive 1-year warranty on all our flooring services. If you experience any issues with our workmanship within the first year, we'll come back and fix it at no additional cost to you.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Types of Flooring Section */}
         <section className="bg-gray-50 py-16 md:py-24">

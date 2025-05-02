@@ -1,108 +1,18 @@
-"use client"
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { PhoneCall, ChevronLeft } from "lucide-react";
+import Footer from "../../components/Footer";
+import ServicePageHeader from "../../components/ServicePageHeader";
+import { MotionDiv } from "@/app/components/MotionWrappers";
 
-import type React from "react"
-import { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { PhoneCall, Menu, ChevronLeft } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { motion } from "framer-motion"
-import Footer from "../../components/Footer"
-
-const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-  e.preventDefault(); // Prevent default link navigation
-
-  // Check if it's an internal anchor link for the homepage
-  if (href.startsWith('/#')) {
-    const targetId = href.substring(2); // Get the ID part (e.g., "services")
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-      // If element exists on the current page (likely only on homepage itself), scroll smoothly
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      // If element doesn't exist on current page, navigate to the homepage URL with the hash
-      // The browser will handle scrolling to the anchor upon loading the homepage.
-      window.location.href = href; // e.g., navigate to '/#services'
-    }
-  } else if (href.startsWith('#')) {
-    // Handle simple hash links for the *current* page
-    const targetId = href.substring(1);
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth'});
-    }
-  }
-   else {
-    // Handle other links (like tel:) or potentially full page navigations
-    window.location.href = href;
-  }
+export const metadata: Metadata = {
+  title: "Gutter Repair Services | American Top Roofing",
+  description: "American Top Roofing offers professional gutter repair services across Georgia. Fix leaks, clogs & sagging gutters statewide. Free Estimate!",
+  keywords: ["gutter repair", "gutter services", "rain gutters", "gutter maintenance", "Georgia", "Forsyth County", "Cumming", "Buford", "Suwanee", "Gainesville", "Alpharetta", "Atlanta", "roofing contractor", "American Top Roofing"],
 };
 
 export default function GutterRepairsPage() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    address: "",
-    service: "gutter-repairs", // Pre-fill service
-    message: "",
-  })
-
-  const [formErrors, setFormErrors] = useState({
-    firstName: false,
-    lastName: false,
-    email: false,
-    phone: false,
-    address: false,
-  })
-
-  const [formSubmitted, setFormSubmitted] = useState(false)
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { id, value } = e.target;
-    if (id === "phone") {
-      const formattedPhone = formatPhoneNumber(value);
-      setFormData((prev) => ({ ...prev, phone: formattedPhone }));
-    } else {
-      setFormData((prev) => ({ ...prev, [id]: value }));
-    }
-    if (value.trim()) {
-      setFormErrors((prev) => ({ ...prev, [id]: false }));
-    }
-  };
-
-  const formatPhoneNumber = (value: string) => {
-    const phoneNumber = value.replace(/\\D/g, "");
-    if (phoneNumber.length < 4) return phoneNumber;
-    if (phoneNumber.length < 7) return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
-    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
-  };
-
-  const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  const validateForm = () => {
-    const errors = {
-      firstName: !formData.firstName.trim(),
-      lastName: !formData.lastName.trim(),
-      email: !formData.email.trim() || !isValidEmail(formData.email),
-      phone: !formData.phone.trim() || formData.phone.replace(/\\D/g, "").length < 10,
-      address: !formData.address.trim(),
-    };
-    setFormErrors(errors);
-    return !Object.values(errors).some((error) => error);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validateForm()) {
-      console.log("Form submitted:", formData);
-      setFormSubmitted(true);
-    }
-  };
-
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -111,117 +21,32 @@ export default function GutterRepairsPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Header */}
-      <header className="sticky top-0 z-40 w-full border-b bg-white">
-        <div className="container flex h-20 items-center justify-between px-4 pt-2 md:px-6">
-          <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/images/new-logo.png"
-              width={140}
-              height={45}
-              alt="American Top Roofing and Restoration Logo"
-              className="h-auto w-[140px]"
-            />
-          </Link>
-
-          <div className="hidden items-center gap-6 md:flex">
-            <div className="flex items-center gap-4">
-              <a
-                href="tel:+18001234567"
-                className="flex items-center gap-2 text-sm font-bold text-blue-800 hover:text-blue-600"
-              >
-                <PhoneCall className="h-4 w-4" />
-                (800) 123-4567
-              </a>
-              <a
-                href="/#contact"
-                onClick={(e) => handleAnchorClick(e, "/#contact")}
-                className="rounded-md bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-600"
-              >
-                GET A FREE QUOTE
-              </a>
-            </div>
-          </div>
-
-          <Sheet>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" aria-label="Menu">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <div className="flex items-center gap-3 mb-6">
-                <Link href="/">
-                  <Image
-                    src="/images/new-logo.png"
-                    width={120}
-                    height={40}
-                    alt="American Top Roofing and Restoration Logo"
-                    className="h-auto w-[120px]"
-                  />
-                </Link>
-              </div>
-              <nav className="flex flex-col gap-4 py-6">
-                <a href="/#services" onClick={(e) => handleAnchorClick(e, "/#services")} className="text-lg font-medium hover:text-blue-500">Services</a>
-                <a href="/#how-it-works" onClick={(e) => handleAnchorClick(e, "/#how-it-works")} className="text-lg font-medium hover:text-blue-500">How It Works</a>
-                <a href="/#testimonials" onClick={(e) => handleAnchorClick(e, "/#testimonials")} className="text-lg font-medium hover:text-blue-500">Testimonials</a>
-                <a href="/#gallery" onClick={(e) => handleAnchorClick(e, "/#gallery")} className="text-lg font-medium hover:text-blue-500">Gallery</a>
-                <a href="/#faq" onClick={(e) => handleAnchorClick(e, "/#faq")} className="text-lg font-medium hover:text-blue-500">FAQ</a>
-                <div className="mt-4 flex flex-col gap-4">
-                  <motion.a
-                    href="tel:+18001234567"
-                    className="flex items-center gap-2 text-lg font-bold text-blue-800 hover:text-blue-600"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <motion.div
-                      animate={{ rotate: [-10, 10, -10, 10, -10, 0], scale: [1, 1.1, 1] }}
-                      transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, repeatType: "loop", repeatDelay: 3 }}
-                    >
-                      <PhoneCall className="h-5 w-5" />
-                    </motion.div>
-                    (800) 123-4567
-                  </motion.a>
-                  <a
-                    href="/#contact"
-                    onClick={(e) => handleAnchorClick(e, "/#contact")}
-                    className="rounded-md bg-blue-500 px-4 py-2 text-center text-lg font-bold text-white hover:bg-blue-600"
-                  >
-                    GET A FREE QUOTE
-                  </a>
-                </div>
-              </nav>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </header>
+      <ServicePageHeader />
 
       <main className="flex-1">
-        {/* Hero Section */}
         <section className="relative">
           <div className="absolute inset-0 bg-black/50" />
-          <motion.div
+          <MotionDiv
             className="relative mx-auto flex min-h-[400px] max-w-7xl flex-col items-center justify-center px-4 py-24 text-center text-white md:px-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <motion.h1
-              className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              Gutter Repair Services
-            </motion.h1>
-            <motion.p
-              className="mb-8 max-w-3xl text-lg text-gray-200 sm:text-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              Professional gutter repair services to prevent water damage and foundation issues.
-            </motion.p>
-            <motion.div
+            <MotionDiv {...fadeInUp}>
+              <h1
+                className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
+              >
+                Gutter Repair Services in Georgia
+              </h1>
+            </MotionDiv>
+            <MotionDiv {...fadeInUp} transition={{ delay: 0.2, ...fadeInUp.transition }}>
+              <p
+                className="mb-8 max-w-3xl text-lg text-gray-200 sm:text-xl"
+              >
+                Reliable gutter repairs available statewide in Georgia to prevent water damage and protect your home's foundation.
+              </p>
+            </MotionDiv>
+            <MotionDiv
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
@@ -232,12 +57,12 @@ export default function GutterRepairsPage() {
               >
                 GET A FREE QUOTE
               </Link>
-            </motion.div>
-          </motion.div>
+            </MotionDiv>
+          </MotionDiv>
           <div className="absolute inset-0 -z-10 overflow-hidden">
             <Image
               src="/images/gutter-repair-service.jpeg"
-              alt="Gutter Repairs"
+              alt="Professional gutter repair services in Forsyth County"
               fill
               className="object-cover"
               priority
@@ -245,7 +70,6 @@ export default function GutterRepairsPage() {
           </div>
         </section>
 
-        {/* Content Section */}
         <section className="py-16 md:py-24">
           <div className="container px-4 md:px-6">
             <div className="mx-auto max-w-4xl">
@@ -255,51 +79,51 @@ export default function GutterRepairsPage() {
               </Link>
 
               <div className="mb-12">
-                <h2 className="mb-6 text-3xl font-bold">Professional Gutter Repair Services</h2>
+                <h2 className="mb-6 text-3xl font-bold">Your Trusted Gutter Repair Experts in Georgia</h2>
                 <p className="mb-4 text-lg text-gray-700">
-                  Damaged or malfunctioning gutters can lead to serious water damage to your home's foundation, siding,
-                  and landscaping. At Top American Roofing and Restoration, we provide expert gutter repair services to
-                  ensure your gutter system functions properly and protects your home from water damage.
+                  Damaged or malfunctioning gutters can lead to significant water damage to your home's foundation, siding,
+                  and landscaping. At American Top Roofing and Restoration, we provide expert gutter repair services across Georgia to
+                  ensure your gutter system functions properly and protects your property investment from costly water damage.
                 </p>
                 <p className="mb-4 text-lg text-gray-700">
-                  Our experienced technicians can identify and fix a wide range of gutter issues, from minor leaks and
-                  clogs to major structural problems. We use high-quality materials and proven techniques to deliver
-                  lasting repairs that will keep your gutters working effectively for years to come.
+                  Our experienced technicians can quickly diagnose and fix a comprehensive range of gutter issues, from minor leaks and
+                  clogs to significant structural problems impacting homes anywhere in Georgia. We utilize high-quality materials and proven repair techniques to deliver durable,
+                  lasting repairs that will keep your gutters performing effectively for years to come, safeguarding your home.
                 </p>
               </div>
 
               <div className="mb-12">
-                <h3 className="mb-4 text-2xl font-bold">Common Gutter Problems We Fix</h3>
+                <h3 className="mb-4 text-2xl font-bold">Common Gutter Problems We Fix Across Georgia</h3>
                 <ul className="mb-6 space-y-3 text-lg text-gray-700">
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-500">✓</span>
-                    <span>Leaking gutter seams and joints</span>
+                    <span>Leaking gutter seams and joints causing foundation saturation</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-500">✓</span>
-                    <span>Sagging or pulling away from the roofline</span>
+                    <span>Gutters sagging or pulling away from the roofline due to weight or damage</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-500">✓</span>
-                    <span>Clogged gutters and downspouts</span>
+                    <span>Clogged gutters and downspouts leading to overflows and water backup</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-500">✓</span>
-                    <span>Holes, cracks, and rust spots</span>
+                    <span>Holes, cracks, and rust spots compromising gutter integrity</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-500">✓</span>
-                    <span>Improperly pitched gutters causing water pooling</span>
+                    <span>Improperly pitched gutters causing water pooling and ineffective drainage</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-500">✓</span>
-                    <span>Damaged or missing downspouts</span>
+                    <span>Damaged, disconnected, or missing downspouts affecting water diversion</span>
                   </li>
                 </ul>
               </div>
 
               <div className="mb-12">
-                <h3 className="mb-4 text-2xl font-bold">Our Gutter Repair Process</h3>
+                <h3 className="mb-4 text-2xl font-bold">Our Georgia Gutter Repair Process</h3>
                 <ol className="mb-6 space-y-6 text-lg text-gray-700">
                   <li className="flex">
                     <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
@@ -307,7 +131,7 @@ export default function GutterRepairsPage() {
                     </span>
                     <div>
                       <h4 className="font-bold">Thorough Inspection</h4>
-                      <p>We conduct a comprehensive assessment of your entire gutter system to identify all issues.</p>
+                      <p>We conduct a comprehensive assessment of your entire gutter system anywhere in Georgia to identify all issues accurately.</p>
                     </div>
                   </li>
                   <li className="flex">
@@ -315,10 +139,10 @@ export default function GutterRepairsPage() {
                       2
                     </span>
                     <div>
-                      <h4 className="font-bold">Detailed Repair Plan</h4>
+                      <h4 className="font-bold">Detailed Repair Plan & Estimate</h4>
                       <p>
-                        We provide a clear explanation of the problems found and recommend the most effective repair
-                        solutions.
+                        We provide a clear, detailed explanation of the problems found and recommend the most effective, cost-efficient repair
+                        solutions for your Georgia home.
                       </p>
                     </div>
                   </li>
@@ -327,8 +151,8 @@ export default function GutterRepairsPage() {
                       3
                     </span>
                     <div>
-                      <h4 className="font-bold">Professional Repairs</h4>
-                      <p>Our skilled technicians perform repairs using quality materials and proven techniques.</p>
+                      <h4 className="font-bold">Professional Gutter Repairs</h4>
+                      <p>Our skilled technicians perform efficient repairs using top-quality materials and industry-leading techniques, ensuring longevity.</p>
                     </div>
                   </li>
                   <li className="flex">
@@ -336,50 +160,49 @@ export default function GutterRepairsPage() {
                       4
                     </span>
                     <div>
-                      <h4 className="font-bold">System Testing</h4>
-                      <p>We test the repaired gutter system to ensure proper water flow and drainage.</p>
+                      <h4 className="font-bold">System Testing & Cleanup</h4>
+                      <p>We thoroughly test the repaired gutter system to guarantee proper water flow and drainage, followed by a meticulous site cleanup.</p>
                     </div>
                   </li>
                 </ol>
               </div>
 
               <div className="mb-12">
-                <h3 className="mb-4 text-2xl font-bold">Benefits of Professional Gutter Repairs</h3>
+                <h3 className="mb-4 text-2xl font-bold">Benefits of Professional Gutter Repairs in Georgia</h3>
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="rounded-lg border p-6">
-                    <h4 className="mb-2 text-xl font-bold">Prevent Water Damage</h4>
+                    <h4 className="mb-2 text-xl font-bold">Prevent Costly Water Damage</h4>
                     <p className="text-gray-700">
-                      Properly functioning gutters direct water away from your home, preventing damage to your
-                      foundation, siding, and landscaping.
+                      Properly functioning gutters are crucial for directing water away from your home, preventing expensive damage to your
+                      foundation, siding, roof fascia, and landscaping in areas prone to heavy rain.
                     </p>
                   </div>
                   <div className="rounded-lg border p-6">
-                    <h4 className="mb-2 text-xl font-bold">Extend Gutter Lifespan</h4>
+                    <h4 className="mb-2 text-xl font-bold">Extend Gutter System Lifespan</h4>
                     <p className="text-gray-700">
-                      Regular repairs and maintenance can significantly extend the life of your gutter system, saving
-                      you money in the long run.
+                      Timely repairs and routine maintenance can significantly extend the operational life of your gutter system, saving
+                      you money on premature replacement costs.
                     </p>
                   </div>
                   <div className="rounded-lg border p-6">
                     <h4 className="mb-2 text-xl font-bold">Prevent Pest Infestations</h4>
                     <p className="text-gray-700">
-                      Damaged gutters can become breeding grounds for pests. Timely repairs eliminate these potential
-                      habitats.
+                      Clogged or damaged gutters create attractive damp environments for pests like mosquitoes and termites. Prompt repairs eliminate these potential breeding grounds.
                     </p>
                   </div>
                   <div className="rounded-lg border p-6">
-                    <h4 className="mb-2 text-xl font-bold">Improve Curb Appeal</h4>
+                    <h4 className="mb-2 text-xl font-bold">Enhance Curb Appeal & Value</h4>
                     <p className="text-gray-700">
-                      Well-maintained gutters enhance the appearance of your home and contribute to its overall value.
+                      Well-maintained, functional gutters significantly enhance the overall appearance of your home and contribute positively to its resale value.
                     </p>
                   </div>
                 </div>
               </div>
 
               <div className="rounded-lg bg-blue-50 p-8">
-                <h3 className="mb-4 text-2xl font-bold text-center">Need Gutter Repairs?</h3>
+                <h3 className="mb-4 text-2xl font-bold text-center">Need Gutter Repairs Anywhere in Georgia?</h3>
                 <p className="mb-6 text-center text-lg">
-                  Contact us today to schedule your free gutter inspection and get a detailed repair estimate.
+                   Contact us today for your free gutter inspection and detailed repair estimate!
                 </p>
                 <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <Link
@@ -389,11 +212,11 @@ export default function GutterRepairsPage() {
                     GET A FREE QUOTE
                   </Link>
                   <a
-                    href="tel:+18001234567"
+                    href="tel:+14709402400"
                     className="flex items-center justify-center gap-2 rounded-md bg-blue-800 px-8 py-3 text-lg font-bold text-white hover:bg-blue-700 transition-all duration-300 ease-in-out hover:scale-105"
                   >
                     <PhoneCall className="h-5 w-5" />
-                    CALL US NOW
+                    CALL (470) 940-2400
                   </a>
                 </div>
               </div>
@@ -402,7 +225,7 @@ export default function GutterRepairsPage() {
         </section>
       </main>
 
-      {/* Footer */}
-      <Footer handleAnchorClick={handleAnchorClick} />    </div>
-  )
+      <Footer />
+    </div>
+  );
 }
