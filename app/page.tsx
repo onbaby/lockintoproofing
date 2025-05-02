@@ -1260,9 +1260,12 @@ export default function Home() {
                           <option value="roof-replacement">Roof Replacement</option>
                           <option value="roof-repair">Roof Repair</option>
                           <option value="gutter-repairs">Gutter Repairs</option>
-                          <option value="fire-water-restoration">Fire/Water Restoration</option>
-                          <option value="mold-removal">Mold Removal</option>
+                          <option value="bathroom-remodeling">Bathroom Remodeling</option>
+                          <option value="flooring">Flooring</option>
                           <option value="painting">Painting</option>
+                          <option value="siding">Siding</option>
+                          <option value="gutter-guards">Gutter Guards</option>
+                          <option value="tiling">Tiling</option>
                           <option value="inspection">Roof Inspection</option>
                           <option value="emergency">Emergency Service</option>
                           <option value="other">Other</option>
