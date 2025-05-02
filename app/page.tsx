@@ -1267,7 +1267,6 @@ export default function Home() {
                           <option value="gutter-guards">Gutter Guards</option>
                           <option value="tiling">Tiling</option>
                           <option value="inspection">Roof Inspection</option>
-                          <option value="emergency">Emergency Service</option>
                           <option value="other">Other</option>
                         </select>
                         {formErrors.service && (
