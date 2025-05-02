@@ -4,11 +4,43 @@ import Image from "next/image"
 import Link from "next/link"
 import { PhoneCall, Mail, MapPin } from "lucide-react"
 
-interface FooterProps {
-  handleAnchorClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
-}
+// Removed handleAnchorClick from props
+// interface FooterProps {
+//   handleAnchorClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
+// }
 
-export default function Footer({ handleAnchorClick }: FooterProps) {
+// Moved handleAnchorClick inside the component
+const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  e.preventDefault(); // Prevent default link navigation
+
+  // Check if it's an internal anchor link for the homepage
+  if (href.startsWith('/#')) {
+    const targetId = href.substring(2); // Get the ID part (e.g., "services")
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      // If element exists on the current page (likely only on homepage itself), scroll smoothly
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // If element doesn't exist on current page, navigate to the homepage URL with the hash
+      // The browser will handle scrolling to the anchor upon loading the homepage.
+      window.location.href = href; // e.g., navigate to '/#services'
+    }
+  } else if (href.startsWith('#')) {
+    // Handle simple hash links for the *current* page
+    const targetId = href.substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth'});
+    }
+  }
+   else {
+    // Handle other links (like tel:) or potentially full page navigations
+    window.location.href = href;
+  }
+};
+
+export default function Footer(/* Removed prop: { handleAnchorClick } */) {
   return (
     <footer className="bg-[#111827] py-16 text-white">
       <div className="container px-4 md:px-6">

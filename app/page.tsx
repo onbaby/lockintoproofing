@@ -651,7 +651,7 @@ export default function Home() {
                   transition={{ delay: 0.5 }}
                 >
                   <Shield className="h-8 w-8 text-blue-500" />
-                  <span className="text-lg font-medium">5 Year Warranty</span>
+                  <span className="text-lg font-medium">Warranty Provided</span>
                 </motion.div>
 
                 <motion.div
