@@ -3,14 +3,24 @@
     "short_name": "Top American Roofing",
     "icons": [
         {
-            "src": "/favicon/house-logo-180x180.png",
+            "src": "/favicon/favicon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon/apple-touch-icon.png",
             "sizes": "180x180",
             "type": "image/png"
         },
         {
-            "src": "/favicon/house-logo-32x32.png",
-            "sizes": "32x32",
-            "type": "image/png"
+            "src": "/favicon/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/favicon/favicon.ico",
+            "sizes": "any",
+            "type": "image/x-icon"
         }
     ],
     "theme_color": "#ffffff",

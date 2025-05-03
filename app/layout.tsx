@@ -90,11 +90,11 @@ export const metadata = {
   icons: {
     icon: [
       { url: '/favicon/favicon.ico', sizes: 'any' },
-      { url: '/favicon/house-logo-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon/house-logo-180x180.png', sizes: '180x180', type: 'image/png' },
+      { url: '/favicon/favicon.ico', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon/favicon.ico', sizes: '180x180', type: 'image/png' },
     ],
     apple: [
-      { url: '/favicon/house-logo-180x180.png', sizes: '180x180', type: 'image/png' },
+      { url: '/favicon/favicon.ico', sizes: '180x180', type: 'image/png' },
     ],
   },
 }
@@ -107,14 +107,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="180x180" href="/favicon/house-logo-180x180.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/house-logo-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/house-logo-180x180.png" />
-        <link rel="shortcut icon" href="/favicon/house-logo-180x180.png" />
-        <meta name="msapplication-TileImage" content="/favicon/house-logo-180x180.png" />
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
