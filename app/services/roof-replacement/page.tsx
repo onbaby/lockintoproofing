@@ -118,7 +118,7 @@ export default function RoofReplacementPage() {
             transition={{ duration: 1 }}
           >
             <MotionDiv
-              className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
+              className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl hero-title tracking-wider"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}

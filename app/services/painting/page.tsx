@@ -255,7 +255,7 @@ export default function PaintingPage() {
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+              <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl hero-title tracking-wider">
                 Professional Painting Services in Georgia
               </h1>
               <motion.p

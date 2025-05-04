@@ -139,7 +139,7 @@ export default function RoofRepairsPage() {
             transition={{ duration: 1 }}
           >
             <MotionDiv
-              className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
+              className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl hero-title tracking-wider"
               {...fadeInUp}
             >
               Roof Repair Services

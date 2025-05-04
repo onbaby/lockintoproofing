@@ -362,7 +362,7 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <motion.h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl" {...fadeInUp}>
+              <motion.h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl hero-title tracking-wider" {...fadeInUp}>
                 Quality Roofing Solutions <br className="hidden sm:inline" />
                 For Your Home
               </motion.h1>
@@ -488,7 +488,7 @@ export default function Home() {
                       />
                     </div>
                     <div className="flex flex-1 flex-col p-6">
-                      <h3 className="mb-2 text-center text-2xl font-bold">{service.title}</h3>
+                      <h3 className="mb-2 text-center text-2xl font-bold hero-title tracking-wider">{service.title}</h3>
                       <p className="mb-6 flex-1 text-center text-gray-600">{service.description}</p>
                       {service.title === "Bathroom Remodeling" || service.title === "Flooring" ? (
                         <Link
