@@ -991,7 +991,7 @@ export default function Home() {
                 ].map((project, index) => (
                   <div 
                     key={index} 
-                    className="group relative overflow-hidden rounded-lg cursor-pointer"
+                    className="group relative overflow-hidden rounded-lg cursor-pointer transition-shadow duration-300 hover:shadow-2xl"
                     onClick={() => {
                       setSelectedImage(project.image);
                       setLightboxOpen(true);
@@ -1003,8 +1003,9 @@ export default function Home() {
                         alt={project.alt || project.title}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-contain bg-gray-100"
+                        className="object-cover bg-gray-100 transition-shadow duration-300 group-hover:shadow-xl"
                       />
+                      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                     </div>
                   </div>
                 ))}
@@ -1014,18 +1015,19 @@ export default function Home() {
               {lightboxOpen && (
                 <div 
                   className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4"
-                  onClick={() => setLightboxOpen(false)}
+                  onClick={(e) => { e.stopPropagation(); setLightboxOpen(false); }}
                 >
                   <div className="relative max-w-7xl w-full h-full flex items-center justify-center">
-                    <button
-                      className="absolute top-4 right-4 text-white hover:text-gray-300 z-50"
-                      onClick={() => setLightboxOpen(false)}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </button>
                     <div className="relative w-full h-full flex items-center justify-center">
+                      <button
+                        className="absolute top-4 right-8 text-white hover:text-gray-300 z-50 bg-black/60 rounded-full p-2 transition-colors duration-200"
+                        onClick={(e) => { e.stopPropagation(); setLightboxOpen(false); }}
+                        style={{ pointerEvents: 'auto' }}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
                       <Image
                         src={selectedImage}
                         alt="Enlarged gallery image view - American Top Roofing work example"
@@ -1074,7 +1076,7 @@ export default function Home() {
                     {
                       question: "Do you offer warranties on your roofing work?",
                       answer:
-                        "Yes, we offer manufacturer warranties on materials (typically 25-50 years depending on the product) and our own workmanship warranty. Our standard workmanship warranty is 10 years, giving you peace of mind that your investment is protected.",
+                        "Yes! All roofing services (roof repairs, roof replacement, etc.) come with a 5-year workmanship warranty, in addition to any manufacturer warranties on materials (typically 25-50 years depending on the product). For all other services—such as flooring, painting, bathroom remodeling, and similar work—we provide a 1-year workmanship warranty. Your investment is protected, and we stand behind the quality of our work.",
                     },
                     {
                       question: "How do I know if I need a roof repair or a complete replacement?",
