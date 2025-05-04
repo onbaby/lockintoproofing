@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Bebas+Neue&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -46,6 +47,11 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 210 80% 56%;
+  }
+
+  html::before {
+    content: '';
+    display: none;
   }
 }
 
@@ -125,4 +131,29 @@ html {
 
 .step-number:hover {
   animation: pulse 1.5s infinite;
+}
+
+/* Bebas Neue for main titles only */
+h1,
+h2,
+.section-title,
+.hero-title,
+.service-title,
+.faq-title,
+.bebas-title {
+  font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+body, p, li, span, .roboto-condensed {
+  font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
+}
+
+h3, h4 {
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+code, pre, .mono, .atkinson-mono {
+  font-family: 'Atkinson Hyperlegible Mono', 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
 }

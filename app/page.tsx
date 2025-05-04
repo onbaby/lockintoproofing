@@ -1019,15 +1019,15 @@ export default function Home() {
                 >
                   <div className="relative max-w-7xl w-full h-full flex items-center justify-center">
                     <div className="relative w-full h-full flex items-center justify-center">
-                      <button
+                    <button
                         className="absolute top-4 right-8 text-white hover:text-gray-300 z-50 bg-black/60 rounded-full p-2 transition-colors duration-200"
                         onClick={(e) => { e.stopPropagation(); setLightboxOpen(false); }}
                         style={{ pointerEvents: 'auto' }}
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                      </button>
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
                       <Image
                         src={selectedImage}
                         alt="Enlarged gallery image view - American Top Roofing work example"
