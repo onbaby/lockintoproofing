@@ -10,12 +10,13 @@ export default function BeforeAfterSlider() {
     <div className="relative w-full max-w-3xl mx-auto aspect-[3/4] rounded-lg overflow-hidden shadow-xl">
       {/* Before Image (Bottom Layer) */}
       <div className="absolute inset-0">
-        <Image
-          src="/images/bathroom-remodel-before.jpg"
+        <img 
+          slot="first" 
+          src="/images/bathroom-remodel-before.webp" 
+          width={600} 
+          height={800} 
           alt="Before bathroom remodel"
-          fill
-          className="object-cover"
-          priority
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
         <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded text-sm font-semibold">
           BEFORE
@@ -27,11 +28,13 @@ export default function BeforeAfterSlider() {
         className="absolute inset-0"
         style={{ width: `${sliderPosition}%` }}
       >
-        <Image
-          src="/images/bathroom-remodel-after.jpg"
+        <img 
+          slot="second" 
+          src="/images/bathroom-remodel-after.webp" 
+          width={600} 
+          height={800} 
           alt="After bathroom remodel"
-          fill
-          className="object-cover"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
         <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded text-sm font-semibold">
           AFTER

@@ -162,7 +162,7 @@ export default function RoofRepairsPage() {
             </MotionDiv>
           </MotionDiv>
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <Image src="/images/roof-repair-service.jpeg" alt="Roof repair technician fixing shingles in Forsyth County" fill className="object-cover" priority />
+            <Image src="/images/roof-repair-service.webp" alt="Roof repair technician fixing shingles in Forsyth County" fill className="object-cover" priority />
           </div>
         </section>
 

@@ -235,7 +235,7 @@ export default function SidingPage() {
             </motion.div>
           </motion.div>
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <Image src="/images/siding.jpeg" alt="Siding Services" fill className="object-cover" priority />
+            <Image src="/images/siding.webp" alt="Siding Services" fill className="object-cover" priority />
           </div>
         </section>
 

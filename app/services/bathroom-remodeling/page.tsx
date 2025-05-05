@@ -62,13 +62,7 @@ export default function BathroomRemodelingPage() {
             </MotionDiv>
           </MotionDiv>
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <Image
-              src="/images/bathroom-remodeling-service.jpeg"
-              alt="Modern bathroom remodeling project in Georgia"
-              fill
-              className="object-cover"
-              priority
-            />
+            <Image src="/images/bathroom-remodeling-service.webp" alt="Bathroom remodeling services in Forsyth County" fill className="object-cover" priority />
           </div>
         </section>
 
@@ -165,45 +159,21 @@ export default function BathroomRemodelingPage() {
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold mb-4">See the Transformations: Before & After</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
-              <div className="aspect-[3/4] w-full max-w-xl mx-auto">
-                <img-comparison-slider style={{ width: '100%', height: '100%' }}>
-                  <img 
-                    slot="first" 
-                    src="/images/bathroom-remodel-before.jpg" 
-                    width={600} 
-                    height={800} 
-                    alt="Before bathroom remodel"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                  <img 
-                    slot="second" 
-                    src="/images/bathroom-remodel-after.jpg" 
-                    width={600} 
-                    height={800} 
-                    alt="After bathroom remodel"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </img-comparison-slider>
+              <div className="relative aspect-square w-full overflow-hidden rounded-lg">
+                <Image
+                  src="/images/bathroom-remodel-before.webp"
+                  alt="Before bathroom remodeling - old outdated bathroom"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <div className="aspect-[3/4] w-full max-w-xl mx-auto">
-                <img-comparison-slider style={{ width: '100%', height: '100%' }}>
-                  <img 
-                    slot="first" 
-                    src="/images/imgafter.jpg" 
-                    width={600} 
-                    height={800} 
-                    alt="Before bathroom remodel"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                  <img 
-                    slot="second" 
-                    src="/images/imagebefore.jpg" 
-                    width={600} 
-                    height={800} 
-                    alt="After bathroom remodel"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </img-comparison-slider>
+              <div className="relative aspect-square w-full overflow-hidden rounded-lg">
+                <Image
+                  src="/images/bathroom-remodel-after.webp"
+                  alt="After bathroom remodeling - beautiful new modern bathroom"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: "Expert tile installation, repair, and replacement in Forsyth County (Cumming, Buford, Suwanee) by American Top Roofing. Floors, walls, backsplashes, showers, and more. Free quotes!",
     images: [
       {
-        url: "/images/tiling.jpeg",
+        url: "/images/tiling.webp",
         width: 1200,
         height: 630,
         alt: "Professional Tiling Services"
@@ -25,6 +25,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Tiling Services | Forsyth County GA | American Top Roofing",
     description: "Expert tile installation, repair, and replacement in Forsyth County (Cumming, Buford, Suwanee) by American Top Roofing. Floors, walls, backsplashes, showers, and more. Free quotes!",
-    images: ["/images/tiling.jpeg"]
+    images: ["/images/tiling.webp"]
   }
 } 

@@ -148,7 +148,7 @@ export default function RoofReplacementPage() {
             </MotionDiv>
           </MotionDiv>
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <Image src="/images/replacement.jpeg" alt="Professional roof replacement service in Forsyth County, GA" fill className="object-cover" priority />
+            <Image src="/images/replacement.webp" alt="Professional roof replacement service in Forsyth County, GA" fill className="object-cover" priority />
           </div>
         </section>
 

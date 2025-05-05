@@ -280,13 +280,7 @@ export default function PaintingPage() {
               </motion.div>
             </motion.div>
             <div className="absolute inset-0 -z-10 overflow-hidden">
-              <Image
-                src="/images/painting-service-new.jpeg"
-                alt="Painting Services"
-                fill
-                className="object-cover"
-                priority
-              />
+              <Image src="/images/painting-service-new.webp" alt="Professional painting services in Forsyth County" fill className="object-cover" priority />
             </div>
           </section>
 

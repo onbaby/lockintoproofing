@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: "Professional gutter guard installation in Forsyth County (Cumming, Buford, Suwanee) by American Top Roofing. Prevent clogs, reduce maintenance, and protect your home. Free quotes!",
     images: [
       {
-        url: "/images/guards.jpeg",
+        url: "/images/guards.webp",
         width: 1200,
         height: 630,
         alt: "Professional Gutter Guard Installation"
@@ -25,6 +25,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gutter Guard Installation | Forsyth County GA | American Top Roofing",
     description: "Professional gutter guard installation in Forsyth County (Cumming, Buford, Suwanee) by American Top Roofing. Prevent clogs, reduce maintenance, and protect your home. Free quotes!",
-    images: ["/images/guards.jpeg"]
+    images: ["/images/guards.webp"]
   }
 } 

@@ -237,7 +237,7 @@ export default function TilingPage() {
             </motion.div>
           </motion.div>
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <Image src="/images/tiling.jpeg" alt="Tiling Services" fill className="object-cover" priority />
+            <Image src="/images/tiling.webp" alt="Tiling Services" fill className="object-cover" priority />
           </div>
         </section>
 

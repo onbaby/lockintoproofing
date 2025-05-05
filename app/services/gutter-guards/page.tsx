@@ -236,15 +236,20 @@ export default function GutterGuardsPage() {
               </Link>
             </motion.div>
           </motion.div>
-          <div className="absolute inset-0 -z-10 overflow-hidden">
+          <motion.div
+            className="absolute inset-0 -z-10 overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
             <Image
-              src="/images/guards.jpeg"
+              src="/images/guards.webp"
               alt="Gutter Guards"
               fill
               className="object-cover"
               priority
             />
-          </div>
+          </motion.div>
         </section>
 
         {/* Content Section */}

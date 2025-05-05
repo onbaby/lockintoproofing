@@ -61,8 +61,8 @@ export default function GutterRepairsPage() {
           </MotionDiv>
           <div className="absolute inset-0 -z-10 overflow-hidden">
             <Image
-              src="/images/gutter-repair-service.jpeg"
-              alt="Professional gutter repair services in Forsyth County"
+              src="/images/gutter-repair-service.webp"
+              alt="Gutter repair service in Forsyth County by American Top Roofing"
               fill
               className="object-cover"
               priority
