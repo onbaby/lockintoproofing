@@ -83,9 +83,9 @@ const structuredData = {
 };
 
 export const metadata = {
-  title: "American Top Roofing | Forsyth County GA | Cumming, Buford, Suwanee",
+  title: "American Top Roofing & Restoration - Roofing & Restoration GA",
   description:
-    "Expert roofing services in Forsyth County, GA (Cumming, Buford, Suwanee) & surrounding areas. American Top Roofing offers roof replacement, repairs, gutters & more. Get your free quote!",
+    "From roof replacement & gutter repairs to bathroom remodeling—American Top Roofing & Restoration serves all of Georgia. Get a free quote!",
   generator: 'v0.dev',
   icons: {
     icon: [
