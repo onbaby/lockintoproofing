@@ -47,6 +47,11 @@ export default function Home() {
   // Lightbox state
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
+  const [scale, setScale] = useState(1);
+  const [isPinching, setIsPinching] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
   // Handle form input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -192,6 +197,197 @@ export default function Home() {
 
     return () => clearInterval(interval)
   }, [])
+
+  // Add pinch-to-zoom effect for the lightbox
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    
+    let initialDistance = 0;
+    let initialScale = 1;
+    
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 2) {
+        initialDistance = Math.hypot(
+          e.touches[0].pageX - e.touches[1].pageX,
+          e.touches[0].pageY - e.touches[1].pageY
+        );
+        initialScale = scale;
+        setIsPinching(true);
+        e.preventDefault();
+      } else if (e.touches.length === 1 && scale > 1) {
+        setIsDragging(true);
+        setDragStart({
+          x: e.touches[0].clientX - position.x,
+          y: e.touches[0].clientY - position.y
+        });
+      }
+    };
+    
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 2 && isPinching) {
+        const currentDistance = Math.hypot(
+          e.touches[0].pageX - e.touches[1].pageX,
+          e.touches[0].pageY - e.touches[1].pageY
+        );
+        
+        const ratio = currentDistance / initialDistance;
+        const newScale = Math.min(Math.max(initialScale * ratio, 1), 3);
+        
+        setScale(newScale);
+        
+        const img = document.getElementById('lightbox-image');
+        if (img) {
+          img.style.transform = `scale(${newScale}) translate(${position.x}px, ${position.y}px)`;
+        }
+        
+        e.preventDefault();
+      } else if (e.touches.length === 1 && isDragging && scale > 1) {
+        // Calculate new position with boundaries based on scale
+        const maxTranslate = 100 * (scale - 1);
+        const newX = Math.min(maxTranslate, Math.max(-maxTranslate, e.touches[0].clientX - dragStart.x));
+        const newY = Math.min(maxTranslate, Math.max(-maxTranslate, e.touches[0].clientY - dragStart.y));
+        
+        setPosition({ x: newX, y: newY });
+        
+        const img = document.getElementById('lightbox-image');
+        if (img) {
+          img.style.transform = `scale(${scale}) translate(${newX}px, ${newY}px)`;
+        }
+        
+        e.preventDefault();
+      }
+    };
+    
+    const handleTouchEnd = () => {
+      setIsPinching(false);
+      setIsDragging(false);
+      
+      // If scale is back to 1, reset position
+      if (scale <= 1) {
+        setPosition({ x: 0, y: 0 });
+        const img = document.getElementById('lightbox-image');
+        if (img) {
+          img.style.transform = 'scale(1) translate(0px, 0px)';
+        }
+      }
+    };
+    
+    // Handle mouse events for desktop as well
+    const handleMouseDown = (e: MouseEvent) => {
+      if (scale > 1) {
+        setIsDragging(true);
+        setDragStart({
+          x: e.clientX - position.x,
+          y: e.clientY - position.y
+        });
+        e.preventDefault();
+      }
+    };
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      if (isDragging && scale > 1) {
+        // Calculate new position with boundaries based on scale
+        const maxTranslate = 100 * (scale - 1);
+        const newX = Math.min(maxTranslate, Math.max(-maxTranslate, e.clientX - dragStart.x));
+        const newY = Math.min(maxTranslate, Math.max(-maxTranslate, e.clientY - dragStart.y));
+        
+        setPosition({ x: newX, y: newY });
+        
+        const img = document.getElementById('lightbox-image');
+        if (img) {
+          img.style.transform = `scale(${scale}) translate(${newX}px, ${newY}px)`;
+        }
+        
+        e.preventDefault();
+      }
+    };
+    
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+    
+    // Prevent scroll/zoom on the entire page when lightbox is open
+    const preventDefault = (e: Event) => {
+      e.preventDefault();
+    };
+    
+    const lightboxElement = document.getElementById('gallery-lightbox');
+    const imageElement = document.getElementById('lightbox-image-container');
+    
+    if (lightboxElement) {
+      lightboxElement.addEventListener('touchstart', handleTouchStart, { passive: false });
+      lightboxElement.addEventListener('touchmove', handleTouchMove, { passive: false });
+      lightboxElement.addEventListener('touchend', handleTouchEnd);
+      
+      // Prevent default zoom behavior on double-tap
+      lightboxElement.addEventListener('gesturestart', preventDefault);
+      lightboxElement.addEventListener('gesturechange', preventDefault);
+      lightboxElement.addEventListener('gestureend', preventDefault);
+    }
+    
+    if (imageElement) {
+      imageElement.addEventListener('mousedown', handleMouseDown);
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+    }
+    
+    // Double tap to reset zoom
+    let lastTap = 0;
+    const handleDoubleTap = (e: TouchEvent) => {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTap;
+      if (tapLength < 300 && tapLength > 0) {
+        if (scale > 1) {
+          // Reset zoom
+          setScale(1);
+          setPosition({ x: 0, y: 0 });
+          const img = document.getElementById('lightbox-image');
+          if (img) {
+            img.style.transform = 'scale(1) translate(0px, 0px)';
+          }
+        } else {
+          // Zoom to 2x at touch position
+          setScale(2);
+          const img = document.getElementById('lightbox-image');
+          if (img) {
+            img.style.transform = 'scale(2) translate(0px, 0px)';
+          }
+        }
+        e.preventDefault();
+      }
+      lastTap = currentTime;
+    };
+    
+    if (imageElement) {
+      imageElement.addEventListener('touchend', handleDoubleTap);
+    }
+    
+    return () => {
+      if (lightboxElement) {
+        lightboxElement.removeEventListener('touchstart', handleTouchStart);
+        lightboxElement.removeEventListener('touchmove', handleTouchMove);
+        lightboxElement.removeEventListener('touchend', handleTouchEnd);
+        lightboxElement.removeEventListener('gesturestart', preventDefault);
+        lightboxElement.removeEventListener('gesturechange', preventDefault);
+        lightboxElement.removeEventListener('gestureend', preventDefault);
+      }
+      
+      if (imageElement) {
+        imageElement.removeEventListener('mousedown', handleMouseDown);
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+        imageElement.removeEventListener('touchend', handleDoubleTap);
+      }
+    };
+  }, [lightboxOpen, isPinching, isDragging, scale, position, dragStart]);
+  
+  // Reset scale and position when closing lightbox
+  useEffect(() => {
+    if (!lightboxOpen) {
+      setScale(1);
+      setPosition({ x: 0, y: 0 });
+    }
+  }, [lightboxOpen]);
 
   return (
     <>
@@ -1014,28 +1210,92 @@ export default function Home() {
               {/* Lightbox */}
               {lightboxOpen && (
                 <div 
-                  className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4"
+                  id="gallery-lightbox"
+                  className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 touch-none overscroll-none"
                   onClick={(e) => { e.stopPropagation(); setLightboxOpen(false); }}
                 >
                   <div className="relative max-w-7xl w-full h-full flex items-center justify-center">
-                    <div className="relative w-full h-full flex items-center justify-center">
-                    <button
-                        className="absolute top-4 right-8 text-white hover:text-gray-300 z-50 bg-black/60 rounded-full p-2 transition-colors duration-200"
+                    <div 
+                      className="relative w-full h-full flex items-center justify-center overflow-hidden"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <button
+                        className="absolute top-4 right-4 text-white hover:text-gray-300 z-50 bg-black/60 rounded-full p-2 transition-colors duration-200"
                         onClick={(e) => { e.stopPropagation(); setLightboxOpen(false); }}
                         style={{ pointerEvents: 'auto' }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </button>
-                      <Image
-                        src={selectedImage}
-                        alt="Enlarged gallery image view - American Top Roofing work example"
-                        fill
-                        className="object-contain"
-                        sizes="100vw"
-                        priority
-                      />
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                      
+                      {/* Add zoom controls */}
+                      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 z-50 bg-black/60 rounded-full p-2">
+                        <button 
+                          className="text-white hover:text-gray-300 transition-colors duration-200"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setScale(1);
+                            setPosition({ x: 0, y: 0 });
+                            const img = document.getElementById('lightbox-image');
+                            if (img) {
+                              img.style.transform = 'scale(1) translate(0px, 0px)';
+                            }
+                          }}
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
+                          </svg>
+                        </button>
+                        <button 
+                          className="text-white hover:text-gray-300 transition-colors duration-200"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setScale(2);
+                            setPosition({ x: 0, y: 0 });
+                            const img = document.getElementById('lightbox-image');
+                            if (img) {
+                              img.style.transform = 'scale(2) translate(0px, 0px)';
+                            }
+                          }}
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                          </svg>
+                        </button>
+                        <button 
+                          className="text-white hover:text-gray-300 transition-colors duration-200"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setScale(3);
+                            setPosition({ x: 0, y: 0 });
+                            const img = document.getElementById('lightbox-image');
+                            if (img) {
+                              img.style.transform = 'scale(3) translate(0px, 0px)';
+                            }
+                          }}
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                          </svg>
+                        </button>
+                      </div>
+                      
+                      <div id="lightbox-image-container" className="w-full h-full flex items-center justify-center touch-pan-y">
+                        <img
+                          id="lightbox-image"
+                          src={selectedImage}
+                          alt="Enlarged gallery image view - American Top Roofing work example"
+                          className="max-h-[90vh] max-w-[90vw] object-contain transform transition-none"
+                          style={{ transform: `scale(${scale}) translate(${position.x}px, ${position.y}px)` }}
+                          onTouchStart={(e) => {
+                            // Prevent default pinch behavior
+                            if (e.touches.length > 1) {
+                              e.preventDefault();
+                            }
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1045,7 +1305,7 @@ export default function Home() {
                 <a
                   href="#contact"
                   onClick={(e) => handleAnchorClick(e, "/#contact")}
-                  className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-blue-600"
+                  className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-blue-600 whitespace-nowrap text-center"
                 >
                   GET YOUR FREE ROOF INSPECTION
                 </a>
@@ -1111,7 +1371,7 @@ export default function Home() {
                 <a
                   href="/#contact"
                   onClick={(e) => handleAnchorClick(e, "/#contact")}
-                  className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-blue-600"
+                  className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-blue-600 whitespace-nowrap text-center"
                 >
                   STILL HAVE QUESTIONS? CONTACT US
                 </a>
