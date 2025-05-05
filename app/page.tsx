@@ -1124,7 +1124,7 @@ export default function Home() {
                 <a
                   href="/#contact"
                   onClick={(e) => handleAnchorClick(e, "/#contact")}
-                  className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-white hover:text-blue-900"
+                  className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-white hover:text-blue-900 text-center"
                 >
                   JOIN OUR SATISFIED CUSTOMERS
                 </a>
