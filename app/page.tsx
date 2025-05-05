@@ -433,10 +433,12 @@ export default function Home() {
           <div className="container flex h-20 items-center justify-between px-4 pt-2 md:px-6">
             <div className="flex items-center gap-3">
               <Image
-                src="/images/new-logo.webp"
+                src="/images-compressed/new-logo.webp"
+                alt="Company Logo"
                 width={140}
                 height={45}
-                alt="American Top Roofing and Restoration Logo - Forsyth County GA"
+                priority
+                loading="eager"
                 className="h-auto w-[140px]"
               />
             </div>
@@ -469,7 +471,7 @@ export default function Home() {
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <div className="flex items-center gap-3 mb-6">
                   <Image
-                    src="/images/new-logo.webp"
+                    src="/images-compressed/new-logo.webp"
                     width={120}
                     height={40}
                     alt="American Top Roofing and Restoration Mobile Menu Logo"
@@ -626,7 +628,7 @@ export default function Home() {
                   {
                     title: "Roof Replacement",
                     description: "Durable, weather-resistant roof installations using premium materials for Forsyth County homes — done fast, done right.",
-                    image: "/images/roofreplacement.webp",
+                    image: "/images-compressed/roofreplacement.webp",
                     link: "/services/roof-replacement",
                     alt: "Professional roof replacement service in Forsyth County by American Top Roofing",
                   },
@@ -634,14 +636,14 @@ export default function Home() {
                     title: "Roof Repairs",
                     description:
                       "Expert roof repairs in Cumming, GA, for leaks, damaged shingles, and other issues with quick response times.",
-                    image: "/images/roofrepair.webp",
+                    image: "/images-compressed/roofrepair.webp",
                     link: "/services/roof-repairs",
                     alt: "Expert roof repair service for leaks and shingles in Forsyth County",
                   },
                   {
                     title: "Gutter Repairs",
                     description: "Professional gutter repair services to prevent water damage and foundation issues.",
-                    image: "/images/gutterinstall.webp",
+                    image: "/images-compressed/gutterinstall.webp",
                     link: "/services/gutter-repairs",
                     alt: "Professional gutter repair service in Cumming GA area",
                   },
@@ -649,7 +651,7 @@ export default function Home() {
                     title: "Bathroom Remodeling",
                     description:
                       "Complete bathroom renovation services including fixtures, tiling, plumbing, and custom designs.",
-                    image: "/images/bathroom-remodeling.webp",
+                    image: "/images-compressed/bathroom-remodeling.webp",
                     link: "/services/bathroom-remodeling",
                     alt: "Complete bathroom remodeling service in Forsyth County GA",
                   },
@@ -657,14 +659,14 @@ export default function Home() {
                     title: "Flooring",
                     description:
                       "Professional installation of hardwood, laminate, tile, and vinyl flooring for any room in your home.",
-                    image: "/images/flooring-installation.webp",
+                    image: "/images-compressed/flooring-installation.webp",
                     link: "/services/flooring",
                     alt: "Hardwood, laminate, tile, and vinyl flooring installation in Cumming GA",
                   },
                   {
                     title: "Painting",
                     description: "Interior and exterior painting services to enhance and protect your property.",
-                    image: "/images/paintingjob.webp",
+                    image: "/images-compressed/paintingjob.webp",
                     link: "/services/painting",
                     alt: "Interior and exterior home painting service in Forsyth County",
                   },
@@ -686,22 +688,12 @@ export default function Home() {
                     <div className="flex flex-1 flex-col p-6">
                       <h3 className="mb-2 text-center text-2xl font-bold hero-title tracking-wider">{service.title}</h3>
                       <p className="mb-6 flex-1 text-center text-gray-600">{service.description}</p>
-                      {service.title === "Bathroom Remodeling" || service.title === "Flooring" ? (
-                        <Link
-                          href={service.link}
-                          onClick={() => window.scrollTo(0, 0)}
-                          className="mx-auto mt-auto rounded-md bg-blue-500 px-6 py-2 text-center font-medium text-white transition-colors hover:bg-blue-600"
-                        >
-                          Learn more
-                        </Link>
-                      ) : (
-                        <Link
-                          href={service.link}
-                          className="mx-auto mt-auto rounded-md bg-blue-500 px-6 py-2 text-center font-medium text-white transition-colors hover:bg-blue-600"
-                        >
-                          Learn more
-                        </Link>
-                      )}
+                      <Link
+                        href={service.link}
+                        className="mx-auto mt-auto rounded-md bg-blue-500 px-6 py-2 text-center font-medium text-white transition-colors hover:bg-blue-600"
+                      >
+                        Learn more
+                      </Link>
                     </div>
                   </div>
                 ))}
@@ -1646,12 +1638,12 @@ export default function Home() {
               <div>
                 <div className="mb-6 flex items-center gap-3">
                   <Image
-                    src="/images/logowhiteversion.webp"
-                    width={150}
-                    height={50}
-                    alt="American Top Roofing and Restoration Logo White - Footer"
-                    className="h-auto w-[150px]"
+                    src="/images-compressed/logowhiteversion.webp"
+                    alt="Company Logo White"
+                    width={210}
+                    height={150}
                     priority
+                    loading="eager"
                   />
                 </div>
                 <p className="mb-6 text-gray-400">
