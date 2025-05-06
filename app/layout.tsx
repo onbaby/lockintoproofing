@@ -167,7 +167,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
-        <link rel="canonical" href="https://americantoproofing.com" />
+        <link rel="canonical" href="https://www.americantoproofingandrestoration.com/" />
         
         {/* Facebook Meta Tags */}
         <meta property="fb:app_id" content="61555812785754" />
