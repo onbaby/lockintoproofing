@@ -113,6 +113,11 @@ export const metadata = {
         alt: 'American Top Roofing & Restoration',
       },
     ],
+    // Facebook specific
+    fb: {
+      app_id: '61555812785754',
+      page_id: '61555812785754',
+    },
   },
   // Twitter
   twitter: {
@@ -136,6 +141,11 @@ export const metadata = {
     email: true,
     url: true,
   },
+  // Social media links
+  other: {
+    'facebook:page': 'https://www.facebook.com/people/American-Top-Roofing-LLC/61555812785754/?sk=reviews',
+    'instagram:page': 'https://www.instagram.com/american_top_roofing_llc/',
+  },
 }
 
 export default function RootLayout({
@@ -153,6 +163,22 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
+        
+        {/* Facebook Meta Tags */}
+        <meta property="fb:app_id" content="61555812785754" />
+        <meta property="fb:page_id" content="61555812785754" />
+        <meta property="og:url" content="https://www.americantoproofingandrestoration.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="American Top Roofing & Restoration - Roofing & Restoration GA" />
+        <meta property="og:description" content="From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!" />
+        <meta property="og:image" content="/images-compressed/new-logo.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="American Top Roofing & Restoration" />
+        
+        {/* Instagram Meta Tags */}
+        <meta property="og:see_also" content="https://www.instagram.com/american_top_roofing_llc/" />
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
