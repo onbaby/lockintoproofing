@@ -89,7 +89,6 @@ export const metadata = {
   generator: 'v0.dev',
   metadataBase: new URL('https://americantoproofing.com'),
   alternates: {
-    canonical: '/',
   },
   icons: {
     icon: [
