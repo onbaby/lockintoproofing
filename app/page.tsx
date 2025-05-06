@@ -430,8 +430,9 @@ export default function Home() {
 
         {/* Header */}
         <header className="sticky top-0 z-40 w-full border-b bg-white">
-          <div className="container flex h-20 items-center justify-between px-4 pt-2 md:px-6">
-            <div className="flex items-center gap-3">
+          <div className="container relative flex h-20 items-center px-4 pt-2 md:px-6">
+            {/* Logo - left */}
+            <div className="flex items-center gap-3 z-10">
               <Image
                 src="/images-compressed/new-logo.webp"
                 alt="Company Logo"
@@ -443,110 +444,146 @@ export default function Home() {
               />
             </div>
 
-            <div className="hidden items-center gap-6 md:flex">
-              <div className="flex items-center gap-4">
-                <a
-                  href="tel:+14709151599"
-                  className="flex items-center gap-2 text-sm font-bold text-blue-800 hover:text-blue-600"
-                >
-                  <PhoneCall className="h-4 w-4" />
-                  (470) 915-1599
-                </a>
-                <a
-                  href="/#contact"
-                  onClick={(e) => handleAnchorClick(e, "/#contact")}
-                  className="rounded-md bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-600"
-                >
-                  GET A FREE QUOTE
-                </a>
-              </div>
+            {/* Nav - absolute center on desktop */}
+            <div className="hidden md:flex absolute left-[48%] top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8">
+              <a
+                href="#services"
+                className="text-sm font-medium text-gray-700 hover:text-blue-600"
+              >
+                SERVICES
+              </a>
+              <a
+                href="#how-it-works"
+                className="text-sm font-medium text-gray-700 hover:text-blue-600"
+              >
+                HOW IT WORKS
+              </a>
+              <a
+                href="#testimonials"
+                className="text-sm font-medium text-gray-700 hover:text-blue-600"
+              >
+                TESTIMONIALS
+              </a>
+              <a
+                href="#gallery"
+                className="text-sm font-medium text-gray-700 hover:text-blue-600"
+              >
+                GALLERY
+              </a>
+              <a
+                href="#faq"
+                className="text-sm font-medium text-gray-700 hover:text-blue-600"
+              >
+                FAQ
+              </a>
             </div>
 
-            <Sheet>
-              <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="icon" aria-label="Menu">
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <div className="flex items-center gap-3 mb-6">
-                  <Image
-                    src="/images-compressed/new-logo.webp"
-                    width={120}
-                    height={40}
-                    alt="American Top Roofing and Restoration Mobile Menu Logo"
-                    className="h-auto w-[120px]"
-                  />
-                </div>
-                <nav className="flex flex-col gap-4 py-6">
-                  <a
-                    href="#services"
-                    onClick={(e) => handleAnchorClick(e, "services")}
-                    className="text-lg font-medium hover:text-blue-500"
-                  >
-                    Services
-                  </a>
-                  <a
-                    href="#how-it-works"
-                    onClick={(e) => handleAnchorClick(e, "how-it-works")}
-                    className="text-lg font-medium hover:text-blue-500"
-                  >
-                    How It Works
-                  </a>
-                  <a
-                    href="#testimonials"
-                    onClick={(e) => handleAnchorClick(e, "testimonials")}
-                    className="text-lg font-medium hover:text-blue-500"
-                  >
-                    Testimonials
-                  </a>
-                  <a
-                    href="#gallery"
-                    onClick={(e) => handleAnchorClick(e, "gallery")}
-                    className="text-lg font-medium hover:text-blue-500"
-                  >
-                    Gallery
-                  </a>
-                  <a
-                    href="#faq"
-                    onClick={(e) => handleAnchorClick(e, "faq")}
-                    className="text-lg font-medium hover:text-blue-500"
-                  >
-                    FAQ
-                  </a>
-                  <div className="mt-4 flex flex-col gap-4">
-                    <motion.a
-                      href="tel:+14709151599"
-                      className="flex items-center gap-2 text-lg font-bold text-blue-800 hover:text-blue-600"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <motion.div
-                        animate={{
-                          rotate: [-10, 10, -10, 10, -10, 0],
-                          scale: [1, 1.1, 1],
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Number.POSITIVE_INFINITY,
-                          repeatType: "loop",
-                          repeatDelay: 3,
-                        }}
-                      >
-                        <PhoneCall className="h-5 w-5" />
-                      </motion.div>
-                      (470) 915-1599
-                    </motion.a>
-                    <a
-                      href="/#contact"
-                      onClick={(e) => handleAnchorClick(e, "/#contact")}
-                      className="rounded-md bg-blue-500 px-4 py-2 text-center text-lg font-bold text-white hover:bg-blue-600"
-                    >
-                      GET A FREE QUOTE
-                    </a>
+            {/* Contact - right */}
+            <div className="hidden md:flex items-center gap-4 z-10 ml-auto">
+              <a
+                href="tel:+14709151599"
+                className="flex items-center gap-2 text-sm font-bold text-blue-800 hover:text-blue-600"
+              >
+                <PhoneCall className="h-4 w-4" />
+                (470) 915-1599
+              </a>
+              <a
+                href="/#contact"
+                onClick={(e) => handleAnchorClick(e, "/#contact")}
+                className="rounded-md bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-600"
+              >
+                GET A FREE QUOTE
+              </a>
+            </div>
+
+            {/* Hamburger menu - right on mobile */}
+            <div className="flex md:hidden ml-auto z-10">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" aria-label="Menu">
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                  <div className="flex items-center gap-3 mb-6">
+                    <Image
+                      src="/images-compressed/new-logo.webp"
+                      width={120}
+                      height={40}
+                      alt="American Top Roofing and Restoration Mobile Menu Logo"
+                      className="h-auto w-[120px]"
+                    />
                   </div>
-                </nav>
-              </SheetContent>
-            </Sheet>
+                  <nav className="flex flex-col gap-4 py-6">
+                    <a
+                      href="#services"
+                      onClick={(e) => handleAnchorClick(e, "services")}
+                      className="text-lg font-medium hover:text-blue-500"
+                    >
+                      Services
+                    </a>
+                    <a
+                      href="#how-it-works"
+                      onClick={(e) => handleAnchorClick(e, "how-it-works")}
+                      className="text-lg font-medium hover:text-blue-500"
+                    >
+                      How It Works
+                    </a>
+                    <a
+                      href="#testimonials"
+                      onClick={(e) => handleAnchorClick(e, "testimonials")}
+                      className="text-lg font-medium hover:text-blue-500"
+                    >
+                      Testimonials
+                    </a>
+                    <a
+                      href="#gallery"
+                      onClick={(e) => handleAnchorClick(e, "gallery")}
+                      className="text-lg font-medium hover:text-blue-500"
+                    >
+                      Gallery
+                    </a>
+                    <a
+                      href="#faq"
+                      onClick={(e) => handleAnchorClick(e, "faq")}
+                      className="text-lg font-medium hover:text-blue-500"
+                    >
+                      FAQ
+                    </a>
+                    <div className="mt-4 flex flex-col gap-4">
+                      <motion.a
+                        href="tel:+14709151599"
+                        className="flex items-center gap-2 text-lg font-bold text-blue-800 hover:text-blue-600"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <motion.div
+                          animate={{
+                            rotate: [-10, 10, -10, 10, -10, 0],
+                            scale: [1, 1.1, 1],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Number.POSITIVE_INFINITY,
+                            repeatType: "loop",
+                            repeatDelay: 3,
+                          }}
+                        >
+                          <PhoneCall className="h-5 w-5" />
+                        </motion.div>
+                        (470) 915-1599
+                      </motion.a>
+                      <a
+                        href="/#contact"
+                        onClick={(e) => handleAnchorClick(e, "/#contact")}
+                        className="rounded-md bg-blue-500 px-4 py-2 text-center text-lg font-bold text-white hover:bg-blue-600"
+                      >
+                        GET A FREE QUOTE
+                      </a>
+                    </div>
+                  </nav>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </header>
 
@@ -560,9 +597,9 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <motion.h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl hero-title tracking-wider" {...fadeInUp}>
-                Quality Roofing Solutions <br className="hidden sm:inline" />
-                For Your Home
+              <motion.h1 className="mb-6 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl hero-title tracking-wider" {...fadeInUp}>
+                QUALITY ROOFING SOLUTIONS <br className="hidden sm:inline" />
+                FOR YOUR HOME
               </motion.h1>
               <motion.p
                 className="mb-8 max-w-3xl text-lg text-gray-200 sm:text-xl"
@@ -616,7 +653,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Our Roofing Services</h2>
+                <h2 className="mb-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">OUR ROOFING SERVICES</h2>
                 <p className="mx-auto max-w-3xl text-gray-600">
                   We offer a comprehensive range of roofing and restoration services to meet all your needs, from repairs
                   to complete replacements.
@@ -626,14 +663,14 @@ export default function Home() {
               <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {[
                   {
-                    title: "Roof Replacement",
+                    title: "ROOF REPLACEMENT",
                     description: "Durable, weather-resistant roof installations using premium materials for Forsyth County homes — done fast, done right.",
                     image: "/images-compressed/roofreplacement.webp",
                     link: "/services/roof-replacement",
                     alt: "Professional roof replacement service in Forsyth County by American Top Roofing",
                   },
                   {
-                    title: "Roof Repairs",
+                    title: "ROOF REPAIRS",
                     description:
                       "Expert roof repairs in Cumming, GA, for leaks, damaged shingles, and other issues with quick response times.",
                     image: "/images-compressed/roofrepair.webp",
@@ -641,14 +678,14 @@ export default function Home() {
                     alt: "Expert roof repair service for leaks and shingles in Forsyth County",
                   },
                   {
-                    title: "Gutter Repairs",
+                    title: "GUTTER REPAIRS",
                     description: "Professional gutter repair services to prevent water damage and foundation issues.",
                     image: "/images-compressed/gutterinstall.webp",
                     link: "/services/gutter-repairs",
                     alt: "Professional gutter repair service in Cumming GA area",
                   },
                   {
-                    title: "Bathroom Remodeling",
+                    title: "BATHROOM REMODELING",
                     description:
                       "Complete bathroom renovation services including fixtures, tiling, plumbing, and custom designs.",
                     image: "/images-compressed/bathroom-remodeling.webp",
@@ -656,7 +693,7 @@ export default function Home() {
                     alt: "Complete bathroom remodeling service in Forsyth County GA",
                   },
                   {
-                    title: "Flooring",
+                    title: "FLOORING",
                     description:
                       "Professional installation of hardwood, laminate, tile, and vinyl flooring for any room in your home.",
                     image: "/images-compressed/flooring-installation.webp",
@@ -664,7 +701,7 @@ export default function Home() {
                     alt: "Hardwood, laminate, tile, and vinyl flooring installation in Cumming GA",
                   },
                   {
-                    title: "Painting",
+                    title: "PAINTING",
                     description: "Interior and exterior painting services to enhance and protect your property.",
                     image: "/images-compressed/paintingjob.webp",
                     link: "/services/painting",
@@ -686,7 +723,7 @@ export default function Home() {
                       />
                     </div>
                     <div className="flex flex-1 flex-col p-6">
-                      <h3 className="mb-2 text-center text-2xl font-bold hero-title tracking-wider">{service.title}</h3>
+                      <h3 className="mb-2 text-center text-2xl font-medium hero-title tracking-wider">{service.title}</h3>
                       <p className="mb-6 flex-1 text-center text-gray-600">{service.description}</p>
                       <Link
                         href={service.link}
@@ -706,7 +743,7 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <div className="bg-blue-50 rounded-lg p-6">
-                  <h3 className="text-xl font-bold mb-4 text-center">Additional Services We Offer</h3>
+                  <h3 className="text-xl font-medium mb-4 text-center">ADDITIONAL SERVICES</h3>
                   <div className="flex flex-wrap justify-center gap-4">
                     {additionalServices.map((service, index) => (
                       <Link
@@ -749,7 +786,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Trusted & Certified</h2>
+                <h2 className="mb-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">TRUSTED & CERTIFIED</h2>
                 <p className="mx-auto max-w-3xl text-gray-600">
                   We maintain the highest standards of quality and professionalism in the industry
                 </p>
@@ -886,7 +923,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">How It Works</h2>
+                <h2 className="mb-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">HOW IT WORKS</h2>
                 <p className="mx-auto max-w-3xl text-gray-600">
                   Our simple process makes getting your roof repaired or replaced easy and stress-free.
                 </p>
@@ -904,35 +941,35 @@ export default function Home() {
 
                   {[
                     {
-                      title: "Contact Us",
+                      title: "CONTACT US",
                       description:
                         "Reach out to us by phone or fill out our online form to schedule a free consultation and estimate.",
                       image: "/images/contact-us.webp",
                       alt: "Step 1: Contact American Top Roofing for a free estimate",
                     },
                     {
-                      title: "Free Inspection",
+                      title: "FREE INSPECTION",
                       description:
                         "Our roofing experts will visit your property to assess your roofing needs and provide a detailed estimate.",
                       image: "/images/free-inspection.webp",
                       alt: "Step 2: Free roof inspection in Forsyth County",
                     },
                     {
-                      title: "Choose Your Options",
+                      title: "CHOOSE YOUR OPTIONS",
                       description:
                         "We'll help you select the best materials and solutions for your specific needs and budget.",
                       image: "/images/choose-options-new.webp",
                       alt: "Step 3: Choose roofing materials and options",
                     },
                     {
-                      title: "Professional Installation",
+                      title: "PROFESSIONAL INSTALLATION",
                       description:
                         "Our experienced team will complete your roofing project with the highest standards of quality and safety.",
                       image: "/images/professional-installation-new.webp",
                       alt: "Step 4: Professional roof installation by American Top Roofing",
                     },
                     {
-                      title: "Final Inspection",
+                      title: "FINAL INSPECTION",
                       description:
                         "We'll conduct a thorough inspection to ensure everything meets our high standards of quality.",
                       image: "/images/final-inspection.webp",
@@ -982,7 +1019,7 @@ export default function Home() {
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           />
                         </div>
-                        <h3 className="mb-2 text-xl font-bold">{step.title}</h3>
+                        <h3 className="mb-2 text-xl font-medium">{step.title}</h3>
                         <p className="text-gray-600">{step.description}</p>
                       </div>
                     </motion.div>
@@ -1009,10 +1046,10 @@ export default function Home() {
           </section>
 
           {/* Testimonials Section */}
-          <section className="bg-blue-900 py-16 text-white md:py-24">
+          <section id="testimonials" className="bg-blue-900 py-16 text-white md:py-24">
             <div className="container px-4 md:px-6">
               <div className="mb-12 text-center">
-                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">What Our Customers Say</h2>
+                <h2 className="mb-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">WHAT OUR CUSTOMERS SAY</h2>
                 <p className="mx-auto max-w-3xl text-blue-100">
                   Don't just take our word for it. Here's what our satisfied customers have to say about our roofing
                   services.
@@ -1128,7 +1165,7 @@ export default function Home() {
           <section id="gallery" className="py-16 md:py-24">
             <div className="container px-4 md:px-6">
               <div className="mb-12 text-center">
-                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Our Work</h2>
+                <h2 className="mb-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">OUR WORK</h2>
                 <p className="mx-auto max-w-3xl text-gray-600">
                   Browse through our gallery of completed roofing projects to see the quality of our work.
                 </p>
@@ -1309,8 +1346,8 @@ export default function Home() {
           <section id="faq" className="bg-gray-50 py-16 md:py-24">
             <div className="container px-4 md:px-6">
               <div className="mb-12 text-center">
-                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-                  Frequently Asked Questions
+                <h2 className="mb-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
+                  FREQUENTLY ASKED QUESTIONS
                 </h2>
                 <p className="mx-auto max-w-3xl text-gray-600">
                   Find answers to common questions about our roofing services.
@@ -1375,7 +1412,7 @@ export default function Home() {
           <section id="contact" className="py-16 md:py-24">
             <div className="container px-4 md:px-6">
               <div className="mb-12 text-center">
-                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Get Your Free Quote</h2>
+                <h2 className="mb-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">GET YOUR FREE QUOTE</h2>
                 <p className="mx-auto max-w-3xl text-gray-600">
                   Fill out the form below or call us directly to schedule your free roof inspection and estimate.
                 </p>
