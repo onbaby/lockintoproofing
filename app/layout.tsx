@@ -87,6 +87,10 @@ export const metadata = {
   description:
     "From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!",
   generator: 'v0.dev',
+  metadataBase: new URL('https://americantoproofing.com'),
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: [
       { url: '/favicon/favicon.ico', sizes: 'any' },
@@ -163,6 +167,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link rel="canonical" href="https://americantoproofing.com" />
         
         {/* Facebook Meta Tags */}
         <meta property="fb:app_id" content="61555812785754" />
