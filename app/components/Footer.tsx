@@ -6,37 +6,32 @@ import { PhoneCall, Mail, MapPin } from "lucide-react"
 import type React from "react"
 
 interface FooterProps {
-  handleAnchorClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void
+  handleAnchorClick: (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => void
 }
 
 // Moved handleAnchorClick inside the component
-const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
   e.preventDefault(); // Prevent default link navigation
 
-  // Check if it's an internal anchor link for the homepage
-  if (href.startsWith('/#')) {
-    const targetId = href.substring(2); // Get the ID part (e.g., "services")
-    const targetElement = document.getElementById(targetId);
+  // Get the current path
+  const currentPath = window.location.pathname;
 
+  // If we're already on the homepage, scroll to the section
+  if (currentPath === '/') {
+    const targetElement = document.getElementById(sectionId);
     if (targetElement) {
-      // If element exists on the current page (likely only on homepage itself), scroll smoothly
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      // If element doesn't exist on current page, navigate to the homepage URL with the hash
-      // The browser will handle scrolling to the anchor upon loading the homepage.
-      window.location.href = href; // e.g., navigate to '/#services'
+      const headerOffset = 100; // Adjust this value based on your header height
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
-  } else if (href.startsWith('#')) {
-    // Handle simple hash links for the *current* page
-    const targetId = href.substring(1);
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth'});
-    }
-  }
-   else {
-    // Handle other links (like tel:) or potentially full page navigations
-    window.location.href = href;
+  } else {
+    // If we're on a different page, navigate to the homepage with the section ID
+    window.location.href = `/?section=${sectionId}`;
   }
 };
 
@@ -99,8 +94,8 @@ export default function Footer({ handleAnchorClick }: FooterProps) {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="/#services"
-                  onClick={(e) => handleAnchorClick(e, "/#services")}
+                  href="/services"
+                  onClick={(e) => handleAnchorClick(e, "services")}
                   className="text-gray-400 hover:text-white"
                 >
                   Services
@@ -108,8 +103,8 @@ export default function Footer({ handleAnchorClick }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="/#how-it-works"
-                  onClick={(e) => handleAnchorClick(e, "/#how-it-works")}
+                  href="/how-it-works"
+                  onClick={(e) => handleAnchorClick(e, "how-it-works")}
                   className="text-gray-400 hover:text-white"
                 >
                   How It Works
@@ -117,8 +112,8 @@ export default function Footer({ handleAnchorClick }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="/#testimonials"
-                  onClick={(e) => handleAnchorClick(e, "/#testimonials")}
+                  href="/testimonials"
+                  onClick={(e) => handleAnchorClick(e, "testimonials")}
                   className="text-gray-400 hover:text-white"
                 >
                   Testimonials
@@ -126,8 +121,8 @@ export default function Footer({ handleAnchorClick }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="/#gallery"
-                  onClick={(e) => handleAnchorClick(e, "/#gallery")}
+                  href="/gallery"
+                  onClick={(e) => handleAnchorClick(e, "gallery")}
                   className="text-gray-400 hover:text-white"
                 >
                   Gallery
@@ -135,8 +130,8 @@ export default function Footer({ handleAnchorClick }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="/#faq"
-                  onClick={(e) => handleAnchorClick(e, "/#faq")}
+                  href="/faq"
+                  onClick={(e) => handleAnchorClick(e, "faq")}
                   className="text-gray-400 hover:text-white"
                 >
                   FAQ
@@ -144,8 +139,8 @@ export default function Footer({ handleAnchorClick }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="/#contact"
-                  onClick={(e) => handleAnchorClick(e, "/#contact")}
+                  href="/contact"
+                  onClick={(e) => handleAnchorClick(e, "contact")}
                   className="text-gray-400 hover:text-white"
                 >
                   Contact Us

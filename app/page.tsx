@@ -148,36 +148,50 @@ export default function Home() {
     }
   };
 
-  // Smooth scroll function for anchor links
-  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault(); // Prevent default link navigation
+  // Smooth scroll function for sections
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 80; // Adjust this value based on your header height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-    // Check if it's an internal anchor link for the homepage
-    if (href.startsWith('/#')) {
-      const targetId = href.substring(2); // Get the ID part (e.g., "services")
-      const targetElement = document.getElementById(targetId);
-
-      if (targetElement) {
-        // If element exists on the current page (likely only on homepage itself), scroll smoothly
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        // If element doesn't exist on current page, navigate to the homepage URL with the hash
-        // The browser will handle scrolling to the anchor upon loading the homepage.
-        window.location.href = href; // e.g., navigate to '/#services'
-      }
-    } else if (href.startsWith('#')) {
-      // Handle simple hash links for the *current* page
-      const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth'});
-      }
-    }
-     else {
-      // Handle other links (like tel:) or potentially full page navigations
-      window.location.href = href;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
+
+  // Updated anchor click handler
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+
+    // Extract section ID from href
+    const sectionId = href.replace(/^[\/#]+/, ''); // Remove leading / and # characters
+
+    // If we're on the homepage, just scroll
+    if (window.location.pathname === '/') {
+      scrollToSection(sectionId);
+    } else {
+      // If we're on another page, navigate to homepage and scroll
+      window.location.href = `/?section=${sectionId}`;
+    }
+  };
+
+  // Handle section scrolling on page load
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const section = urlParams.get('section');
+    if (section) {
+      // Small delay to ensure the page is fully loaded
+      setTimeout(() => {
+        scrollToSection(section);
+        // Clean up the URL without refreshing the page
+        window.history.replaceState({}, '', '/');
+      }, 100);
+    }
+  }, []);
 
   // Additional services for text slider
   const additionalServices = [
@@ -447,31 +461,36 @@ export default function Home() {
             {/* Nav - absolute center on desktop */}
             <div className="hidden md:flex absolute left-[48%] top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8">
               <a
-                href="#services"
+                href="/services"
+                onClick={(e) => handleAnchorClick(e, "services")}
                 className="text-sm font-medium text-gray-700 hover:text-blue-600"
               >
                 SERVICES
               </a>
               <a
-                href="#how-it-works"
+                href="/how-it-works"
+                onClick={(e) => handleAnchorClick(e, "how-it-works")}
                 className="text-sm font-medium text-gray-700 hover:text-blue-600"
               >
                 HOW IT WORKS
               </a>
               <a
-                href="#testimonials"
+                href="/testimonials"
+                onClick={(e) => handleAnchorClick(e, "testimonials")}
                 className="text-sm font-medium text-gray-700 hover:text-blue-600"
               >
                 TESTIMONIALS
               </a>
               <a
-                href="#gallery"
+                href="/gallery"
+                onClick={(e) => handleAnchorClick(e, "gallery")}
                 className="text-sm font-medium text-gray-700 hover:text-blue-600"
               >
                 GALLERY
               </a>
               <a
-                href="#faq"
+                href="/faq"
+                onClick={(e) => handleAnchorClick(e, "faq")}
                 className="text-sm font-medium text-gray-700 hover:text-blue-600"
               >
                 FAQ
