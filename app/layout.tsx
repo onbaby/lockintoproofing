@@ -85,7 +85,7 @@ const structuredData = {
 export const metadata = {
   title: "American Top Roofing & Restoration - Roofing & Restoration GA",
   description:
-    "From roof replacement & gutter repairs to bathroom remodeling—American Top Roofing & Restoration serves all of Georgia. Get a free quote!",
+    "From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!",
   generator: 'v0.dev',
   icons: {
     icon: [
@@ -96,6 +96,45 @@ export const metadata = {
     apple: [
       { url: '/favicon/favicon.ico', sizes: '180x180', type: 'image/png' },
     ],
+  },
+  // Open Graph / Facebook
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://www.americantoproofingandrestoration.com',
+    siteName: 'American Top Roofing & Restoration',
+    title: 'American Top Roofing & Restoration - Roofing & Restoration GA',
+    description: 'From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!',
+    images: [
+      {
+        url: '/images-compressed/new-logo.webp',
+        width: 1200,
+        height: 630,
+        alt: 'American Top Roofing & Restoration',
+      },
+    ],
+  },
+  // Twitter
+  twitter: {
+    card: 'summary_large_image',
+    title: 'American Top Roofing & Restoration - Roofing & Restoration GA',
+    description: 'From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!',
+    images: ['/images-compressed/new-logo.webp'],
+    creator: '@americantoproofing',
+    site: '@americantoproofing',
+  },
+  // Additional meta tags
+  viewport: 'width=device-width, initial-scale=1',
+  robots: 'index, follow',
+  keywords: 'roofing, restoration, Georgia, roof replacement, gutter repairs, bathroom remodeling, Cumming, Buford, Suwanee, Gainesville, Alpharetta, Forsyth County',
+  author: 'American Top Roofing & Restoration',
+  publisher: 'American Top Roofing & Restoration',
+  formatDetection: {
+    telephone: true,
+    date: true,
+    address: true,
+    email: true,
+    url: true,
   },
 }
 
