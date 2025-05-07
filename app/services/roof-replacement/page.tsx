@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Roof Replacement Services | Forsyth County GA | American Top Roofing",
   description: "Need a new roof in Forsyth County (Cumming, Buford, Suwanee)? American Top Roofing offers expert roof replacement services with quality materials and warranties. Get your free estimate!",
   keywords: ["roof replacement", "new roof", "roof installation", "forsyth county roofing", "cumming ga roofing", "buford ga roofing", "suwanee ga roofing", "alpharetta roofing", "american top roofing"],
+  alternates: {
+    canonical: 'https://www.americantoproofingandrestoration.com/services/roof-replacement'
+  }
 };
 
 export default function RoofReplacementPage() {
@@ -151,6 +154,9 @@ export default function RoofReplacementPage() {
             <Image src="/images/replacement.webp" alt="Professional roof replacement service in Forsyth County, GA" fill className="object-cover" priority />
           </div>
         </section>
+
+        {/* Main Content H1 */}
+        <h1 className="sr-only">Roof Replacement Services in Forsyth County GA - American Top Roofing and Restoration</h1>
 
         {/* Content Section */}
         <section className="py-16 md:py-24">

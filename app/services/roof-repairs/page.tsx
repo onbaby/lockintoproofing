@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Roof Repair Services | Forsyth County GA | American Top Roofing",
   description: "Fast & reliable roof repair in Forsyth County (Cumming, Buford, Suwanee). American Top Roofing fixes leaks, missing shingles, storm damage & more. Get a free repair estimate!",
   keywords: ["roof repair", "roof leak repair", "shingle repair", "storm damage roof", "emergency roof repair", "forsyth county roofing repair", "cumming ga roof repair", "buford ga roof repair", "suwanee ga roof repair", "american top roofing"],
+  alternates: {
+    canonical: 'https://www.americantoproofingandrestoration.com/services/roof-repairs'
+  }
 };
 
 const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -165,6 +168,9 @@ export default function RoofRepairsPage() {
             <Image src="/images/roof-repair-service.webp" alt="Roof repair technician fixing shingles in Forsyth County" fill className="object-cover" priority />
           </div>
         </section>
+
+        {/* Main Content H1 */}
+        <h1 className="sr-only">Roof Repair Services in Forsyth County GA - American Top Roofing and Restoration</h1>
 
         {/* Content Section */}
         <section className="py-16 md:py-24">

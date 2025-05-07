@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Gutter Repair Services | American Top Roofing",
   description: "American Top Roofing offers professional gutter repair services across Georgia. Fix leaks, clogs & sagging gutters statewide. Free Estimate!",
   keywords: ["gutter repair", "gutter services", "rain gutters", "gutter maintenance", "Georgia", "Forsyth County", "Cumming", "Buford", "Suwanee", "Gainesville", "Alpharetta", "Atlanta", "roofing contractor", "American Top Roofing"],
+  alternates: {
+    canonical: 'https://www.americantoproofingandrestoration.com/services/gutter-repairs'
+  }
 };
 
 export default function GutterRepairsPage() {
