@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+"use client"
+
+import type React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { PhoneCall, ChevronLeft } from "lucide-react"
@@ -7,11 +9,42 @@ import ServicePageHeader from "../../components/ServicePageHeader"
 import { MotionDiv } from "@/app/components/MotionWrappers"
 import Script from "next/script"
 
-// Metadata specific to this page
-export const metadata: Metadata = {
-  title: "Bathroom Remodeling Services | American Top Roofing",
-  description: "Transform your bathroom with expert remodeling services from American Top Roofing, serving homeowners across Georgia. Get a free quote today!",
-  keywords: ["bathroom remodeling", "bathroom renovation", "bathroom design", "shower replacement", "tub replacement", "vanity installation", "tile installation", "Georgia", "Atlanta", "Forsyth County", "Cumming", "Buford", "Suwanee", "Gainesville", "Alpharetta", "American Top Roofing"],
+// Add type declaration for the custom element
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'img-comparison-slider': any;
+    }
+  }
+}
+
+const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  e.preventDefault(); // Prevent default link navigation
+
+  // Check if it's an internal anchor link for the homepage
+  if (href.startsWith('/#')) {
+    const targetId = href.substring(2); // Get the ID part (e.g., "services")
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      // If element exists on the current page (likely only on homepage itself), scroll smoothly
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // If element doesn't exist on current page, navigate to the homepage URL with the hash
+      // The browser will handle scrolling to the anchor upon loading the homepage.
+      window.location.href = href; // e.g., navigate to '/#services'
+    }
+  } else if (href.startsWith('#')) {
+    // Handle simple hash links for the *current* page
+    const targetId = href.substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth'});
+    }
+  } else {
+    // Handle other links (like tel:) or potentially full page navigations
+    window.location.href = href;
+  }
 };
 
 export default function BathroomRemodelingPage() {
@@ -155,25 +188,48 @@ export default function BathroomRemodelingPage() {
         </section>
 
         {/* Before & After Section */}
-        <section className="py-8 md:py-10 bg-gray-50">
+        <section className="py-8 md:py-12 bg-gray-50">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4">See the Transformations: Before & After</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
-              <div className="relative aspect-square w-full overflow-hidden rounded-lg">
-                <Image
-                  src="/images/bathroom-remodel-before.webp"
-                  alt="Before bathroom remodeling - old outdated bathroom"
-                  fill
-                  className="object-cover"
-                />
+            <h2 className="text-3xl font-bold mb-6">See the Transformations: Before & After</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* First slider */}
+              <div className="max-w-full mx-auto">
+                <img-comparison-slider className="rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    slot="first"
+                    src="/images/bathroom-remodel-before.jpg"
+                    alt="Before bathroom remodeling"
+                    width="4032"
+                    height="3024"
+                    className="w-full object-contain"
+                  />
+                  <img
+                    slot="second"
+                    src="/images/bathroom-remodel-after.webp"
+                    alt="After bathroom remodeling"
+                    width="1284"
+                    height="1709"
+                    className="w-full object-contain"
+                  />
+                </img-comparison-slider>
               </div>
-              <div className="relative aspect-square w-full overflow-hidden rounded-lg">
-                <Image
-                  src="/images/bathroom-remodel-after.webp"
-                  alt="After bathroom remodeling - beautiful new modern bathroom"
-                  fill
-                  className="object-cover"
-                />
+              
+              {/* Second slider */}
+              <div className="max-w-full mx-auto">
+                <img-comparison-slider className="rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    slot="first"
+                    src="/images-compressed/imagebefore-rotated.webp"
+                    alt="Before transformation"
+                    className="w-full object-contain"
+                  />
+                  <img
+                    slot="second"
+                    src="/images-compressed/imageafter.webp"
+                    alt="After transformation"
+                    className="w-full object-contain"
+                  />
+                </img-comparison-slider>
               </div>
             </div>
           </div>
@@ -255,7 +311,7 @@ export default function BathroomRemodelingPage() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer handleAnchorClick={handleAnchorClick} />
       <Script src="https://unpkg.com/img-comparison-slider@7/dist/index.js" strategy="afterInteractive" />
     </div>
   )
