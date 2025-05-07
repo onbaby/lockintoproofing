@@ -99,6 +99,9 @@ export default function BathroomRemodelingPage() {
           </div>
         </section>
 
+        {/* Main Content H1 */}
+        <h1 className="sr-only">Bathroom Remodeling Services in Georgia - American Top Roofing and Restoration</h1>
+
         {/* Content Section */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">

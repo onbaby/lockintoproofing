@@ -195,9 +195,8 @@ export default function Home() {
 
   // Additional services for text slider
   const additionalServices = [
-    { name: "Siding", link: "/services/siding" },
-    { name: "Gutter Guards", link: "/services/gutter-guards" },
-    { name: "Tiling", link: "/services/tiling" },
+    { name: "Siding", link: "/services/siding" }
+   
   ]
 
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0)
@@ -461,36 +460,36 @@ export default function Home() {
             {/* Nav - absolute center on desktop */}
             <div className="hidden md:flex absolute left-[48%] top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8">
               <a
-                href="/services"
-                onClick={(e) => handleAnchorClick(e, "services")}
+                href="/#services"
+                onClick={(e) => handleAnchorClick(e, "/#services")}
                 className="text-sm font-medium text-gray-700 hover:text-blue-600"
               >
                 SERVICES
               </a>
               <a
-                href="/how-it-works"
-                onClick={(e) => handleAnchorClick(e, "how-it-works")}
+                href="/#how-it-works"
+                onClick={(e) => handleAnchorClick(e, "/#how-it-works")}
                 className="text-sm font-medium text-gray-700 hover:text-blue-600"
               >
                 HOW IT WORKS
               </a>
               <a
-                href="/testimonials"
-                onClick={(e) => handleAnchorClick(e, "testimonials")}
+                href="/#testimonials"
+                onClick={(e) => handleAnchorClick(e, "/#testimonials")}
                 className="text-sm font-medium text-gray-700 hover:text-blue-600"
               >
                 TESTIMONIALS
               </a>
               <a
-                href="/gallery"
-                onClick={(e) => handleAnchorClick(e, "gallery")}
+                href="/#gallery"
+                onClick={(e) => handleAnchorClick(e, "/#gallery")}
                 className="text-sm font-medium text-gray-700 hover:text-blue-600"
               >
                 GALLERY
               </a>
               <a
-                href="/faq"
-                onClick={(e) => handleAnchorClick(e, "faq")}
+                href="/#faq"
+                onClick={(e) => handleAnchorClick(e, "/#faq")}
                 className="text-sm font-medium text-gray-700 hover:text-blue-600"
               >
                 FAQ
@@ -535,70 +534,40 @@ export default function Home() {
                   </div>
                   <nav className="flex flex-col gap-4 py-6">
                     <a
-                      href="#services"
-                      onClick={(e) => handleAnchorClick(e, "services")}
+                      href="/#services"
+                      onClick={(e) => handleAnchorClick(e, "/#services")}
                       className="text-lg font-medium hover:text-blue-500"
                     >
                       Services
                     </a>
                     <a
-                      href="#how-it-works"
-                      onClick={(e) => handleAnchorClick(e, "how-it-works")}
+                      href="/#how-it-works"
+                      onClick={(e) => handleAnchorClick(e, "/#how-it-works")}
                       className="text-lg font-medium hover:text-blue-500"
                     >
                       How It Works
                     </a>
                     <a
-                      href="#testimonials"
-                      onClick={(e) => handleAnchorClick(e, "testimonials")}
+                      href="/#testimonials"
+                      onClick={(e) => handleAnchorClick(e, "/#testimonials")}
                       className="text-lg font-medium hover:text-blue-500"
                     >
                       Testimonials
                     </a>
                     <a
-                      href="#gallery"
-                      onClick={(e) => handleAnchorClick(e, "gallery")}
+                      href="/#gallery"
+                      onClick={(e) => handleAnchorClick(e, "/#gallery")}
                       className="text-lg font-medium hover:text-blue-500"
                     >
                       Gallery
                     </a>
                     <a
-                      href="#faq"
-                      onClick={(e) => handleAnchorClick(e, "faq")}
+                      href="/#faq"
+                      onClick={(e) => handleAnchorClick(e, "/#faq")}
                       className="text-lg font-medium hover:text-blue-500"
                     >
                       FAQ
                     </a>
-                    <div className="mt-4 flex flex-col gap-4">
-                      <motion.a
-                        href="tel:+14709151599"
-                        className="flex items-center gap-2 text-lg font-bold text-blue-800 hover:text-blue-600"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        <motion.div
-                          animate={{
-                            rotate: [-10, 10, -10, 10, -10, 0],
-                            scale: [1, 1.1, 1],
-                          }}
-                          transition={{
-                            duration: 1.5,
-                            repeat: Number.POSITIVE_INFINITY,
-                            repeatType: "loop",
-                            repeatDelay: 3,
-                          }}
-                        >
-                          <PhoneCall className="h-5 w-5" />
-                        </motion.div>
-                        (470) 915-1599
-                      </motion.a>
-                      <a
-                        href="/#contact"
-                        onClick={(e) => handleAnchorClick(e, "/#contact")}
-                        className="rounded-md bg-blue-500 px-4 py-2 text-center text-lg font-bold text-white hover:bg-blue-600"
-                      >
-                        GET A FREE QUOTE
-                      </a>
-                    </div>
                   </nav>
                 </SheetContent>
               </Sheet>
@@ -662,6 +631,75 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Trusted & Certified Badges - Horizontal Row */}
+          <section className="py-8 md:py-12 bg-white border-y">
+            <div className="container px-4 md:px-6">
+              <div className="flex flex-col items-center">
+                <h2 className="mb-8 text-xl md:text-2xl font-medium text-center">TRUSTED & CERTIFIED</h2>
+                
+                {/* Logos Row - Horizontal Scroll on Mobile */}
+                <div className="flex flex-row items-center justify-center gap-8 md:gap-16 w-full overflow-x-auto pb-4 px-2">
+                  {/* BBB Logo */}
+                  <div className="flex flex-col items-center shrink-0">
+                    <div className="relative h-20 w-20 md:h-24 md:w-24 mb-2">
+                      <Image
+                        src="/images/bbb-accredited.webp"
+                        alt="BBB Accredited Business"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <p className="text-xs md:text-sm font-medium text-center">"A" Rated</p>
+                  </div>
+
+                  {/* Google Guaranteed */}
+                  <div className="flex flex-col items-center shrink-0">
+                    <div className="relative h-20 w-48 md:h-24 md:w-56 mb-2">
+                      <Image 
+                        src="/images/google-guaranteed.webp" 
+                        alt="Google Guaranteed Roofing Contractor" 
+                        fill 
+                        className="object-contain" 
+                      />
+                    </div>
+                    <p className="text-xs md:text-sm font-medium text-center">Fully Bonded</p>
+                  </div>
+
+                  {/* GAF Certified */}
+                  <div className="flex flex-col items-center shrink-0">
+                    <div className="relative h-20 w-20 md:h-24 md:w-24 mb-2">
+                      <Image
+                        src="/images/gaf-certified.webp"
+                        alt="GAF Certified Roofing Contractor"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <p className="text-xs md:text-sm font-medium text-center">$2M Liability Insurance</p>
+                  </div>
+                </div>
+
+                {/* Badges Row */}
+                <div className="flex flex-row flex-wrap justify-center gap-4 md:gap-8 mt-6 w-full">
+                  <div className="flex items-center justify-center gap-2 bg-blue-50 rounded-full px-4 py-2 md:px-6 md:py-3 shadow-sm">
+                    <Shield className="h-5 w-5 md:h-6 md:w-6 text-blue-500" />
+                    <span className="text-sm md:text-base font-medium">Warranty Provided</span>
+                  </div>
+
+                  <div className="flex items-center justify-center gap-2 bg-blue-50 rounded-full px-4 py-2 md:px-6 md:py-3 shadow-sm">
+                    <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-blue-500" />
+                    <span className="text-sm md:text-base font-medium">Licensed & Insured</span>
+                  </div>
+
+                  <div className="flex items-center justify-center gap-2 bg-blue-50 rounded-full px-4 py-2 md:px-6 md:py-3 shadow-sm">
+                    <Award className="h-5 w-5 md:h-6 md:w-6 text-blue-500" />
+                    <span className="text-sm md:text-base font-medium">Award-Winning Service</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Services Section */}
           <section id="services" className="bg-gray-50 py-16 md:py-24">
             <div className="container px-4 md:px-6">
@@ -697,11 +735,11 @@ export default function Home() {
                     alt: "Expert roof repair service for leaks and shingles in Forsyth County",
                   },
                   {
-                    title: "GUTTER REPAIRS",
-                    description: "Professional gutter repair services to prevent water damage and foundation issues.",
+                    title: "GUTTER SERVICES",
+                    description: "Professional gutter installation, repairs, and gutter guard systems to protect your home from water damage.",
                     image: "/images-compressed/gutterinstall.webp",
-                    link: "/services/gutter-repairs",
-                    alt: "Professional gutter repair service in Cumming GA area",
+                    link: "/services/gutter-services",
+                    alt: "Professional gutter installation and repair services in Georgia",
                   },
                   {
                     title: "BATHROOM REMODELING",
@@ -791,143 +829,6 @@ export default function Home() {
                 >
                   GET YOUR FREE QUOTE TODAY
                 </a>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Trusted & Certified Section */}
-          <section className="py-16 bg-white border-y md:py-24">
-            <div className="container px-4 md:px-6">
-              <motion.div
-                className="mb-12 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <h2 className="mb-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">TRUSTED & CERTIFIED</h2>
-                <p className="mx-auto max-w-3xl text-gray-600">
-                  We maintain the highest standards of quality and professionalism in the industry
-                </p>
-              </motion.div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center justify-items-center">
-                {/* Certification Item 1: BBB */}
-                <motion.div
-                  className="flex flex-col items-center"
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 10,
-                    delay: 0.4,
-                  }}
-                >
-                  <div className="relative h-32 w-32 mb-4">
-                    <Image
-                      src="/images/bbb-accredited.webp"
-                      alt="BBB Accredited Business"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <h3 className="text-lg font-bold text-center">BBB Accredited</h3>
-                  <p className="text-sm text-center text-gray-600"> "A" Rated Business </p>
-                </motion.div>
-
-                {/* Certification Item 2: Google Guaranteed */}
-                <motion.div
-                  className="flex flex-col items-center"
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 10,
-                    delay: 0.5,
-                  }}
-                >
-                  <div className="relative h-32 w-64 mb-4">
-                    <Image src="/images/google-guaranteed.webp" alt="Google Guaranteed Roofing Contractor - American Top Roofing" fill className="object-contain" />
-                  </div>
-                  <h3 className="text-lg font-bold text-center">Google Guaranteed</h3>
-                  <p className="text-sm text-center text-gray-600">Fully Bonded for Your Protection</p>
-                </motion.div>
-
-                {/* Certification Item 3: GAF Certified */}
-                <motion.div
-                  className="flex flex-col items-center"
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 10,
-                    delay: 0.6,
-                  }}
-                >
-                  <div className="relative h-32 w-32 mb-4">
-                    <Image
-                      src="/images/gaf-certified.webp"
-                      alt="GAF Certified Roofing Contractor - American Top Roofing"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <h3 className="text-lg font-bold text-center">GAF Certified</h3>
-                  <p className="text-sm text-center text-gray-600">$2M General Liability Insurance</p>
-                </motion.div>
-              </div>
-
-              <motion.div
-                className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-              >
-                <motion.div
-                  className="flex items-center justify-center gap-3 rounded-full bg-blue-50 px-6 py-4 shadow-md"
-                  whileInView={{
-                    x: [-20, 0],
-                    opacity: [0, 1],
-                  }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
-                >
-                  <Shield className="h-8 w-8 text-blue-500" />
-                  <span className="text-lg font-medium">Warranty Provided</span>
-                </motion.div>
-
-                <motion.div
-                  className="flex items-center justify-center gap-3 rounded-full bg-blue-50 px-6 py-4 shadow-md"
-                  whileInView={{
-                    x: [-20, 0],
-                    opacity: [0, 1],
-                  }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.6 }}
-                >
-                  <CheckCircle className="h-8 w-8 text-blue-500" />
-                  <span className="text-lg font-medium">Licensed & Insured</span>
-                </motion.div>
-
-                <motion.div
-                  className="flex items-center justify-center gap-3 rounded-full bg-blue-50 px-6 py-4 shadow-md"
-                  whileInView={{
-                    x: [-20, 0],
-                    opacity: [0, 1],
-                  }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.7 }}
-                >
-                  <Award className="h-8 w-8 text-blue-500" />
-                  <span className="text-lg font-medium">Award-Winning Service</span>
-                </motion.div>
               </motion.div>
             </div>
           </section>
@@ -1568,13 +1469,12 @@ export default function Home() {
                           <option value="">Select a service</option>
                           <option value="roof-replacement">Roof Replacement</option>
                           <option value="roof-repair">Roof Repair</option>
-                          <option value="gutter-repairs">Gutter Repairs</option>
+                          <option value="gutter-services">Gutter Services</option>
                           <option value="bathroom-remodeling">Bathroom Remodeling</option>
-                          <option value="flooring">Flooring</option>
+                          <option value="flooring">Flooring & Tiling</option>
                           <option value="painting">Painting</option>
                           <option value="siding">Siding</option>
                           <option value="gutter-guards">Gutter Guards</option>
-                          <option value="tiling">Tiling</option>
                           <option value="inspection">Roof Inspection</option>
                           <option value="other">Other</option>
                         </select>
@@ -1815,13 +1715,13 @@ export default function Home() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/services/gutter-repairs" className="text-gray-400 hover:text-white">
-                      Gutter Repairs
+                    <Link href="/services/gutter-services" className="text-gray-400 hover:text-white">
+                      Gutter Services
                     </Link>
                   </li>
                   <li>
-                    <Link href="/services/tiling" className="text-gray-400 hover:text-white">
-                      Tiling
+                    <Link href="/services/flooring" className="text-gray-400 hover:text-white">
+                      Flooring & Tiling
                     </Link>
                   </li>
                   <li>

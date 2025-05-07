@@ -212,10 +212,10 @@ export default function FlooringPage() {
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="relative z-20 container mx-auto px-4 py-24 text-center text-white">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">
-              Professional Flooring Services
+              Professional Flooring & Tiling Services
             </h1>
             <p className="max-w-3xl mx-auto text-lg text-gray-200 sm:text-xl mb-8">
-              Transform your home with beautiful, durable flooring installed by our expert team.
+              Transform your home with beautiful, durable flooring and premium tile work installed by our expert team.
             </p>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -244,9 +244,9 @@ export default function FlooringPage() {
             </Link>
             <div className="grid gap-12 md:grid-cols-2">
               <div>
-                <h2 className="text-3xl font-bold mb-6">Our Flooring Services</h2>
+                <h2 className="text-3xl font-bold mb-6">Our Comprehensive Flooring Services</h2>
                 <p className="text-gray-600 mb-4">
-                  At Top American Roofing and Restoration, we offer comprehensive flooring services to enhance the
+                  At Top American Roofing and Restoration, we offer comprehensive flooring and tiling services to enhance the
                   beauty, comfort, and value of your home. Whether you're looking to update a single room or your entire
                   house, our experienced team delivers exceptional results.
                 </p>
@@ -254,7 +254,7 @@ export default function FlooringPage() {
                   We work with a wide range of high-quality flooring materials to suit any style, budget, and lifestyle
                   needs, ensuring your new floors will look beautiful and perform well for years to come.
                 </p>
-                <h3 className="text-xl font-bold mt-8 mb-4">Our flooring services include:</h3>
+                <h3 className="text-xl font-bold mt-8 mb-4">Our services include:</h3>
                 <ul className="space-y-2 text-gray-600 mb-8">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">✓</span>
@@ -274,6 +274,18 @@ export default function FlooringPage() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">✓</span>
+                    Custom bathroom and kitchen tiling
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2">✓</span>
+                    Shower and tub surrounds
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2">✓</span>
+                    Backsplash installation
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2">✓</span>
                     Carpet installation
                   </li>
                   <li className="flex items-start">
@@ -283,10 +295,6 @@ export default function FlooringPage() {
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">✓</span>
                     Subfloor preparation and repair
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-2">✓</span>
-                    Custom flooring solutions
                   </li>
                 </ul>
                 <Link
@@ -299,14 +307,14 @@ export default function FlooringPage() {
               <div className="space-y-8">
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg mb-4">
                   <Image
-                    src="/images/flooring-service.webp"
+                    src="/images/flooringwidget.jpg"
                     alt="Professional flooring installation in Forsyth County"
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div className="bg-blue-50 p-6 rounded-lg">
-                  <h3 className="text-xl font-bold mb-4">Why Choose Us for Your Flooring Project?</h3>
+                  <h3 className="text-xl font-bold mb-4">Why Choose Us for Your Flooring & Tiling Project?</h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
                       <span className="text-blue-500 font-bold mr-2">•</span>
@@ -319,6 +327,10 @@ export default function FlooringPage() {
                     <li className="flex items-start">
                       <span className="text-blue-500 font-bold mr-2">•</span>
                       <span>Precise installation techniques</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-blue-500 font-bold mr-2">•</span>
+                      <span>Detailed waterproofing for wet areas</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-blue-500 font-bold mr-2">•</span>
@@ -361,7 +373,7 @@ export default function FlooringPage() {
                 </div>
                 <h3 className="mb-4 text-2xl font-bold">1-Year Warranty</h3>
                 <p className="max-w-2xl text-lg text-gray-700">
-                  We stand behind our work with a comprehensive 1-year warranty on all our flooring services. If you experience any issues with our workmanship within the first year, we'll come back and fix it at no additional cost to you.
+                  We stand behind our work with a comprehensive 1-year warranty on all our flooring and tiling services. If you experience any issues with our workmanship within the first year, we'll come back and fix it at no additional cost to you.
                 </p>
               </div>
             </div>
@@ -371,7 +383,7 @@ export default function FlooringPage() {
         {/* Types of Flooring Section */}
         <section className="bg-gray-50 py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Types of Flooring We Offer</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">Flooring Materials We Offer</h2>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-bold mb-3">Hardwood Flooring</h3>
@@ -398,7 +410,13 @@ export default function FlooringPage() {
                 <h3 className="text-xl font-bold mb-3">Ceramic & Porcelain Tile</h3>
                 <p className="text-gray-600 mb-4">
                   Extremely durable and moisture-resistant. Available in countless colors, patterns, and sizes for
-                  unique design possibilities.
+                  unique design possibilities in kitchens, bathrooms, and more.
+                </p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-xl font-bold mb-3">Natural Stone Tile</h3>
+                <p className="text-gray-600 mb-4">
+                  Luxurious marble, granite, travertine, and slate provide a unique, elegant look with natural variations in each piece for truly one-of-a-kind floors and walls.
                 </p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-md">
@@ -408,12 +426,138 @@ export default function FlooringPage() {
                   any room and preference.
                 </p>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-bold mb-3">Engineered Hardwood</h3>
-                <p className="text-gray-600 mb-4">
-                  Real wood with enhanced stability and moisture resistance. Perfect for areas where solid hardwood
-                  isn't recommended.
+            </div>
+          </div>
+        </section>
+
+        {/* Tiling Services Section */}
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-4xl">
+              <div className="mb-12">
+                <h2 className="mb-6 text-3xl font-bold text-center">Specialized Tiling Services</h2>
+                <p className="mb-4 text-lg text-gray-700 text-center">
+                  Transform your space with beautiful, durable tile work from Top American Roofing and Restoration. Our
+                  expert team provides professional tile installation for floors, walls, backsplashes, showers, and
+                  more, creating stunning surfaces that enhance the beauty and value of your home.
                 </p>
+              </div>
+
+              <div className="mb-12">
+                <h3 className="mb-4 text-2xl font-bold">Our Specialized Tiling Services</h3>
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div className="rounded-lg border p-6">
+                    <h4 className="mb-2 text-xl font-bold">Floor Tiling</h4>
+                    <p className="text-gray-700">
+                      Expert installation of ceramic, porcelain, natural stone, and other tile materials for kitchens,
+                      bathrooms, entryways, and more.
+                    </p>
+                  </div>
+                  <div className="rounded-lg border p-6">
+                    <h4 className="mb-2 text-xl font-bold">Wall Tiling</h4>
+                    <p className="text-gray-700">
+                      Beautiful wall tile installation for bathrooms, kitchens, and accent walls throughout your home.
+                    </p>
+                  </div>
+                  <div className="rounded-lg border p-6">
+                    <h4 className="mb-2 text-xl font-bold">Backsplash Installation</h4>
+                    <p className="text-gray-700">
+                      Custom kitchen and bathroom backsplashes that combine style and functionality.
+                    </p>
+                  </div>
+                  <div className="rounded-lg border p-6">
+                    <h4 className="mb-2 text-xl font-bold">Shower and Tub Surrounds</h4>
+                    <p className="text-gray-700">
+                      Waterproof, beautiful shower and tub surrounds with proper waterproofing and sealing.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-12">
+                <h3 className="mb-4 text-2xl font-bold">Tile Options We Offer</h3>
+                <ul className="mb-6 space-y-3 text-lg text-gray-700">
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500">✓</span>
+                    <span>Ceramic and porcelain tiles</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500">✓</span>
+                    <span>Natural stone tiles (marble, granite, travertine, slate)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500">✓</span>
+                    <span>Glass and mosaic tiles</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500">✓</span>
+                    <span>Large format tiles</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500">✓</span>
+                    <span>Decorative and accent tiles</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-blue-500">✓</span>
+                    <span>Specialty tiles (subway, hexagon, penny round)</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="mb-12">
+                <h3 className="mb-4 text-2xl font-bold">Our Flooring & Tiling Process</h3>
+                <ol className="mb-6 space-y-6 text-lg text-gray-700">
+                  <li className="flex">
+                    <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
+                      1
+                    </span>
+                    <div>
+                      <h4 className="font-bold">Consultation and Design</h4>
+                      <p>
+                        We discuss your vision, needs, and preferences to help you select the perfect materials and layout.
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex">
+                    <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
+                      2
+                    </span>
+                    <div>
+                      <h4 className="font-bold">Surface Preparation</h4>
+                      <p>We properly prepare the substrate to ensure a level, stable surface for installation.</p>
+                    </div>
+                  </li>
+                  <li className="flex">
+                    <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
+                      3
+                    </span>
+                    <div>
+                      <h4 className="font-bold">Waterproofing (if needed)</h4>
+                      <p>For wet areas, we apply proper waterproofing systems to prevent moisture damage.</p>
+                    </div>
+                  </li>
+                  <li className="flex">
+                    <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
+                      4
+                    </span>
+                    <div>
+                      <h4 className="font-bold">Material Installation</h4>
+                      <p>
+                        Our skilled technicians install your floors and tiles with precision, ensuring proper spacing and
+                        alignment.
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex">
+                    <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
+                      5
+                    </span>
+                    <div>
+                      <h4 className="font-bold">Finishing Touches</h4>
+                      <p>We apply grout, sealants, and trim to protect your installation and enhance its appearance.</p>
+                    </div>
+                  </li>
+                </ol>
               </div>
             </div>
           </div>
@@ -422,13 +566,13 @@ export default function FlooringPage() {
         {/* CTA Section */}
         <section className="bg-blue-900 text-white py-16">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Floors?</h2>
+            <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Space?</h2>
             <p className="max-w-2xl mx-auto mb-8">
-              Contact us today to schedule a free consultation and estimate for your flooring project.
+              Contact us today to schedule a free consultation and estimate for your flooring or tiling project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="#contact"
+                href="/#contact"
                 className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-blue-600"
               >
                 GET A FREE QUOTE

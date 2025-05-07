@@ -1,25 +1,30 @@
-import type { Metadata } from "next";
+"use client"
+
+import type React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PhoneCall, ChevronLeft } from "lucide-react";
 import Footer from "../../components/Footer";
 import ServicePageHeader from "../../components/ServicePageHeader";
-import { MotionDiv } from "@/app/components/MotionWrappers";
+import { motion } from "framer-motion";
 
-export const metadata: Metadata = {
-  title: "Gutter Repair Services | American Top Roofing",
-  description: "American Top Roofing offers professional gutter repair services across Georgia. Fix leaks, clogs & sagging gutters statewide. Free Estimate!",
-  keywords: ["gutter repair", "gutter services", "rain gutters", "gutter maintenance", "Georgia", "Forsyth County", "Cumming", "Buford", "Suwanee", "Gainesville", "Alpharetta", "Atlanta", "roofing contractor", "American Top Roofing"],
-  alternates: {
-    canonical: 'https://www.americantoproofingandrestoration.com/services/gutter-repairs'
-  }
-};
-
-export default function GutterRepairsPage() {
+export default function GutterServicesPage() {
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.5 },
+  };
+
+  // This function is for the local anchor links within this page
+  const handleLocalAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (href.startsWith('#')) {
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth'});
+      }
+    }
   };
 
   return (
@@ -29,27 +34,26 @@ export default function GutterRepairsPage() {
       <main className="flex-1">
         <section className="relative">
           <div className="absolute inset-0 bg-black/50" />
-          <MotionDiv
+          <motion.div
             className="relative mx-auto flex min-h-[400px] max-w-7xl flex-col items-center justify-center px-4 py-24 text-center text-white md:px-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <MotionDiv {...fadeInUp}>
-              <h1
-                className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
-              >
-                Gutter Repair Services in Georgia
-              </h1>
-            </MotionDiv>
-            <MotionDiv {...fadeInUp} transition={{ delay: 0.2, ...fadeInUp.transition }}>
-              <p
-                className="mb-8 max-w-3xl text-lg text-gray-200 sm:text-xl"
-              >
-                Reliable gutter repairs available statewide in Georgia to prevent water damage and protect your home's foundation.
-              </p>
-            </MotionDiv>
-            <MotionDiv
+            <motion.h1
+              className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
+              {...fadeInUp}
+            >
+              Complete Gutter Solutions
+            </motion.h1>
+            <motion.p
+              className="mb-8 max-w-3xl text-lg text-gray-200 sm:text-xl"
+              {...fadeInUp}
+              transition={{ delay: 0.2, ...fadeInUp.transition }}
+            >
+              Professional gutter installation, repairs, and gutter guard systems to protect your Georgia home from water damage.
+            </motion.p>
+            <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
@@ -60,12 +64,12 @@ export default function GutterRepairsPage() {
               >
                 GET A FREE QUOTE
               </Link>
-            </MotionDiv>
-          </MotionDiv>
+            </motion.div>
+          </motion.div>
           <div className="absolute inset-0 -z-10 overflow-hidden">
             <Image
               src="/images/gutter-repair-service.webp"
-              alt="Gutter repair service in Forsyth County by American Top Roofing"
+              alt="Professional gutter services by American Top Roofing"
               fill
               className="object-cover"
               priority
@@ -82,33 +86,90 @@ export default function GutterRepairsPage() {
               </Link>
 
               <div className="mb-12">
-                <h2 className="mb-6 text-3xl font-bold">Your Trusted Gutter Repair Experts in Georgia</h2>
+                <h2 className="mb-6 text-3xl font-bold">Your Complete Gutter Solution Provider in Georgia</h2>
                 <p className="mb-4 text-lg text-gray-700">
-                  Damaged or malfunctioning gutters can lead to significant water damage to your home's foundation, siding,
-                  and landscaping. At American Top Roofing and Restoration, we provide expert gutter repair services across Georgia to
-                  ensure your gutter system functions properly and protects your property investment from costly water damage.
+                  Your gutter system is crucial for protecting your home from water damage. At American Top Roofing and Restoration, we offer comprehensive gutter services including expert installation, repairs, and gutter guard systems to ensure your property remains protected year-round from Georgia's heavy rainfall.
                 </p>
                 <p className="mb-4 text-lg text-gray-700">
-                  Our experienced technicians can quickly diagnose and fix a comprehensive range of gutter issues, from minor leaks and
-                  clogs to significant structural problems impacting homes anywhere in Georgia. We utilize high-quality materials and proven repair techniques to deliver durable,
-                  lasting repairs that will keep your gutters performing effectively for years to come, safeguarding your home.
+                  Whether you need a brand new seamless gutter system, repairs to your existing gutters, or protection from debris with quality gutter guards, our experienced technicians provide reliable solutions tailored to your home's specific needs. We service properties throughout Georgia, using only premium materials and proven techniques to deliver lasting protection for your investment.
                 </p>
               </div>
+              
+              {/* Services Navigation */}
+              <div className="mb-10 flex flex-wrap gap-4 justify-center">
+                <a href="#installation" onClick={(e) => handleLocalAnchorClick(e, "#installation")} className="px-5 py-2 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition-colors font-medium">
+                  Gutter Installation
+                </a>
+                <a href="#repairs" onClick={(e) => handleLocalAnchorClick(e, "#repairs")} className="px-5 py-2 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition-colors font-medium">
+                  Gutter Repairs
+                </a>
+                <a href="#guards" onClick={(e) => handleLocalAnchorClick(e, "#guards")} className="px-5 py-2 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition-colors font-medium">
+                  Gutter Guards
+                </a>
+              </div>
 
-              <div className="mb-12">
-                <h3 className="mb-4 text-2xl font-bold">Common Gutter Problems We Fix Across Georgia</h3>
-                <ul className="mb-6 space-y-3 text-lg text-gray-700">
+              {/* Gutter Installation Section */}
+              <div id="installation" className="mb-16 scroll-mt-24">
+                <h3 className="mb-4 text-2xl font-bold">Professional Gutter Installation</h3>
+                <div className="mb-6">
+                  <p className="mb-4 text-lg text-gray-700">
+                    Our expert gutter installation services provide a complete solution for protecting your home. We custom-fit durable, seamless gutters that effectively channel water away from your foundation, preventing costly damage to your property.
+                  </p>
+                  <p className="mb-4 text-lg text-gray-700">
+                    Our installation process includes precise measurements, proper pitch calculation, and strategic downspout placement to ensure optimal water flow and drainage.
+                  </p>
+                </div>
+                
+                <h4 className="mb-3 text-xl font-medium">Gutter Installation Options:</h4>
+                <div className="grid gap-6 mb-8 md:grid-cols-2">
+                  <div className="rounded-lg border p-5">
+                    <h5 className="mb-2 text-lg font-bold">Seamless Gutters</h5>
+                    <p className="text-gray-700">
+                      Custom-fabricated on-site to the exact measurements of your home, eliminating joints and reducing leak potential.
+                    </p>
+                  </div>
+                  <div className="rounded-lg border p-5">
+                    <h5 className="mb-2 text-lg font-bold">K-Style Gutters</h5>
+                    <p className="text-gray-700">
+                      Decorative front design resembling crown molding with higher water capacity for areas with heavy rainfall.
+                    </p>
+                  </div>
+                  <div className="rounded-lg border p-5">
+                    <h5 className="mb-2 text-lg font-bold">Half-Round Gutters</h5>
+                    <p className="text-gray-700">
+                      Classic, semi-circular design that complements historic and traditional homes in Georgia.
+                    </p>
+                  </div>
+                  <div className="rounded-lg border p-5">
+                    <h5 className="mb-2 text-lg font-bold">Material Options</h5>
+                    <p className="text-gray-700">
+                      Available in aluminum, copper, and steel with various color options to match your home's exterior.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Gutter Repairs Section */}
+              <div id="repairs" className="mb-16 scroll-mt-24">
+                <h3 className="mb-4 text-2xl font-bold">Expert Gutter Repairs</h3>
+                <p className="mb-4 text-lg text-gray-700">
+                  Damaged or malfunctioning gutters can lead to significant water damage to your home's foundation, siding,
+                  and landscaping. Our technicians quickly diagnose and fix a comprehensive range of gutter issues, from minor leaks to significant structural problems.
+                </p>
+
+                <h4 className="mb-3 text-xl font-medium">Common Gutter Problems We Fix:</h4>
+                <ul className="mb-8 space-y-3 text-lg text-gray-700">
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-500">✓</span>
                     <span>Leaking gutter seams and joints causing foundation saturation</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-500">✓</span>
-                    <span>Gutters sagging or pulling away from the roofline due to weight or damage</span>
+                    <span>Gutters sagging or pulling away from the roofline</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-500">✓</span>
-                    <span>Clogged gutters and downspouts leading to overflows and water backup</span>
+                    <span>Clogged gutters and downspouts leading to overflows</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-500">✓</span>
@@ -116,25 +177,86 @@ export default function GutterRepairsPage() {
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-500">✓</span>
-                    <span>Improperly pitched gutters causing water pooling and ineffective drainage</span>
+                    <span>Improperly pitched gutters causing water pooling</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-500">✓</span>
-                    <span>Damaged, disconnected, or missing downspouts affecting water diversion</span>
+                    <span>Damaged, disconnected, or missing downspouts</span>
                   </li>
                 </ul>
               </div>
+              
+              {/* Gutter Guards Section */}
+              <div id="guards" className="mb-16 scroll-mt-24">
+                <h3 className="mb-4 text-2xl font-bold">Premium Gutter Guard Systems</h3>
+                <p className="mb-6 text-lg text-gray-700">
+                  Stop cleaning gutters forever with our professional gutter guard installation. Our protection systems keep leaves, pine needles, and debris out while allowing water to flow freely through your gutters.
+                </p>
+                
+                <div className="grid gap-6 mb-8 md:grid-cols-2">
+                  <div className="rounded-lg bg-blue-50 p-6">
+                    <h4 className="mb-3 text-xl font-bold">Benefits of Gutter Guards</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="mr-2 text-blue-500 font-bold">•</span>
+                        <span>Eliminate gutter cleaning maintenance</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2 text-blue-500 font-bold">•</span>
+                        <span>Prevent clogs and water overflow</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2 text-blue-500 font-bold">•</span>
+                        <span>Reduce risk of rust and corrosion</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2 text-blue-500 font-bold">•</span>
+                        <span>Prevent pest nesting in gutters</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2 text-blue-500 font-bold">•</span>
+                        <span>Extend the lifespan of your gutter system</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="rounded-lg bg-blue-50 p-6">
+                    <h4 className="mb-3 text-xl font-bold">Our Guard Systems</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="mr-2 text-blue-500 font-bold">•</span>
+                        <span>Mesh guards for maximum debris blocking</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2 text-blue-500 font-bold">•</span>
+                        <span>Surface tension systems for seamless protection</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2 text-blue-500 font-bold">•</span>
+                        <span>Foam inserts for affordable protection</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2 text-blue-500 font-bold">•</span>
+                        <span>Compatible with all gutter types</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2 text-blue-500 font-bold">•</span>
+                        <span>Professional installation for optimal performance</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
               <div className="mb-12">
-                <h3 className="mb-4 text-2xl font-bold">Our Georgia Gutter Repair Process</h3>
+                <h3 className="mb-4 text-2xl font-bold">Our Gutter Process</h3>
                 <ol className="mb-6 space-y-6 text-lg text-gray-700">
                   <li className="flex">
                     <span className="mr-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
                       1
                     </span>
                     <div>
-                      <h4 className="font-bold">Thorough Inspection</h4>
-                      <p>We conduct a comprehensive assessment of your entire gutter system anywhere in Georgia to identify all issues accurately.</p>
+                      <h4 className="font-bold">Thorough Inspection & Assessment</h4>
+                      <p>We evaluate your current gutter system and your home's specific needs, considering factors like roof size, local rainfall patterns, and property layout.</p>
                     </div>
                   </li>
                   <li className="flex">
@@ -142,10 +264,9 @@ export default function GutterRepairsPage() {
                       2
                     </span>
                     <div>
-                      <h4 className="font-bold">Detailed Repair Plan & Estimate</h4>
+                      <h4 className="font-bold">Detailed Proposal & Estimate</h4>
                       <p>
-                        We provide a clear, detailed explanation of the problems found and recommend the most effective, cost-efficient repair
-                        solutions for your Georgia home.
+                        We provide a clear, detailed explanation of our recommended solution with transparent pricing options.
                       </p>
                     </div>
                   </li>
@@ -154,8 +275,8 @@ export default function GutterRepairsPage() {
                       3
                     </span>
                     <div>
-                      <h4 className="font-bold">Professional Gutter Repairs</h4>
-                      <p>Our skilled technicians perform efficient repairs using top-quality materials and industry-leading techniques, ensuring longevity.</p>
+                      <h4 className="font-bold">Professional Installation or Repair</h4>
+                      <p>Our skilled technicians perform the work efficiently using premium materials and industry-leading techniques.</p>
                     </div>
                   </li>
                   <li className="flex">
@@ -163,49 +284,48 @@ export default function GutterRepairsPage() {
                       4
                     </span>
                     <div>
-                      <h4 className="font-bold">System Testing & Cleanup</h4>
-                      <p>We thoroughly test the repaired gutter system to guarantee proper water flow and drainage, followed by a meticulous site cleanup.</p>
+                      <h4 className="font-bold">System Testing & Quality Check</h4>
+                      <p>We thoroughly test the completed system to ensure proper water flow, followed by a comprehensive cleanup.</p>
                     </div>
                   </li>
                 </ol>
               </div>
 
               <div className="mb-12">
-                <h3 className="mb-4 text-2xl font-bold">Benefits of Professional Gutter Repairs in Georgia</h3>
+                <h3 className="mb-4 text-2xl font-bold">Benefits of Professional Gutter Services</h3>
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="rounded-lg border p-6">
                     <h4 className="mb-2 text-xl font-bold">Prevent Costly Water Damage</h4>
                     <p className="text-gray-700">
                       Properly functioning gutters are crucial for directing water away from your home, preventing expensive damage to your
-                      foundation, siding, roof fascia, and landscaping in areas prone to heavy rain.
+                      foundation, siding, roof fascia, and landscaping in Georgia's rainy climate.
                     </p>
                   </div>
                   <div className="rounded-lg border p-6">
-                    <h4 className="mb-2 text-xl font-bold">Extend Gutter System Lifespan</h4>
+                    <h4 className="mb-2 text-xl font-bold">Complete Protection System</h4>
                     <p className="text-gray-700">
-                      Timely repairs and routine maintenance can significantly extend the operational life of your gutter system, saving
-                      you money on premature replacement costs.
+                      Our integrated approach ensures your gutters, downspouts, and guards work together as a complete system to channel water safely away from your home.
                     </p>
                   </div>
                   <div className="rounded-lg border p-6">
-                    <h4 className="mb-2 text-xl font-bold">Prevent Pest Infestations</h4>
+                    <h4 className="mb-2 text-xl font-bold">Maintenance Reduction</h4>
                     <p className="text-gray-700">
-                      Clogged or damaged gutters create attractive damp environments for pests like mosquitoes and termites. Prompt repairs eliminate these potential breeding grounds.
+                      With proper installation and gutter guards, you'll significantly reduce or eliminate the need for regular gutter cleaning and maintenance.
                     </p>
                   </div>
                   <div className="rounded-lg border p-6">
                     <h4 className="mb-2 text-xl font-bold">Enhance Curb Appeal & Value</h4>
                     <p className="text-gray-700">
-                      Well-maintained, functional gutters significantly enhance the overall appearance of your home and contribute positively to its resale value.
+                      New or well-maintained gutters enhance the overall appearance of your home and add to its market value.
                     </p>
                   </div>
                 </div>
               </div>
 
               <div className="rounded-lg bg-blue-50 p-8">
-                <h3 className="mb-4 text-2xl font-bold text-center">Need Gutter Repairs Anywhere in Georgia?</h3>
+                <h3 className="mb-4 text-2xl font-bold text-center">Complete Gutter Solutions for Your Georgia Home</h3>
                 <p className="mb-6 text-center text-lg">
-                   Contact us today for your free gutter inspection and detailed repair estimate!
+                   Contact us today for your free gutter assessment and detailed estimate!
                 </p>
                 <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <Link

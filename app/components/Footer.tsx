@@ -6,11 +6,11 @@ import { PhoneCall, Mail, MapPin } from "lucide-react"
 import type React from "react"
 
 interface FooterProps {
-  handleAnchorClick: (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => void
+  handleAnchorClick?: (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => void
 }
 
-// Moved handleAnchorClick inside the component
-const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+// Default implementation of handleAnchorClick
+const defaultHandleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
   e.preventDefault(); // Prevent default link navigation
 
   // Get the current path
@@ -36,6 +36,9 @@ const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: st
 };
 
 export default function Footer({ handleAnchorClick }: FooterProps) {
+  // Use the provided handleAnchorClick function or fall back to the default implementation
+  const anchorClickHandler = handleAnchorClick || defaultHandleAnchorClick;
+
   return (
     <footer className="bg-[#111827] py-16 text-white">
       <div className="container px-4 md:px-6">
@@ -90,63 +93,46 @@ export default function Footer({ handleAnchorClick }: FooterProps) {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="mb-6 text-xl font-bold">Quick Links</h3>
-            <ul className="space-y-4">
-              <li>
-                <a
-                  href="/services"
-                  onClick={(e) => handleAnchorClick(e, "services")}
-                  className="text-gray-400 hover:text-white"
-                >
-                  Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/how-it-works"
-                  onClick={(e) => handleAnchorClick(e, "how-it-works")}
-                  className="text-gray-400 hover:text-white"
-                >
-                  How It Works
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/testimonials"
-                  onClick={(e) => handleAnchorClick(e, "testimonials")}
-                  className="text-gray-400 hover:text-white"
-                >
-                  Testimonials
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/gallery"
-                  onClick={(e) => handleAnchorClick(e, "gallery")}
-                  className="text-gray-400 hover:text-white"
-                >
-                  Gallery
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/faq"
-                  onClick={(e) => handleAnchorClick(e, "faq")}
-                  className="text-gray-400 hover:text-white"
-                >
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/contact"
-                  onClick={(e) => handleAnchorClick(e, "contact")}
-                  className="text-gray-400 hover:text-white"
-                >
-                  Contact Us
-                </a>
-              </li>
-            </ul>
+            <div className="space-y-4">
+              <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase">Quick Links</h3>
+              <ul className="space-y-4">
+                <li>
+                  <a
+                    href="/#services"
+                    onClick={(e) => anchorClickHandler(e, "/#services")}
+                    className="text-base text-gray-500 hover:text-gray-900"
+                  >
+                    Services
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/#about"
+                    onClick={(e) => anchorClickHandler(e, "/#about")}
+                    className="text-base text-gray-500 hover:text-gray-900"
+                  >
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/#contact"
+                    onClick={(e) => anchorClickHandler(e, "/#contact")}
+                    className="text-base text-gray-500 hover:text-gray-900"
+                  >
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <Link
+                    href="/sitemap"
+                    className="text-base text-gray-500 hover:text-gray-900"
+                  >
+                    Site Map
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Column 3: Services */}
@@ -164,13 +150,13 @@ export default function Footer({ handleAnchorClick }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link href="/services/gutter-repairs" className="text-gray-400 hover:text-white">
-                  Gutter Repairs
+                <Link href="/services/gutter-services" className="text-gray-400 hover:text-white">
+                  Gutter Services
                 </Link>
               </li>
               <li>
-                <Link href="/services/tiling" className="text-gray-400 hover:text-white">
-                  Tiling
+                <Link href="/services/flooring" className="text-gray-400 hover:text-white">
+                  Flooring & Tiling
                 </Link>
               </li>
               <li>
