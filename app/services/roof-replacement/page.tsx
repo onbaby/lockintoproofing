@@ -11,9 +11,9 @@ import { MotionDiv, MotionLink } from "@/app/components/MotionWrappers"
 
 // Page-specific Metadata
 export const metadata: Metadata = {
-  title: "Roof Replacement Services | Forsyth County GA | American Top Roofing",
-  description: "Need a new roof in Forsyth County (Cumming, Buford, Suwanee)? American Top Roofing offers expert roof replacement services with quality materials and warranties. Get your free estimate!",
-  keywords: ["roof replacement", "new roof", "roof installation", "forsyth county roofing", "cumming ga roofing", "buford ga roofing", "suwanee ga roofing", "alpharetta roofing", "american top roofing"],
+  title: "Roof Replacement Services | Georgia | American Top Roofing",
+  description: "Need a new roof in Georgia? American Top Roofing offers expert roof replacement services with quality materials and warranties. Get your free estimate!",
+  keywords: ["roof replacement", "new roof", "roof installation", "georgia roofing", "georgia roof replacement", "american top roofing"],
   alternates: {
     canonical: 'https://www.americantoproofingandrestoration.com/services/roof-replacement'
   }
@@ -126,7 +126,7 @@ export default function RoofReplacementPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Roof Replacement Experts Serving Forsyth County & Surrounding GA Areas
+              Roof Replacement Experts Serving All of Georgia
             </MotionDiv>
             <MotionDiv
               className="mb-8 max-w-3xl text-lg text-gray-200 sm:text-xl"
@@ -151,12 +151,12 @@ export default function RoofReplacementPage() {
             </MotionDiv>
           </MotionDiv>
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <Image src="/images/replacement.webp" alt="Professional roof replacement service in Forsyth County, GA" fill className="object-cover" priority />
+            <Image src="/images/replacement.webp" alt="Professional roof replacement service in Georgia" fill className="object-cover" priority />
           </div>
         </section>
 
         {/* Main Content H1 */}
-        <h1 className="sr-only">Roof Replacement Services in Forsyth County GA - American Top Roofing and Restoration</h1>
+        <h1 className="sr-only">Roof Replacement Services in Georgia - American Top Roofing and Restoration</h1>
 
         {/* Content Section */}
         <section className="py-16 md:py-24">
@@ -170,9 +170,9 @@ export default function RoofReplacementPage() {
                   </Link>
                 </div>
 
-                <h2 className="text-3xl font-bold tracking-tight mb-6 sm:text-4xl">Your Trusted Roof Replacement Contractor in Cumming, GA & Beyond</h2>
+                <h2 className="text-3xl font-bold tracking-tight mb-6 sm:text-4xl">Your Trusted Roof Replacement Contractor in Georgia</h2>
                 <p className="mb-6 text-lg text-gray-700">
-                  Is your current roof showing signs of age, wear, or significant damage? A full roof replacement might be the best long-term solution to protect your home and investment. American Top Roofing specializes in comprehensive roof replacement services throughout Forsyth County, including Cumming, Buford, Suwanee, Alpharetta, and Gainesville. We pride ourselves on quality workmanship, top-tier materials, and customer satisfaction.
+                  We provide comprehensive roof replacement services throughout Georgia. We pride ourselves on quality workmanship, top-tier materials, and customer satisfaction.
                 </p>
 
                 <h3 className="text-2xl font-bold tracking-tight mb-4 mt-8">Signs You Might Need a New Roof</h3>
@@ -185,10 +185,10 @@ export default function RoofReplacementPage() {
                   <li>Storm damage (hail, wind) affecting a large portion of the roof</li>
                 </ul>
                 <p className="mb-6 text-gray-700">
-                  If you notice any of these signs, contact American Top Roofing for a <Link href="/#contact" className="text-blue-600 hover:underline font-medium">free roof inspection</Link> in Forsyth County and nearby cities. We'll provide an honest assessment and recommend the best course of action, whether it's repair or a full replacement.
+                  If you notice any of these signs, contact American Top Roofing for a <Link href="/contact" className="text-blue-600 hover:text-blue-800 font-medium">free roof inspection</Link> in Georgia. We'll provide an honest assessment and recommend the best course of action, whether it's repair or a full replacement.
                 </p>
 
-                <h3 className="text-2xl font-bold tracking-tight mb-4 mt-8">Our Roof Replacement Process in Forsyth County</h3>
+                <h3 className="text-2xl font-bold tracking-tight mb-4 mt-8">Our Roof Replacement Process in Georgia</h3>
                 <ol className="list-decimal space-y-4 pl-6 mb-6 text-gray-700">
                   <li>
                     <strong>Free Consultation & Estimate:</strong> We discuss your needs, inspect your current roof thoroughly, and provide a detailed, transparent estimate for your new roof installation.
@@ -221,7 +221,7 @@ export default function RoofReplacementPage() {
 
                 <h3 className="text-2xl font-bold tracking-tight mb-4 mt-8">Roofing Materials We Offer</h3>
                 <p className="mb-6 text-gray-700">
-                  We offer a variety of high-quality roofing materials for your replacement project in the Forsyth County area, including:
+                  We offer a variety of high-quality roofing materials for your replacement project in Georgia, including:
                 </p>
                 <ul className="list-disc space-y-2 pl-6 mb-6 text-gray-700">
                   <li><strong>Asphalt Shingles:</strong> The most popular choice, available in various styles and colors (including architectural shingles). Brands like GAF offer excellent durability and warranties.</li>
@@ -237,7 +237,7 @@ export default function RoofReplacementPage() {
                     <CheckCircle className="mt-1 h-6 w-6 flex-shrink-0 text-blue-500" />
                     <div>
                       <h4 className="font-bold">Local Expertise</h4>
-                      <p className="text-gray-600">Deep knowledge of Forsyth County building codes and weather patterns.</p>
+                      <p className="text-gray-600">Deep knowledge of Georgia building codes and weather patterns.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -285,7 +285,7 @@ export default function RoofReplacementPage() {
           <div className="container px-4 md:px-6">
             <div className="mb-12 text-center">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Request Your Free Roof Replacement Estimate</h2>
-              <p className="mt-4 text-lg text-gray-600">Fill out the form below, and our Forsyth County roofing team will contact you shortly.</p>
+              <p className="mt-4 text-lg text-gray-600">Fill out the form below, and our Georgia roofing team will contact you shortly.</p>
             </div>
             <div className="mx-auto max-w-xl">
               <RoofReplacementContactForm />

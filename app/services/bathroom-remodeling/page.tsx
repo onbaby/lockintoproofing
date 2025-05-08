@@ -95,7 +95,7 @@ export default function BathroomRemodelingPage() {
             </MotionDiv>
           </MotionDiv>
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <Image src="/images/bathroom-remodeling-service.webp" alt="Bathroom remodeling services in Forsyth County" fill className="object-cover" priority />
+            <Image src="/images/bathroom-remodeling-service.webp" alt="Bathroom remodeling services in Georgia" fill className="object-cover" priority />
           </div>
         </section>
 

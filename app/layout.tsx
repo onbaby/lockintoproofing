@@ -56,6 +56,10 @@ const structuredData = {
   ],
   "areaServed": [
       {
+        "@type": "State",
+        "name": "Georgia"
+      },
+      {
         "@type": "City",
         "name": "Cumming"
       },
@@ -71,7 +75,7 @@ const structuredData = {
         "@type": "City",
         "name": "Gainesville"
       },
-       {
+      {
         "@type": "City",
         "name": "Alpharetta"
       },
@@ -83,7 +87,7 @@ const structuredData = {
 };
 
 export const metadata = {
-  title: "American Top Roofing & Restoration - Roofing & Restoration GA",
+  title: "American Top Roofing & Restoration - Roofing & Restoration Services Throughout Georgia",
   description:
     "From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!",
   generator: 'v0.dev',
@@ -106,7 +110,7 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://www.americantoproofingandrestoration.com',
     siteName: 'American Top Roofing & Restoration',
-    title: 'American Top Roofing & Restoration - Roofing & Restoration GA',
+    title: 'American Top Roofing & Restoration - Roofing & Restoration Services Throughout Georgia',
     description: 'From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!',
     images: [
       {
@@ -125,7 +129,7 @@ export const metadata = {
   // Twitter
   twitter: {
     card: 'summary_large_image',
-    title: 'American Top Roofing & Restoration - Roofing & Restoration GA',
+    title: 'American Top Roofing & Restoration - Roofing & Restoration Services Throughout Georgia',
     description: 'From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!',
     images: ['/images-compressed/new-logo.webp'],
     creator: '@americantoproofing',
@@ -134,7 +138,7 @@ export const metadata = {
   // Additional meta tags
   viewport: 'width=device-width, initial-scale=1',
   robots: 'index, follow',
-  keywords: 'roofing, restoration, Georgia, roof replacement, gutter repairs, bathroom remodeling, Cumming, Buford, Suwanee, Gainesville, Alpharetta, Forsyth County',
+  keywords: 'roofing, restoration, Georgia, roof replacement, gutter repairs, bathroom remodeling, Georgia roofing, Georgia restoration, Georgia contractors, Georgia home services',
   author: 'American Top Roofing & Restoration',
   publisher: 'American Top Roofing & Restoration',
   formatDetection: {
@@ -173,7 +177,7 @@ export default function RootLayout({
         <meta property="fb:page_id" content="61555812785754" />
         <meta property="og:url" content="https://www.americantoproofingandrestoration.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="American Top Roofing & Restoration - Roofing & Restoration GA" />
+        <meta property="og:title" content="American Top Roofing & Restoration - Roofing & Restoration Services Throughout Georgia" />
         <meta property="og:description" content="From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!" />
         <meta property="og:image" content="/images-compressed/new-logo.webp" />
         <meta property="og:image:width" content="1200" />

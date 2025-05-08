@@ -231,7 +231,7 @@ export default function FlooringPage() {
             </motion.div>
           </div>
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <Image src="/images/flooring-service.webp" alt="Professional flooring installation services in Forsyth County" fill className="object-cover" priority />
+            <Image src="/images/flooring-service.webp" alt="Professional flooring installation services in Georgia" fill className="object-cover" priority />
           </div>
         </section>
 
@@ -308,7 +308,7 @@ export default function FlooringPage() {
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg mb-4">
                   <Image
                     src="/images/flooringwidget.jpg"
-                    alt="Professional flooring installation in Forsyth County"
+                    alt="Professional flooring installation in Georgia"
                     fill
                     className="object-cover"
                   />

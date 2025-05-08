@@ -10,9 +10,9 @@ import { MotionDiv, MotionLink } from "@/app/components/MotionWrappers"
 
 // Page-specific Metadata
 export const metadata: Metadata = {
-  title: "Roof Repair Services | Forsyth County GA | American Top Roofing",
-  description: "Fast & reliable roof repair in Forsyth County (Cumming, Buford, Suwanee). American Top Roofing fixes leaks, missing shingles, storm damage & more. Get a free repair estimate!",
-  keywords: ["roof repair", "roof leak repair", "shingle repair", "storm damage roof", "emergency roof repair", "forsyth county roofing repair", "cumming ga roof repair", "buford ga roof repair", "suwanee ga roof repair", "american top roofing"],
+  title: "Roof Repair Services | Georgia | American Top Roofing",
+  description: "Fast & reliable roof repair across Georgia. American Top Roofing fixes leaks, missing shingles, storm damage & more. Get a free repair estimate!",
+  keywords: ["roof repair", "roof leak repair", "shingle repair", "storm damage roof", "emergency roof repair", "georgia roofing repair", "georgia roof repair", "american top roofing"],
   alternates: {
     canonical: 'https://www.americantoproofingandrestoration.com/services/roof-repairs'
   }
@@ -151,7 +151,7 @@ export default function RoofRepairsPage() {
               className="mb-8 max-w-3xl text-lg text-gray-200 sm:text-xl"
               {...fadeInUp} transition={{ delay: 0.2, duration: 0.5 }}
             >
-              Expert repairs for leaks, missing shingles, storm damage, and more in Cumming, Buford, Suwanee & surrounding areas. Quick response times!
+              Expert repairs for leaks, missing shingles, storm damage, and more throughout Georgia. Quick response times!
             </MotionDiv>
             <MotionDiv
               {...fadeInUp} transition={{ delay: 0.4, duration: 0.5 }}
@@ -165,12 +165,12 @@ export default function RoofRepairsPage() {
             </MotionDiv>
           </MotionDiv>
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <Image src="/images/roof-repair-service.webp" alt="Roof repair technician fixing shingles in Forsyth County" fill className="object-cover" priority />
+            <Image src="/images/roof-repair-service.webp" alt="Roof repair technician fixing shingles in Georgia" fill className="object-cover" priority />
           </div>
         </section>
 
         {/* Main Content H1 */}
-        <h1 className="sr-only">Roof Repair Services in Forsyth County GA - American Top Roofing and Restoration</h1>
+        <h1 className="sr-only">Roof Repair Services in Georgia - American Top Roofing and Restoration</h1>
 
         {/* Content Section */}
         <section className="py-16 md:py-24">
@@ -184,9 +184,9 @@ export default function RoofRepairsPage() {
                   </Link>
                 </div>
 
-                <h2 className="text-3xl font-bold tracking-tight mb-6 sm:text-4xl">Common Roof Problems We Repair in Forsyth County</h2>
+                <h2 className="text-3xl font-bold tracking-tight mb-6 sm:text-4xl">Common Roof Problems We Repair in Georgia</h2>
                 <p className="mb-6 text-lg text-gray-700">
-                  Don't let minor roof damage turn into major problems! American Top Roofing provides prompt, professional roof repair services across Forsyth County, including Cumming, Buford, Suwanee, Alpharetta, and Gainesville. We handle a wide range of issues to restore the integrity of your roof and protect your home.
+                  We offer professional roof repair services throughout Georgia. We handle a wide range of issues to restore the integrity of your roof and protect your home.
                 </p>
 
                 <div className="grid gap-8 md:grid-cols-2 mb-8">
@@ -237,7 +237,7 @@ export default function RoofRepairsPage() {
                 </ol>
 
                 <div className="mt-12 rounded-lg bg-blue-50 p-8">
-                  <h3 className="text-2xl font-bold tracking-tight mb-6 text-center">Why Choose American Top Roofing for Repairs in Forsyth County?</h3>
+                  <h3 className="text-2xl font-bold tracking-tight mb-6 text-center">Why Choose American Top Roofing for Repairs in Georgia?</h3>
                   <div className="grid gap-6 md:grid-cols-3">
                     <div className="flex flex-col items-center text-center">
                       <Clock className="h-10 w-10 mb-3 text-blue-600" />

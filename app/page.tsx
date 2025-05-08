@@ -194,10 +194,7 @@ export default function Home() {
   }, []);
 
   // Additional services for text slider
-  const additionalServices = [
-    { name: "Siding", link: "/services/siding" }
-   
-  ]
+  const additionalServices: { name: string; link: string }[] = []
 
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0)
   const sliderRef = useRef<HTMLDivElement>(null)
@@ -721,18 +718,18 @@ export default function Home() {
                 {[
                   {
                     title: "ROOF REPLACEMENT",
-                    description: "Durable, weather-resistant roof installations using premium materials for Forsyth County homes — done fast, done right.",
+                    description: "Durable, weather-resistant roof installations using premium materials for Georgia homes — done fast, done right.",
                     image: "/images-compressed/roofreplacement.webp",
                     link: "/services/roof-replacement",
-                    alt: "Professional roof replacement service in Forsyth County by American Top Roofing",
+                    alt: "Professional roof replacement service in Georgia by American Top Roofing",
                   },
                   {
                     title: "ROOF REPAIRS",
                     description:
-                      "Expert roof repairs in Cumming, GA, for leaks, damaged shingles, and other issues with quick response times.",
+                      "Expert roof repairs in Georgia for leaks, damaged shingles, and other issues with quick response times.",
                     image: "/images-compressed/roofrepair.webp",
                     link: "/services/roof-repairs",
-                    alt: "Expert roof repair service for leaks and shingles in Forsyth County",
+                    alt: "Expert roof repair service for leaks and shingles in Georgia",
                   },
                   {
                     title: "GUTTER SERVICES",
@@ -747,7 +744,7 @@ export default function Home() {
                       "Complete bathroom renovation services including fixtures, tiling, plumbing, and custom designs.",
                     image: "/images-compressed/bathroom-remodeling.webp",
                     link: "/services/bathroom-remodeling",
-                    alt: "Complete bathroom remodeling service in Forsyth County GA",
+                    alt: "Complete bathroom remodeling service in Georgia",
                   },
                   {
                     title: "FLOORING",
@@ -755,14 +752,14 @@ export default function Home() {
                       "Professional installation of hardwood, laminate, tile, and vinyl flooring for any room in your home.",
                     image: "/images-compressed/flooring-installation.webp",
                     link: "/services/flooring",
-                    alt: "Hardwood, laminate, tile, and vinyl flooring installation in Cumming GA",
+                    alt: "Hardwood, laminate, tile, and vinyl flooring installation in Georgia",
                   },
                   {
                     title: "PAINTING",
                     description: "Interior and exterior painting services to enhance and protect your property.",
                     image: "/images-compressed/paintingjob.webp",
                     link: "/services/painting",
-                    alt: "Interior and exterior home painting service in Forsyth County",
+                    alt: "Interior and exterior home painting service in Georgia",
                   },
                 ].map((service, index) => (
                   <div
@@ -791,6 +788,29 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
+                
+                {/* Siding service card - centered on desktop */}
+                <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-md transition-all hover:shadow-lg lg:col-start-2 lg:col-span-1 sm:col-span-2 sm:mx-auto lg:mx-0">
+                  <div className="relative h-0 w-full pb-[66.67%] overflow-hidden rounded-t-lg">
+                    <Image
+                      src="/images/siding.jpeg"
+                      alt="Professional siding installation and repair services in Georgia"
+                      fill
+                      className="absolute inset-0 h-full w-full object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="mb-2 text-center text-2xl font-medium hero-title tracking-wider">SIDING</h3>
+                    <p className="mb-6 flex-1 text-center text-gray-600">Professional siding installation, repair, and replacement to boost curb appeal and energy efficiency.</p>
+                    <Link
+                      href="/services/siding"
+                      className="mx-auto mt-auto rounded-md bg-blue-500 px-6 py-2 text-center font-medium text-white transition-colors hover:bg-blue-600"
+                    >
+                      Learn more
+                    </Link>
+                  </div>
+                </div>
               </div>
 
               <motion.div
@@ -799,36 +819,54 @@ export default function Home() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-blue-50 rounded-lg p-6">
-                  <h3 className="text-xl font-medium mb-4 text-center">ADDITIONAL SERVICES</h3>
-                  <div className="flex flex-wrap justify-center gap-4">
-                    {additionalServices.map((service, index) => (
-                      <Link
-                        key={index}
-                        href={service.link}
-                        className="bg-white px-6 py-3 rounded-md shadow-sm font-medium text-blue-700 hover:bg-blue-100 transition-colors"
-                      >
-                        {service.name}
-                      </Link>
-                    ))}
+                {additionalServices.length > 0 && (
+                  <div className="bg-blue-50 rounded-lg p-6">
+                    <h3 className="text-xl font-medium mb-4 text-center">ADDITIONAL SERVICES</h3>
+                    <div className="flex flex-wrap justify-center gap-4">
+                      {additionalServices.map((service, index) => (
+                        <Link
+                          key={index}
+                          href={service.link}
+                          className="bg-white px-6 py-3 rounded-md shadow-sm font-medium text-blue-700 hover:bg-blue-100 transition-colors"
+                        >
+                          {service.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </motion.div>
 
+              {/* Call to Action Section */}
               <motion.div
-                className="mt-12 flex justify-center"
+                className="mt-12 mx-auto max-w-3xl bg-blue-50 rounded-lg p-8 shadow-md"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.6, duration: 0.5 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
               >
-                <a
-                  href="/#contact"
-                  onClick={(e) => handleAnchorClick(e, "/#contact")}
-                  className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105"
-                >
-                  GET YOUR FREE QUOTE TODAY
-                </a>
+                <div className="text-center">
+                  <h3 className="mb-4 text-2xl font-bold">Ready to Transform Your Home?</h3>
+                  <p className="mb-6 text-lg text-gray-700">
+                    From roofing and gutters to bathroom remodeling, flooring, painting, and siding—we've got all your home improvement needs covered under one roof.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                      href="/#contact"
+                      onClick={(e) => handleAnchorClick(e, "/#contact")}
+                      className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105"
+                    >
+                      GET YOUR FREE QUOTE TODAY
+                    </a>
+                    <a
+                      href="tel:+14709151599"
+                      className="flex items-center justify-center gap-2 rounded-md bg-blue-800 px-8 py-3 text-lg font-bold text-white hover:bg-blue-700 transition-all duration-300 ease-in-out hover:scale-105"
+                    >
+                      <PhoneCall className="h-5 w-5" />
+                      CALL US NOW
+                    </a>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </section>
@@ -872,7 +910,7 @@ export default function Home() {
                       description:
                         "Our roofing experts will visit your property to assess your roofing needs and provide a detailed estimate.",
                       image: "/images/free-inspection.webp",
-                      alt: "Step 2: Free roof inspection in Forsyth County",
+                      alt: "Step 2: Free roof inspection in Georgia",
                     },
                     {
                       title: "CHOOSE YOUR OPTIONS",
@@ -980,7 +1018,7 @@ export default function Home() {
                 {[
                   {
                     name: "David Joseph",
-                    location: "Forsyth County, GA",
+                    location: "Georgia",
                     quote:
                       "American Top Roofing & Restoration LLC wrapped my home in stunning vinyl siding, boosting its curb appeal and energy efficiency. Their crew's precision and dedication to detail are truly impressive.",
                     rating: 5,
@@ -988,7 +1026,7 @@ export default function Home() {
                   },
                   {
                     name: "Jacqueline May",
-                    location: "Fulton County, GA",
+                    location: "Georgia",
                     quote:
                       "Had an inspection done on my roof by American Top Roofing. They found some minor issues and fixed them on the spot. I was impressed by how thorough and knowledgeable the team was. They also gave me tips on how to maintain my roof. Will be calling them again for future needs.",
                     rating: 5,
@@ -996,7 +1034,7 @@ export default function Home() {
                   },
                   {
                     name: "Beverly Hill",
-                    location: "Gwinnett County, GA",
+                    location: "Georgia",
                     quote:
                       "American Top Roofing delivered exceptional service. My new roof is flawless, and the crew was professional and efficient. Highly recommend!",
                     rating: 5,
@@ -1004,7 +1042,7 @@ export default function Home() {
                   },
                   {
                     name: "Lewis Parker",
-                    location: "Cherokee County, GA",
+                    location: "Georgia",
                     quote:
                       "We had American Top Roofing paint our house and replace the siding. They were punctual and did a wonderful job. The house looks like new. The crew was friendly and cleaned up thoroughly after the job was done. Highly recommend them for any exterior work.",
                     rating: 5,
@@ -1012,7 +1050,7 @@ export default function Home() {
                   },
                   {
                     name: "Seraphina Chase",
-                    location: "Cobb County, GA",
+                    location: "Georgia",
                     quote:
                       "Fast roof repair! They quickly fixed the leak and left my roof looking great. Professional service!",
                     rating: 5,
@@ -1020,7 +1058,7 @@ export default function Home() {
                   },
                   {
                     name: "David Brown",
-                    location: "DeKalb County, GA",
+                    location: "Georgia",
                     quote:
                       "After having issues with clogged gutters, I decided to install new gutters and gutter guards with American Top Roofing. The process was seamless. They provided a detailed quote and completed the work quickly. The guards work perfectly, and I no longer have to clean out my gutters. Excellent service all around",
                     rating: 5,
@@ -1096,17 +1134,17 @@ export default function Home() {
                   {
                     image: "/images/gallery/gallery1.webp",
                     title: "Roof Replacement Project",
-                    alt: "Gallery Image: Completed roof replacement by American Top Roofing in Forsyth County"
+                    alt: "Gallery Image: Completed roof replacement by American Top Roofing in Georgia"
                   },
                   {
                     image: "/images/gallery/gallery2.webp",
                     title: "Roof Repair Project",
-                    alt: "Gallery Image: Completed roof repair project in Cumming GA"
+                    alt: "Gallery Image: Completed roof repair project in Georgia"
                   },
                   {
                     image: "/images/gallery/gallery3.webp",
                     title: "Gutter Installation Project",
-                    alt: "Gallery Image: New gutter installation in Alpharetta GA"
+                    alt: "Gallery Image: New gutter installation in Georgia"
                   },
                   {
                     image: "/images/gallery/gallery4.webp",
@@ -1116,7 +1154,7 @@ export default function Home() {
                   {
                     image: "/images/gallery/gallery5.webp",
                     title: "Siding Installation Project",
-                    alt: "Gallery Image: New siding installation project in Buford GA"
+                    alt: "Gallery Image: New siding installation project in Georgia"
                   },
                   {
                     image: "/images/gallery/gallery6.webp",
@@ -1126,7 +1164,7 @@ export default function Home() {
                   {
                     image: "/images/gallery/gallery7.webp",
                     title: "Storm Damage Project",
-                    alt: "Gallery Image: Roof repair after storm damage in Gainesville GA"
+                    alt: "Gallery Image: Roof repair after storm damage in Georgia"
                   },
                   {
                     image: "/images/gallery/gallery8.webp",
@@ -1567,17 +1605,10 @@ export default function Home() {
                   <div className="mt-8">
                     <h4 className="mb-4 text-xl font-bold">Service Areas</h4>
                     <p className="mb-2">
-                      Proudly serving Forsyth County—including Cumming, Buford, and Suwanee—as well as Gainesville, Alpharetta, and neighboring communities throughout Georgia.
+                      Proudly serving all of Georgia with quality roofing, restoration, and home improvement services.
                     </p>
                     <div className="grid grid-cols-2 gap-2">
-                      <span>Forsyth County</span>
-                      <span>Fulton County</span>
-                      <span>Gwinnett County</span>
-                      <span>Cherokee County</span>
-                      <span>Cobb County</span>
-                      <span>DeKalb County</span>
-                      <span>Hall County</span>
-                      <span>Dawson County</span>
+                      <span>Georgia</span>
                     </div>
                   </div>
                 </div>
@@ -1603,7 +1634,7 @@ export default function Home() {
                   />
                 </div>
                 <p className="mb-6 text-gray-400">
-                  Professional roofing services in Forsyth County you can trust. Serving homeowners and businesses near Cumming, Buford, and Gainesville since 2005.
+                  Professional roofing services in Georgia you can trust. Serving homeowners and businesses throughout the state since 2005.
                 </p>
                 <div className="flex space-x-4">
                   <a
