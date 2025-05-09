@@ -646,7 +646,7 @@ export default function Home() {
                         className="object-contain"
                       />
                     </div>
-                    <p className="text-xs md:text-sm font-medium text-center">"A" Rated</p>
+                    
                   </div>
 
                   {/* Google Guaranteed */}
@@ -659,7 +659,7 @@ export default function Home() {
                         className="object-contain" 
                       />
                     </div>
-                    <p className="text-xs md:text-sm font-medium text-center">Fully Bonded</p>
+                  
                   </div>
 
                   {/* GAF Certified */}
@@ -672,7 +672,7 @@ export default function Home() {
                         className="object-contain"
                       />
                     </div>
-                    <p className="text-xs md:text-sm font-medium text-center">$2M Liability Insurance</p>
+                    
                   </div>
                 </div>
 
