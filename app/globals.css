@@ -161,9 +161,19 @@ code, pre, .mono, .atkinson-mono {
 
 /* Hero video optimization */
 @media (max-width: 768px) {
+  .hero-video-container video,
   .hero-video-container iframe {
     height: 100% !important;
     width: 100% !important;
     object-fit: cover !important;
+  }
+}
+
+/* Add JavaScript to help with video autoplay on iOS */
+@media (max-width: 768px) {
+  .hero-video-container {
+    background-image: url('/images/hero-poster.webp');
+    background-size: cover;
+    background-position: center;
   }
 }

@@ -9,6 +9,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { motion } from "framer-motion"
 import { useState, useEffect, useRef } from "react"
+import VideoAutoplay from "./components/VideoAutoplay"
 
 export default function Home() {
   const fadeInUp = {
@@ -401,6 +402,7 @@ export default function Home() {
 
   return (
     <>
+      <VideoAutoplay />
       <div className="flex min-h-screen flex-col">
         {/* Floating CTA Button */}
         <motion.div
@@ -615,21 +617,20 @@ export default function Home() {
               </motion.div>
             </motion.div>
             <div className="absolute inset-0 -z-10 overflow-hidden hero-video-container">
-              <iframe
-                src="https://www.youtube.com/embed/JN1tuwH0k6w?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=JN1tuwH0k6w&modestbranding=1&iv_load_policy=3&disablekb=1&playsinline=1&enablejsapi=1"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+              <video
+                id="hero-video"
+                src="/videos/Sequence 01_6.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                poster="/images/hero-poster.webp"
                 className="absolute inset-0 h-full w-full object-cover"
-                title="American Top Roofing and Restoration"
-                loading="eager"
-                style={{ border: 'none', position: 'relative', zIndex: 1 }}
-              ></iframe>
-              <img 
-                src="/images/hero-poster.webp" 
-                alt="American Top Roofing and Restoration" 
-                className="absolute inset-0 h-full w-full object-cover" 
-                style={{ zIndex: 0 }}
-              />
+                style={{ position: 'relative', zIndex: 1 }}
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
           </section>
 
