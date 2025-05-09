@@ -444,7 +444,7 @@ export default function Home() {
             {/* Logo - left */}
             <div className="flex items-center gap-3 z-10">
               <Image
-                src="/images-compressed/new-logo.webp"
+                src="/images/atrar3flag.png"
                 alt="Company Logo"
                 width={140}
                 height={45}
@@ -522,7 +522,7 @@ export default function Home() {
                 <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                   <div className="flex items-center gap-3 mb-6">
                     <Image
-                      src="/images-compressed/new-logo.webp"
+                      src="/images/atrar3flag.png"
                       width={120}
                       height={40}
                       alt="American Top Roofing and Restoration Mobile Menu Logo"

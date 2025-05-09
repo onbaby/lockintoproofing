@@ -47,7 +47,7 @@ export default function Footer({ handleAnchorClick }: FooterProps) {
           <div>
             <div className="mb-6 flex items-center gap-3">
               <Image
-                src="/images/logowhiteversion.PNG"
+                src="/images/atrar3flag.png"
                 width={150}
                 height={50}
                 alt="American Top Roofing and Restoration Logo"

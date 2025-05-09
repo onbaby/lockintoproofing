@@ -33,7 +33,7 @@ export default function RoofReplacementPage() {
         <div className="container flex h-20 items-center justify-between px-4 pt-2 md:px-6">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/images/new-logo.png"
+              src="/images/atrar3flag.png"
               width={140}
               height={45}
               alt="American Top Roofing and Restoration Logo"
@@ -69,7 +69,7 @@ export default function RoofReplacementPage() {
               <div className="flex items-center gap-3 mb-6">
                 <Link href="/">
                   <Image
-                    src="/images/new-logo.png"
+                    src="/images/atrar3flag.png"
                     width={120}
                     height={40}
                     alt="American Top Roofing and Restoration Logo"
