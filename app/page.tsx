@@ -444,13 +444,13 @@ export default function Home() {
             {/* Logo - left */}
             <div className="flex items-center gap-3 z-10">
               <Image
-                src="/images/atrar3flag.png"
+                src="/images/americantoof.png"
                 alt="Company Logo"
-                width={140}
-                height={45}
+                width={130}
+                height={40}
                 priority
                 loading="eager"
-                className="h-auto w-[140px]"
+                className="h-auto w-[130px]"
               />
             </div>
 
@@ -522,11 +522,11 @@ export default function Home() {
                 <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                   <div className="flex items-center gap-3 mb-6">
                     <Image
-                      src="/images/atrar3flag.png"
-                      width={120}
+                      src="/images/americantoof.png"
+                      width={130}
                       height={40}
                       alt="American Top Roofing and Restoration Mobile Menu Logo"
-                      className="h-auto w-[120px]"
+                      className="h-auto w-[130px]"
                     />
                   </div>
                   <nav className="flex flex-col gap-4 py-6">
@@ -1625,12 +1625,13 @@ export default function Home() {
               <div>
                 <div className="mb-6 flex items-center gap-3">
                   <Image
-                    src="/images-compressed/logowhiteversion.webp"
+                    src="/images/atrrwhite.png"
                     alt="Company Logo White"
-                    width={210}
-                    height={150}
+                    width={160}
+                    height={50}
                     priority
                     loading="eager"
+                    className="h-auto w-[160px]"
                   />
                 </div>
                 <p className="mb-6 text-gray-400">

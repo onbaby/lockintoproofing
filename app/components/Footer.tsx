@@ -47,11 +47,11 @@ export default function Footer({ handleAnchorClick }: FooterProps) {
           <div>
             <div className="mb-6 flex items-center gap-3">
               <Image
-                src="/images/atrar3flag.png"
-                width={150}
+                src="/images/atrrwhite.png"
+                width={160}
                 height={50}
                 alt="American Top Roofing and Restoration Logo"
-                className="h-auto w-[150px]"
+                className="h-auto w-[160px]"
               />
             </div>
             <p className="mb-6 text-gray-400">
