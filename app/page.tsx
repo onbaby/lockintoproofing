@@ -3,15 +3,22 @@
 import type React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { PhoneCall, Mail, Clock, MapPin, Star, Menu, Award, Shield, CheckCircle, AlertCircle } from "lucide-react"
+import { PhoneCall, Mail, Clock, MapPin, Star, Menu, Award, Shield, CheckCircle, AlertCircle, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion"
 import { useState, useEffect, useRef } from "react"
 import VideoAutoplay from "./components/VideoAutoplay"
 
 export default function Home() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -53,6 +60,20 @@ export default function Home() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+
+  // Add this near your other state declarations
+  const [isHovered, setIsHovered] = useState<string | null>(null);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+
+  const services = [
+    { name: "Roof Replacement", href: "/services/roof-replacement" },
+    { name: "Roof Repairs", href: "/services/roof-repairs" },
+    { name: "Gutter Services", href: "/services/gutter-services" },
+    { name: "Bathroom Remodeling", href: "/services/bathroom-remodeling" },
+    { name: "Flooring", href: "/services/flooring" },
+    { name: "Painting", href: "/services/painting" },
+    { name: "Siding", href: "/services/siding" },
+  ];
 
   // Handle form input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -403,8 +424,12 @@ export default function Home() {
   return (
     <>
       <VideoAutoplay />
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-1 bg-blue-500 origin-left z-50"
+        style={{ scaleX }}
+      />
       <div className="flex min-h-screen flex-col">
-        {/* Floating CTA Button */}
+        {/* Floating CTA Button - Enhanced animation */}
         <motion.div
           className="fixed bottom-6 right-6 z-50 flex flex-col gap-2 sm:flex-row"
           initial={{ opacity: 0, y: 50 }}
@@ -414,7 +439,8 @@ export default function Home() {
           <motion.a
             href="tel:+14709151599"
             className="flex items-center justify-center rounded-full bg-green-600 p-3 text-white shadow-lg hover:bg-green-700 sm:hidden transition-all duration-300 ease-in-out hover:scale-105"
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            whileTap={{ scale: 0.95 }}
           >
             <motion.div
               animate={{
@@ -431,17 +457,24 @@ export default function Home() {
               <PhoneCall className="h-6 w-6" />
             </motion.div>
           </motion.a>
-          <a
+          <motion.a
             href="/#contact"
             onClick={(e) => handleAnchorClick(e, "/#contact")}
             className="flex items-center justify-center rounded-full bg-blue-500 px-4 py-3 text-sm font-bold text-white shadow-lg hover:bg-blue-600 sm:text-base transition-all duration-300 ease-in-out hover:scale-105"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
           >
             GET A FREE QUOTE
-          </a>
+          </motion.a>
         </motion.div>
 
-        {/* Header */}
-        <header className="sticky top-0 z-40 w-full border-b bg-white">
+        {/* Header - Add subtle animation */}
+        <motion.header 
+          className="sticky top-0 z-40 w-full border-b bg-white"
+          initial={{ y: -100 }}
+          animate={{ y: 0 }}
+          transition={{ type: "spring", stiffness: 100, damping: 20 }}
+        >
           <div className="container relative flex h-20 items-center px-4 pt-2 md:px-6">
             {/* Logo - left */}
             <div className="flex items-center gap-3 z-10">
@@ -458,13 +491,37 @@ export default function Home() {
 
             {/* Nav - absolute center on desktop */}
             <div className="hidden md:flex absolute left-[48%] top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8">
-              <a
-                href="/#services"
-                onClick={(e) => handleAnchorClick(e, "/#services")}
-                className="text-sm font-medium text-gray-700 hover:text-blue-600"
-              >
-                SERVICES
-              </a>
+              {/* Services Dropdown */}
+              <div className="relative group">
+                <div className="flex items-center gap-1">
+                  <a
+                    href="/#services"
+                    onClick={(e) => handleAnchorClick(e, "/#services")}
+                    className="text-sm font-medium text-gray-700 hover:text-blue-600"
+                  >
+                    SERVICES
+                  </a>
+                  <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                </div>
+                
+                {/* Dropdown Menu */}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div className="w-56 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+                    <div className="py-1">
+                      {services.map((service) => (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                        >
+                          {service.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <a
                 href="/#how-it-works"
                 onClick={(e) => handleAnchorClick(e, "/#how-it-works")}
@@ -532,13 +589,30 @@ export default function Home() {
                     />
                   </div>
                   <nav className="flex flex-col gap-4 py-6">
-                    <a
-                      href="/#services"
-                      onClick={(e) => handleAnchorClick(e, "/#services")}
-                      className="text-lg font-medium hover:text-blue-500"
-                    >
-                      Services
-                    </a>
+                    {/* Mobile Services Dropdown */}
+                    <div className="space-y-2">
+                      <button
+                        onClick={() => setIsServicesOpen(!isServicesOpen)}
+                        className="flex items-center justify-between w-full text-lg font-medium hover:text-blue-500"
+                      >
+                        Services
+                        <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      {isServicesOpen && (
+                        <div className="pl-4 space-y-2">
+                          {services.map((service) => (
+                            <Link
+                              key={service.href}
+                              href={service.href}
+                              className="block text-base text-gray-600 hover:text-blue-500"
+                            >
+                              {service.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
                     <a
                       href="/#how-it-works"
                       onClick={(e) => handleAnchorClick(e, "/#how-it-works")}
@@ -572,10 +646,10 @@ export default function Home() {
               </Sheet>
             </div>
           </div>
-        </header>
+        </motion.header>
 
         <main className="flex-1">
-          {/* Hero Section */}
+          {/* Hero Section - Enhanced animations */}
           <section className="relative">
             <div className="absolute inset-0 bg-black/60 z-10" />
             <motion.div
@@ -584,21 +658,28 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <motion.h1 className="mb-6 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl hero-title tracking-wider" {...fadeInUp}>
+              <motion.h1 
+                className="mb-6 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl hero-title tracking-wider"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
                 QUALITY ROOFING SOLUTIONS <br className="hidden sm:inline" />
                 FOR YOUR HOME
               </motion.h1>
               <motion.p
                 className="mb-8 max-w-3xl text-lg text-gray-200 sm:text-xl"
-                {...fadeInUp}
-                transition={{ delay: 0.2, duration: 0.5 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
               >
                 Protect and restore your biggest investment with American Top Roofing and Restoration, your trusted partner in GA. We do it better.
               </motion.p>
               <motion.div
                 className="flex flex-col gap-4 sm:flex-row"
-                {...fadeInUp}
-                transition={{ delay: 0.4, duration: 0.5 }}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
               >
                 <a
                   href="/#contact"
@@ -634,14 +715,46 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Trusted & Certified Badges - Horizontal Row */}
-          <section className="py-8 md:py-12 bg-white border-y">
+          {/* Trusted & Certified Badges - Add staggered animation */}
+          <motion.section 
+            className="py-8 md:py-12 bg-white border-y"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="container px-4 md:px-6">
-              <div className="flex flex-col items-center">
-                <h2 className="mb-8 text-xl md:text-2xl font-medium text-center">TRUSTED & CERTIFIED</h2>
+              <motion.div 
+                className="flex flex-col items-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.h2 
+                  className="mb-8 text-xl md:text-2xl font-medium text-center"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                >
+                  TRUSTED & CERTIFIED
+                </motion.h2>
                 
-                {/* Logos Row - Horizontal Scroll on Mobile */}
-                <div className="flex flex-row items-center justify-center gap-8 md:gap-16 w-full overflow-x-auto pb-4 px-2">
+                {/* Logos Row - Add staggered animation */}
+                <motion.div 
+                  className="flex flex-row items-center justify-center gap-8 md:gap-16 w-full overflow-x-auto pb-4 px-2"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={{
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.2
+                      }
+                    }
+                  }}
+                >
                   {/* BBB Logo */}
                   <div className="flex flex-col items-center shrink-0">
                     <div className="relative h-20 w-20 md:h-24 md:w-24 mb-2">
@@ -680,10 +793,22 @@ export default function Home() {
                     </div>
                     
                   </div>
-                </div>
+                </motion.div>
 
-                {/* Badges Row */}
-                <div className="flex flex-row flex-wrap justify-center gap-4 md:gap-8 mt-6 w-full">
+                {/* Badges Row - Add staggered animation */}
+                <motion.div 
+                  className="flex flex-row flex-wrap justify-center gap-4 md:gap-8 mt-6 w-full"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={{
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.1
+                      }
+                    }
+                  }}
+                >
                   <div className="flex items-center justify-center gap-2 bg-blue-50 rounded-full px-4 py-2 md:px-6 md:py-3 shadow-sm">
                     <Shield className="h-5 w-5 md:h-6 md:w-6 text-blue-500" />
                     <span className="text-sm md:text-base font-medium">Warranty Provided</span>
@@ -698,12 +823,12 @@ export default function Home() {
                     <Award className="h-5 w-5 md:h-6 md:w-6 text-blue-500" />
                     <span className="text-sm md:text-base font-medium">Award-Winning Service</span>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
-          </section>
+          </motion.section>
 
-          {/* Services Section */}
+          {/* Services Section - Add card hover animations */}
           <section id="services" className="bg-gray-50 py-16 md:py-24">
             <div className="container px-4 md:px-6">
               <motion.div
@@ -733,7 +858,7 @@ export default function Home() {
                     title: "ROOF REPAIRS",
                     description:
                       "Expert roof repairs in Georgia for leaks, damaged shingles, and other issues with quick response times.",
-                    image: "/images-compressed/roofrepair.webp",
+                    image: "/images/roofrepair.webp",
                     link: "/services/roof-repairs",
                     alt: "Expert roof repair service for leaks and shingles in Georgia",
                   },
@@ -763,16 +888,24 @@ export default function Home() {
                   {
                     title: "PAINTING",
                     description: "Interior and exterior painting services to enhance and protect your property.",
-                    image: "/images-compressed/paintingjob.webp",
+                    image: "/images/paintingjob.webp",
                     link: "/services/painting",
                     alt: "Interior and exterior home painting service in Georgia",
                   },
                 ].map((service, index) => (
-                  <div
+                  <motion.div
                     key={index}
                     className="flex flex-col overflow-hidden rounded-lg bg-white shadow-md transition-all hover:shadow-lg"
+                    whileHover={{ 
+                      scale: 1.02,
+                      transition: { duration: 0.2 }
+                    }}
                   >
-                    <div className="relative h-0 w-full pb-[66.67%] overflow-hidden rounded-t-lg">
+                    <motion.div 
+                      className="relative h-0 w-full pb-[66.67%] overflow-hidden rounded-t-lg"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    >
                       <Image
                         src={service.image || "/placeholder.svg"}
                         alt={service.alt || service.title}
@@ -781,7 +914,7 @@ export default function Home() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         priority={index < 3}
                       />
-                    </div>
+                    </motion.div>
                     <div className="flex flex-1 flex-col p-6">
                       <h3 className="mb-2 text-center text-2xl font-medium hero-title tracking-wider">{service.title}</h3>
                       <p className="mb-6 flex-1 text-center text-gray-600">{service.description}</p>
@@ -792,7 +925,7 @@ export default function Home() {
                         Learn more
                       </Link>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
                 
                 {/* Siding service card - centered on desktop */}
@@ -1009,16 +1142,22 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Testimonials Section */}
+          {/* Testimonials Section - Add card animations */}
           <section id="testimonials" className="bg-blue-900 py-16 text-white md:py-24">
             <div className="container px-4 md:px-6">
-              <div className="mb-12 text-center">
+              <motion.div
+                className="mb-12 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
                 <h2 className="mb-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">WHAT OUR CUSTOMERS SAY</h2>
                 <p className="mx-auto max-w-3xl text-blue-100">
                   Don't just take our word for it. Here's what our satisfied customers have to say about our roofing
                   services.
                 </p>
-              </div>
+              </motion.div>
 
               <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {[
@@ -1077,7 +1216,11 @@ export default function Home() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ 
+                      scale: 1.02,
+                      transition: { duration: 0.2 }
+                    }}
                   >
                     <div className="mb-4 flex">
                       {[...Array(testimonial.rating)].map((_, i) => (
@@ -1125,15 +1268,21 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Gallery Section */}
+          {/* Gallery Section - Add image hover animations */}
           <section id="gallery" className="py-16 md:py-24">
             <div className="container px-4 md:px-6">
-              <div className="mb-12 text-center">
+              <motion.div
+                className="mb-12 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
                 <h2 className="mb-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">OUR WORK</h2>
                 <p className="mx-auto max-w-3xl text-gray-600">
                   Browse through our gallery of completed roofing projects to see the quality of our work.
                 </p>
-              </div>
+              </motion.div>
 
               <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {[
@@ -1178,15 +1327,27 @@ export default function Home() {
                     alt: "Gallery Image: Commercial roofing project example"
                   }
                 ].map((project, index) => (
-                  <div 
+                  <motion.div 
                     key={index} 
                     className="group relative overflow-hidden rounded-lg cursor-pointer transition-shadow duration-300 hover:shadow-2xl"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ 
+                      scale: 1.03,
+                      transition: { duration: 0.2 }
+                    }}
                     onClick={() => {
                       setSelectedImage(project.image);
                       setLightboxOpen(true);
                     }}
                   >
-                    <div className="relative aspect-[4/3] w-full">
+                    <motion.div 
+                      className="relative aspect-[4/3] w-full"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.3 }}
+                    >
                       <Image
                         src={project.image}
                         alt={project.alt || project.title}
@@ -1194,9 +1355,13 @@ export default function Home() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover bg-gray-100 transition-shadow duration-300 group-hover:shadow-xl"
                       />
-                      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                    </div>
-                  </div>
+                      <motion.div 
+                        className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                      />
+                    </motion.div>
+                  </motion.div>
                 ))}
               </div>
 
@@ -1372,18 +1537,30 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Contact Section */}
+          {/* Contact Section - Add form animations */}
           <section id="contact" className="py-16 md:py-24">
             <div className="container px-4 md:px-6">
-              <div className="mb-12 text-center">
+              <motion.div
+                className="mb-12 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
                 <h2 className="mb-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">GET YOUR FREE QUOTE</h2>
                 <p className="mx-auto max-w-3xl text-gray-600">
                   Fill out the form below or call us directly to schedule your free roof inspection and estimate.
                 </p>
-              </div>
+              </motion.div>
 
               <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
-                <div className="rounded-lg bg-white p-8 shadow-md">
+                <motion.div 
+                  className="rounded-lg bg-white p-8 shadow-md"
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                >
                   {formSubmitted ? (
                     <div className="flex flex-col items-center justify-center py-12 text-center">
                       <motion.div
@@ -1558,9 +1735,15 @@ export default function Home() {
                       </button>
                     </form>
                   )}
-                </div>
+                </motion.div>
 
-                <div className="flex flex-col justify-between rounded-lg bg-blue-900 p-8 text-white shadow-md">
+                <motion.div 
+                  className="flex flex-col justify-between rounded-lg bg-blue-900 p-8 text-white shadow-md"
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                >
                   <div>
                     <h3 className="mb-6 text-2xl font-bold">Contact Information</h3>
 
@@ -1617,14 +1800,20 @@ export default function Home() {
                       <span>Georgia</span>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </section>
         </main>
 
-        {/* Footer */}
-        <footer className="bg-[#111827] py-16 text-white">
+        {/* Footer - Add subtle animation */}
+        <motion.footer 
+          className="bg-[#111827] py-16 text-white"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="container px-4 md:px-6">
             <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-4">
               {/* Column 1: Company Info */}
@@ -1807,7 +1996,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </footer>
+        </motion.footer>
       </div>
     </>
   );

@@ -95,34 +95,34 @@ export default function Footer({ handleAnchorClick }: FooterProps) {
           <div>
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase">Quick Links</h3>
-              <ul className="space-y-4">
-                <li>
-                  <a
-                    href="/#services"
+            <ul className="space-y-4">
+              <li>
+                <a
+                  href="/#services"
                     onClick={(e) => anchorClickHandler(e, "/#services")}
                     className="text-base text-gray-500 hover:text-gray-900"
-                  >
-                    Services
-                  </a>
-                </li>
-                <li>
-                  <a
+                >
+                  Services
+                </a>
+              </li>
+              <li>
+                <a
                     href="/#about"
                     onClick={(e) => anchorClickHandler(e, "/#about")}
                     className="text-base text-gray-500 hover:text-gray-900"
-                  >
+                >
                     About
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/#contact"
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/#contact"
                     onClick={(e) => anchorClickHandler(e, "/#contact")}
                     className="text-base text-gray-500 hover:text-gray-900"
-                  >
+                >
                     Contact
-                  </a>
-                </li>
+                </a>
+              </li>
                 <li>
                   <Link
                     href="/sitemap"
@@ -131,7 +131,7 @@ export default function Footer({ handleAnchorClick }: FooterProps) {
                     Site Map
                   </Link>
                 </li>
-              </ul>
+            </ul>
             </div>
           </div>
 

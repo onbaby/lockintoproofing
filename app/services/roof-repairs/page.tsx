@@ -1,3 +1,5 @@
+"use client"
+
 import type React from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -7,16 +9,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import Footer from "../../components/Footer"
 import { Metadata } from 'next'
 import { MotionDiv, MotionLink } from "@/app/components/MotionWrappers"
-
-// Page-specific Metadata
-export const metadata: Metadata = {
-  title: "Roof Repair Services | Georgia | American Top Roofing",
-  description: "Fast & reliable roof repair across Georgia. American Top Roofing fixes leaks, missing shingles, storm damage & more. Get a free repair estimate!",
-  keywords: ["roof repair", "roof leak repair", "shingle repair", "storm damage roof", "emergency roof repair", "georgia roofing repair", "georgia roof repair", "american top roofing"],
-  alternates: {
-    canonical: 'https://www.americantoproofingandrestoration.com/services/roof-repairs'
-  }
-};
+import Header from "@/app/components/Header"
 
 const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
   e.preventDefault();
@@ -39,7 +32,7 @@ const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string)
   }
 };
 
-export default function RoofRepairsPage() {
+export default function RoofRepairs() {
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -47,91 +40,9 @@ export default function RoofRepairsPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col">
-      {/* Header START */}
-      <header className="sticky top-0 z-40 w-full border-b bg-white">
-        <div className="container flex h-20 items-center justify-between px-4 pt-2 md:px-6">
-          <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/images/atrar3flag.png"
-              width={140}
-              height={45}
-              alt="American Top Roofing and Restoration Logo"
-              className="h-auto w-[140px]"
-            />
-          </Link>
-
-          <div className="hidden items-center gap-6 md:flex">
-            <div className="flex items-center gap-4">
-              <a
-                href="tel:+14709151599"
-                className="flex items-center gap-2 text-sm font-bold text-blue-800 hover:text-blue-600"
-              >
-                <PhoneCall className="h-4 w-4" />
-                (470) 915-1599
-              </a>
-              <a
-                href="/#contact"
-                className="rounded-md bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-600"
-              >
-                GET A FREE QUOTE
-              </a>
-            </div>
-          </div>
-
-          <Sheet>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" aria-label="Menu">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <div className="flex items-center gap-3 mb-6">
-                <Link href="/">
-                  <Image
-                    src="/images/atrar3flag.png"
-                    width={120}
-                    height={40}
-                    alt="American Top Roofing and Restoration Logo"
-                    className="h-auto w-[120px]"
-                  />
-                </Link>
-              </div>
-              <nav className="flex flex-col gap-4 py-6">
-                <a href="/#services" className="text-lg font-medium hover:text-blue-500">Services</a>
-                <a href="/#how-it-works" className="text-lg font-medium hover:text-blue-500">How It Works</a>
-                <a href="/#testimonials" className="text-lg font-medium hover:text-blue-500">Testimonials</a>
-                <a href="/#gallery" className="text-lg font-medium hover:text-blue-500">Gallery</a>
-                <a href="/#faq" className="text-lg font-medium hover:text-blue-500">FAQ</a>
-                <div className="mt-4 flex flex-col gap-4">
-                  <MotionLink
-                    href="tel:+14709151599"
-                    className="flex items-center gap-2 text-lg font-bold text-blue-800 hover:text-blue-600"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <MotionDiv
-                      animate={{ rotate: [-10, 10, -10, 10, -10, 0], scale: [1, 1.1, 1] }}
-                      transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, repeatType: "loop", repeatDelay: 3 }}
-                    >
-                      <PhoneCall className="h-5 w-5" />
-                    </MotionDiv>
-                    (470) 915-1599
-                  </MotionLink>
-                  <a
-                    href="/#contact"
-                    className="rounded-md bg-blue-500 px-4 py-2 text-center text-lg font-bold text-white hover:bg-blue-600"
-                  >
-                    GET A FREE QUOTE
-                  </a>
-                </div>
-              </nav>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </header>
-      {/* Header END */}
-
-      <main className="flex-1">
+    <>
+      <Header />
+      <div className="flex min-h-screen flex-col">
         {/* Hero Section */}
         <section className="relative">
           <div className="absolute inset-0 bg-black/50" />
@@ -275,9 +186,9 @@ export default function RoofRepairsPage() {
 
         {/* REMOVED Contact Form Section */}
         {/* <section id="contact-service" className="bg-gray-50 py-16 md:py-24"> ... </section> */}
-      </main>
+      </div>
 
       <Footer />
-    </div>
+    </>
   )
 }

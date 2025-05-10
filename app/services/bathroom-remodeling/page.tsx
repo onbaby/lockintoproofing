@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { PhoneCall, ChevronLeft } from "lucide-react"
 import Footer from "../../components/Footer"
-import ServicePageHeader from "../../components/ServicePageHeader"
+import Header from "@/app/components/Header"
 import { MotionDiv } from "@/app/components/MotionWrappers"
 import Script from "next/script"
 
@@ -56,8 +56,8 @@ export default function BathroomRemodelingPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Use the shared ServicePageHeader */}
-      <ServicePageHeader />
+      {/* Use the main Header component */}
+      <Header />
 
       <main className="flex-1">
         {/* Hero Section */}
@@ -213,7 +213,7 @@ export default function BathroomRemodelingPage() {
                     width="1284"
                     height="1709"
                     className="w-full object-contain"
-                  />
+                />
                 </img-comparison-slider>
               </div>
               
@@ -231,7 +231,7 @@ export default function BathroomRemodelingPage() {
                     src="/images-compressed/imageafter.webp"
                     alt="After transformation"
                     className="w-full object-contain"
-                  />
+                />
                 </img-comparison-slider>
               </div>
             </div>
