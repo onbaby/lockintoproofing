@@ -430,19 +430,6 @@ export default function Home() {
         style={{ scaleX }}
       />
       <div className="flex min-h-screen flex-col">
-        {/* Get a Free Quote Button - Fixed above BottomBar */}
-        <motion.a
-          href="/#contact"
-          onClick={(e) => handleAnchorClick(e, "/#contact")}
-          className="fixed bottom-24 right-0 z-50 flex items-center justify-center rounded-tl-2xl rounded-tr-2xl bg-blue-500 px-8 py-3 text-lg font-bold text-white shadow-xl hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105 w-[90vw] max-w-sm md:w-[30vw] md:max-w-md"
-          style={{ minWidth: '220px' }}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-        >
-          GET A FREE QUOTE
-        </motion.a>
-
         {/* Header - Add subtle animation */}
         <motion.header 
           className="sticky top-0 z-40 w-full border-b bg-white"
