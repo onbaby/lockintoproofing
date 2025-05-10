@@ -10,6 +10,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion"
 import { useState, useEffect, useRef } from "react"
 import VideoAutoplay from "./components/VideoAutoplay"
+import BottomBar from "@/app/components/BottomBar"
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -429,44 +430,18 @@ export default function Home() {
         style={{ scaleX }}
       />
       <div className="flex min-h-screen flex-col">
-        {/* Floating CTA Button - Enhanced animation */}
-        <motion.div
-          className="fixed bottom-6 right-6 z-50 flex flex-col gap-2 sm:flex-row"
+        {/* Get a Free Quote Button - Fixed above BottomBar */}
+        <motion.a
+          href="/#contact"
+          onClick={(e) => handleAnchorClick(e, "/#contact")}
+          className="fixed bottom-24 right-0 z-50 flex items-center justify-center rounded-tl-2xl rounded-tr-2xl bg-blue-500 px-8 py-3 text-lg font-bold text-white shadow-xl hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105 w-[90vw] max-w-sm md:w-[30vw] md:max-w-md"
+          style={{ minWidth: '220px' }}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.5 }}
         >
-          <motion.a
-            href="tel:+14709151599"
-            className="flex items-center justify-center rounded-full bg-green-600 p-3 text-white shadow-lg hover:bg-green-700 sm:hidden transition-all duration-300 ease-in-out hover:scale-105"
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.div
-              animate={{
-                rotate: [-10, 10, -10, 10, -10, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "loop",
-                repeatDelay: 3,
-              }}
-            >
-              <PhoneCall className="h-6 w-6" />
-            </motion.div>
-          </motion.a>
-          <motion.a
-            href="/#contact"
-            onClick={(e) => handleAnchorClick(e, "/#contact")}
-            className="flex items-center justify-center rounded-full bg-blue-500 px-4 py-3 text-sm font-bold text-white shadow-lg hover:bg-blue-600 sm:text-base transition-all duration-300 ease-in-out hover:scale-105"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            GET A FREE QUOTE
-          </motion.a>
-        </motion.div>
+          GET A FREE QUOTE
+        </motion.a>
 
         {/* Header - Add subtle animation */}
         <motion.header 
@@ -1998,6 +1973,7 @@ export default function Home() {
           </div>
         </motion.footer>
       </div>
+      <BottomBar />
     </>
   );
 }
