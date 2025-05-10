@@ -429,7 +429,7 @@ export default function Home() {
         className="fixed top-0 left-0 right-0 h-1 bg-blue-500 origin-left z-50"
         style={{ scaleX }}
       />
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col overflow-x-hidden">
         {/* Header - Add subtle animation */}
         <motion.header 
           className="sticky top-0 z-40 w-full border-b bg-white"
@@ -1501,7 +1501,7 @@ export default function Home() {
 
           {/* Contact Section - Add form animations */}
           <section id="contact" className="py-16 md:py-24">
-            <div className="container px-4 md:px-6">
+            <div className="container px-2 sm:px-4 md:px-6 max-w-full">
               <motion.div
                 className="mb-12 text-center"
                 initial={{ opacity: 0, y: 20 }}
@@ -1515,9 +1515,9 @@ export default function Home() {
                 </p>
               </motion.div>
 
-              <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
+              <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 w-full">
                 <motion.div 
-                  className="rounded-lg bg-white p-8 shadow-md"
+                  className="rounded-lg bg-white p-4 sm:p-8 shadow-md w-full max-w-full"
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -1700,7 +1700,7 @@ export default function Home() {
                 </motion.div>
 
                 <motion.div 
-                  className="flex flex-col justify-between rounded-lg bg-blue-900 p-8 text-white shadow-md"
+                  className="flex flex-col justify-between rounded-lg bg-blue-900 p-4 sm:p-8 text-white shadow-md w-full max-w-full"
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -1759,7 +1759,7 @@ export default function Home() {
                       Proudly serving all of Georgia with quality roofing, restoration, and home improvement services.
                     </p>
                     <div className="grid grid-cols-2 gap-2">
-                      <span>Georgia</span>
+                    
                     </div>
                   </div>
                 </motion.div>
