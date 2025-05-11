@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import BottomBar from "@/app/components/BottomBar"
+import ScrollToTopButton from "@/app/components/ScrollToTopButton"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -199,6 +200,7 @@ export default function RootLayout({
           <Analytics />
           <SpeedInsights />
           <BottomBar />
+          <ScrollToTopButton />
         </ThemeProvider>
       </body>
     </html>
