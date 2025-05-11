@@ -15,7 +15,7 @@ export default function BottomBar() {
     
     // Function to handle scroll events
     const handleScroll = () => {
-      // Show scroll-to-top button when user has scrolled down 1000px
+      // Show scroll-to-top button when user has scrolled down 2000px
       if (window.scrollY > 2000) {
         setShowScrollTop(true);
       } else {
