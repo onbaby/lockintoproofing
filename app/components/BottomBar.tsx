@@ -64,42 +64,42 @@ export default function BottomBar() {
             ? "opacity-100 translate-y-0" 
             : "opacity-0 translate-y-8"
         }`}
-        role="navigation"
-        aria-label="Quick actions"
+      role="navigation"
+      aria-label="Quick actions"
         style={{ maxWidth: '260px' }}
-      >
-        {/* Call */}
-        <a
-          href="tel:+14709151599"
+    >
+      {/* Call */}
+      <a
+        href="tel:+14709151599"
           className="flex-1 flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-l-full py-2.5 px-5"
-          aria-label="Call us"
-        >
+        aria-label="Call us"
+      >
           <PhoneCall className="h-5 w-5 mb-0.5" />
           <span className="text-xs font-medium">Call</span>
-        </a>
-        {/* Divider */}
+      </a>
+      {/* Divider */}
         <div className="h-7 w-px bg-gray-300 self-center" />
-        {/* Text */}
-        <a
-          href="sms:+14709151599"
+      {/* Text */}
+      <a
+        href="sms:+14709151599"
           className="flex-1 flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 py-2.5 px-5"
-          aria-label="Text us"
-        >
+        aria-label="Text us"
+      >
           <MessageCircle className="h-5 w-5 mb-0.5" />
           <span className="text-xs font-medium">Text</span>
-        </a>
-        {/* Divider */}
+      </a>
+      {/* Divider */}
         <div className="h-7 w-px bg-gray-300 self-center" />
-        {/* Email */}
-        <a
-          href="mailto:americantoproofingllc@gmail.com"
+      {/* Email */}
+      <a
+        href="mailto:americantoproofingllc@gmail.com"
           className="flex-1 flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-r-full py-2.5 px-5"
-          aria-label="Email us"
-        >
+        aria-label="Email us"
+      >
           <Mail className="h-5 w-5 mb-0.5" />
           <span className="text-xs font-medium">Email</span>
-        </a>
-      </nav>
+      </a>
+    </nav>
     </>
   );
 } 
