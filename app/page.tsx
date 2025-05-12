@@ -827,7 +827,7 @@ export default function Home() {
                   {
                     title: "GUTTER SERVICES",
                     description: "Professional gutter installation, repairs, and gutter guard systems to protect your home from water damage.",
-                    image: "/images-compressed/gutterinstall.webp",
+                    image: "/images/gutter-install-upd.png",
                     link: "/services/gutter-services",
                     alt: "Professional gutter installation and repair services in Georgia",
                   },
