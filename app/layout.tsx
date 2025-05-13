@@ -88,7 +88,7 @@ const structuredData = {
 };
 
 export const metadata = {
-  title: "ATR&R | Roofing & Restoration Services Throughout Georgia",
+  title: "American Top Roofing | Georgia's Premier Roofing & Restoration Services",
   description:
     "From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!",
   generator: 'v0.dev',
@@ -111,7 +111,7 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://www.americantoproofingandrestoration.com',
     siteName: 'American Top Roofing & Restoration',
-    title: 'ATR&R | Roofing & Restoration Services Throughout Georgia',
+    title: "American Top Roofing | Georgia's Premier Roofing & Restoration Services",
     description: 'From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!',
     images: [
       {
@@ -130,7 +130,7 @@ export const metadata = {
   // Twitter
   twitter: {
     card: 'summary_large_image',
-    title: 'ATR&R | Roofing & Restoration Services Throughout Georgia',
+    title: "American Top Roofing | Georgia's Premier Roofing & Restoration Services",
     description: 'From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!',
     images: ['/images-compressed/new-logo.webp'],
     creator: '@americantoproofing',
@@ -178,7 +178,7 @@ export default function RootLayout({
         <meta property="fb:page_id" content="61555812785754" />
         <meta property="og:url" content="https://www.americantoproofingandrestoration.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="ATR&R | Roofing & Restoration Services Throughout Georgia" />
+        <meta property="og:title" content="American Top Roofing | Georgia's Premier Roofing & Restoration Services" />
         <meta property="og:description" content="From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!" />
         <meta property="og:image" content="/images-compressed/new-logo.webp" />
         <meta property="og:image:width" content="1200" />
