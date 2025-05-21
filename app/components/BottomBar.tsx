@@ -48,7 +48,7 @@ export default function BottomBar() {
       {/* Scroll to top button - fixed position */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-20 right-4 z-50 bg-blue-900 border rounded-full shadow-lg flex items-center justify-center p-3 text-white transition-all duration-300 ease-in-out hover:bg-blue-800 ${
+        className={`fixed top-4 right-4 z-50 bg-blue-900 border rounded-full shadow-lg flex items-center justify-center p-3 text-white transition-all duration-300 ease-in-out hover:bg-blue-800 ${
           showScrollTop 
             ? "opacity-100 scale-100" 
             : "opacity-0 scale-75 pointer-events-none"
@@ -60,7 +60,7 @@ export default function BottomBar() {
 
       {/* Mobile bottom action bar */}
       <nav
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-white border-t shadow-lg flex items-center justify-around py-2 px-2 text-blue-900 transition-all duration-500 ease-in-out ${
+        className={`fixed bottom-4 right-4 z-50 bg-white border shadow-lg flex items-center justify-center rounded-full py-2 px-6 text-blue-900 transition-all duration-500 ease-in-out ${
           isVisible 
             ? "opacity-100 translate-y-0" 
             : "opacity-0 translate-y-16"
@@ -71,7 +71,7 @@ export default function BottomBar() {
         {/* Call */}
         <a
           href="tel:+14709151599"
-          className="flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-lg py-1.5 px-2 flex-1 text-center"
+          className="flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-full py-1.5 px-3 mx-1 text-center"
           aria-label="Call us"
         >
           <PhoneCall className="h-5 w-5 mb-0.5" />
@@ -81,7 +81,7 @@ export default function BottomBar() {
         {/* Text */}
         <a
           href="sms:+14709151599"
-          className="flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-lg py-1.5 px-2 flex-1 text-center"
+          className="flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-full py-1.5 px-3 mx-1 text-center"
           aria-label="Text us"
         >
           <MessageCircle className="h-5 w-5 mb-0.5" />
@@ -91,7 +91,7 @@ export default function BottomBar() {
         {/* Email */}
         <a
           href="mailto:americantoproofingllc@gmail.com"
-          className="flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-lg py-1.5 px-2 flex-1 text-center"
+          className="flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-full py-1.5 px-3 mx-1 text-center"
           aria-label="Email us"
         >
           <Mail className="h-5 w-5 mb-0.5" />
