@@ -750,7 +750,7 @@ export default function Home() {
                 muted
                 playsInline
                 preload="auto"
-                poster="/images/hero-poster.webp"
+                poster="/images/professional-installation.jpeg"
                 className="absolute inset-0 h-full w-full object-cover"
                 style={{ position: 'relative', zIndex: 1 }}
               >
@@ -966,7 +966,8 @@ export default function Home() {
                       className="flex flex-col overflow-hidden rounded-lg bg-white shadow-md transition-all hover:shadow-lg flex-shrink-0 w-[280px] sm:w-[340px] md:w-[380px] snap-center"
                       whileHover={{ 
                         scale: 1.02,
-                        transition: { duration: 0.2 }
+                        transition: { duration: 0.2 },
+                        backgroundColor: "rgba(255, 255, 255, 0.9)"
                       }}
                     >
                       <motion.div 
