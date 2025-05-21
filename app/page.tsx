@@ -65,6 +65,7 @@ export default function Home() {
   // Add this near your other state declarations
   const [isHovered, setIsHovered] = useState<string | null>(null);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const services = [
     { name: "Roof Replacement", href: "/services/roof-replacement" },
@@ -458,7 +459,7 @@ export default function Home() {
           animate={{ y: 0 }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
         >
-          <div className="container relative flex h-20 items-center px-4 pt-2 md:px-6">
+          <div className="container relative flex h-20 items-center justify-between px-4 pt-0 md:px-6">
             {/* Logo - left */}
             <div className="flex items-center gap-3 z-10">
               <Image
@@ -468,23 +469,23 @@ export default function Home() {
                 height={40}
                 priority
                 loading="eager"
-                className="h-auto w-[130px]"
+                className="h-auto w-[120px] lg:w-[130px]"
               />
             </div>
 
-            {/* Nav - absolute center on desktop */}
-            <div className="hidden md:flex absolute left-[48%] top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8">
+            {/* Nav - center for all screen sizes above 1000px */}
+            <div className="hidden min-[1000px]:flex min-[1000px]:flex-1 min-[1000px]:flex-wrap min-[1000px]:justify-center min-[1000px]:items-center lg:flex-nowrap min-[1000px]:mx-4 lg:mx-8">
               {/* Services Dropdown */}
-              <div className="relative group">
+              <div className="relative group flex items-center">
                 <div className="flex items-center gap-1">
                   <a
                     href="/#services"
                     onClick={(e) => handleAnchorClick(e, "/#services")}
-                    className="text-sm font-medium text-gray-700 hover:text-blue-600"
+                    className="text-xs md:text-sm font-medium text-gray-700 hover:text-blue-600 whitespace-nowrap"
                   >
                     SERVICES
                   </a>
-                  <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                  <ChevronDown className="h-3 w-3 md:h-4 md:w-4 transition-transform duration-200 group-hover:rotate-180" />
                 </div>
                 
                 {/* Dropdown Menu */}
@@ -508,54 +509,54 @@ export default function Home() {
               <a
                 href="/#how-it-works"
                 onClick={(e) => handleAnchorClick(e, "/#how-it-works")}
-                className="text-sm font-medium text-gray-700 hover:text-blue-600"
+                className="text-xs md:text-sm font-medium text-gray-700 hover:text-blue-600 whitespace-nowrap mx-2 md:mx-3"
               >
                 HOW IT WORKS
               </a>
               <a
                 href="/#testimonials"
                 onClick={(e) => handleAnchorClick(e, "/#testimonials")}
-                className="text-sm font-medium text-gray-700 hover:text-blue-600"
+                className="text-xs md:text-sm font-medium text-gray-700 hover:text-blue-600 whitespace-nowrap mx-2 md:mx-3"
               >
                 TESTIMONIALS
               </a>
               <a
                 href="/#gallery"
                 onClick={(e) => handleAnchorClick(e, "/#gallery")}
-                className="text-sm font-medium text-gray-700 hover:text-blue-600"
+                className="text-xs md:text-sm font-medium text-gray-700 hover:text-blue-600 whitespace-nowrap mx-2 md:mx-3"
               >
                 GALLERY
               </a>
               <a
                 href="/#faq"
                 onClick={(e) => handleAnchorClick(e, "/#faq")}
-                className="text-sm font-medium text-gray-700 hover:text-blue-600"
+                className="text-xs md:text-sm font-medium text-gray-700 hover:text-blue-600 whitespace-nowrap mx-2 md:mx-3"
               >
                 FAQ
               </a>
             </div>
 
             {/* Contact - right */}
-            <div className="hidden md:flex items-center gap-4 z-10 ml-auto">
+            <div className="hidden min-[1000px]:flex items-center gap-2 lg:gap-4 z-10">
               <a
                 href="tel:+14709151599"
-                className="flex items-center gap-2 text-sm font-bold text-blue-800 hover:text-blue-600"
+                className="flex items-center gap-1 md:gap-2 text-xs md:text-sm font-bold text-blue-800 hover:text-blue-600 whitespace-nowrap"
               >
-                <PhoneCall className="h-4 w-4" />
+                <PhoneCall className="h-3 w-3 md:h-4 md:w-4" />
                 (470) 915-1599
               </a>
               <a
                 href="/#contact"
                 onClick={(e) => handleAnchorClick(e, "/#contact")}
-                className="rounded-md bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-600"
+                className="rounded-md bg-blue-500 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-bold text-white hover:bg-blue-600 whitespace-nowrap"
               >
                 GET A FREE QUOTE
               </a>
             </div>
 
-            {/* Hamburger menu - right on mobile */}
-            <div className="flex md:hidden ml-auto z-10">
-              <Sheet>
+            {/* Hamburger menu - show on screens under 1000px */}
+            <div className="flex min-[1000px]:hidden ml-auto z-10">
+              <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                 <SheetTrigger asChild>
                   <Button variant="ghost" size="icon" aria-label="Menu">
                     <Menu className="h-6 w-6" />
@@ -588,6 +589,7 @@ export default function Home() {
                               key={service.href}
                               href={service.href}
                               className="block text-base text-gray-600 hover:text-blue-500"
+                              onClick={() => setIsSheetOpen(false)}
                             >
                               {service.name}
                             </Link>
@@ -598,33 +600,91 @@ export default function Home() {
 
                     <a
                       href="/#how-it-works"
-                      onClick={(e) => handleAnchorClick(e, "/#how-it-works")}
+                      onClick={(e) => {
+                        handleAnchorClick(e, "/#how-it-works");
+                        setIsSheetOpen(false);
+                      }}
                       className="text-lg font-medium hover:text-blue-500"
                     >
                       How It Works
                     </a>
                     <a
                       href="/#testimonials"
-                      onClick={(e) => handleAnchorClick(e, "/#testimonials")}
+                      onClick={(e) => {
+                        handleAnchorClick(e, "/#testimonials");
+                        setIsSheetOpen(false);
+                      }}
                       className="text-lg font-medium hover:text-blue-500"
                     >
                       Testimonials
                     </a>
                     <a
                       href="/#gallery"
-                      onClick={(e) => handleAnchorClick(e, "/#gallery")}
+                      onClick={(e) => {
+                        handleAnchorClick(e, "/#gallery");
+                        setIsSheetOpen(false);
+                      }}
                       className="text-lg font-medium hover:text-blue-500"
                     >
                       Gallery
                     </a>
                     <a
                       href="/#faq"
-                      onClick={(e) => handleAnchorClick(e, "/#faq")}
+                      onClick={(e) => {
+                        handleAnchorClick(e, "/#faq");
+                        setIsSheetOpen(false);
+                      }}
                       className="text-lg font-medium hover:text-blue-500"
                     >
                       FAQ
                     </a>
                   </nav>
+                  
+                  {/* Mobile Contact Buttons */}
+                  <div className="mt-6 pt-6 border-t border-gray-200 space-y-3">
+                    <a
+                      href="/#contact"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setIsSheetOpen(false);
+                        // Use requestAnimationFrame for smooth scrolling
+                        setTimeout(() => {
+                          const contactSection = document.getElementById('contact');
+                          if (contactSection) {
+                            const headerOffset = 80;
+                            const elementPosition = contactSection.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            
+                            const scrollToPosition = (start: number, end: number, duration: number) => {
+                              const startTime = performance.now();
+                              const animateScroll = (currentTime: number) => {
+                                const timeElapsed = currentTime - startTime;
+                                const progress = Math.min(timeElapsed / duration, 1);
+                                const easeInOutQuad = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+                                window.scrollTo(0, start + (end - start) * easeInOutQuad);
+                                if (timeElapsed < duration) {
+                                  requestAnimationFrame(animateScroll);
+                                }
+                              };
+                              requestAnimationFrame(animateScroll);
+                            };
+                            
+                            scrollToPosition(window.pageYOffset, offsetPosition, 600);
+                          }
+                        }, 300);
+                      }}
+                      className="w-full flex items-center justify-center gap-2 rounded-md bg-blue-500 px-6 py-3 text-base font-bold text-white hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105"
+                    >
+                      GET A FREE QUOTE
+                    </a>
+                    <a
+                      href="tel:+14709151599"
+                      className="w-full flex items-center justify-center gap-2 rounded-md bg-blue-800 px-6 py-3 text-base font-bold text-white hover:bg-blue-700 transition-all duration-300 ease-in-out hover:scale-105"
+                    >
+                      <PhoneCall className="h-5 w-5" />
+                      CALL NOW
+                    </a>
+                  </div>
                 </SheetContent>
               </Sheet>
             </div>
@@ -741,7 +801,7 @@ export default function Home() {
                 >
                   {/* BBB Logo */}
                   <div className="flex flex-col items-center shrink-0">
-                    <div className="relative h-20 w-20 md:h-24 md:w-24 mb-2">
+                    <div className="relative h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 mb-2">
                       <Image
                         src="/images/bbb-accredited.webp"
                         alt="BBB Accredited Business"
@@ -754,7 +814,7 @@ export default function Home() {
 
                   {/* Google Guaranteed */}
                   <div className="flex flex-col items-center shrink-0">
-                    <div className="relative h-20 w-48 md:h-24 md:w-56 mb-2">
+                    <div className="relative h-12 w-28 sm:h-16 sm:w-40 md:h-20 md:w-56 mb-2">
                       <Image 
                         src="/images/google-guaranteed.webp" 
                         alt="Google Guaranteed Roofing Contractor" 
@@ -767,7 +827,7 @@ export default function Home() {
 
                   {/* GAF Certified */}
                   <div className="flex flex-col items-center shrink-0">
-                    <div className="relative h-20 w-20 md:h-24 md:w-24 mb-2">
+                    <div className="relative h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 mb-2">
                       <Image
                         src="/images/gaf-certified.webp"
                         alt="GAF Certified Roofing Contractor"
@@ -781,7 +841,7 @@ export default function Home() {
 
                 {/* Badges Row - Add staggered animation */}
                 <motion.div 
-                  className="flex flex-row flex-wrap justify-center gap-4 md:gap-8 mt-6 w-full"
+                  className="flex flex-col items-center mt-6 w-full md:flex-row md:flex-nowrap md:justify-center md:gap-8 gap-2"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
@@ -793,19 +853,21 @@ export default function Home() {
                     }
                   }}
                 >
-                  <div className="flex items-center justify-center gap-2 bg-blue-50 rounded-full px-4 py-2 md:px-6 md:py-3 shadow-sm">
-                    <Shield className="h-5 w-5 md:h-6 md:w-6 text-blue-500" />
-                    <span className="text-sm md:text-base font-medium">Warranty Provided</span>
+                  <div className="flex flex-row gap-2 w-full justify-center md:w-auto md:gap-8">
+                    <div className="flex items-center justify-center gap-2 bg-blue-50 rounded-full px-4 py-2 md:px-6 md:py-3 shadow-sm">
+                      <Shield className="h-5 w-5 md:h-6 md:w-6 text-blue-500" />
+                      <span className="text-sm md:text-base font-medium">Warranty Provided</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 bg-blue-50 rounded-full px-4 py-2 md:px-6 md:py-3 shadow-sm">
+                      <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-blue-500" />
+                      <span className="text-sm md:text-base font-medium">Licensed & Insured</span>
+                    </div>
                   </div>
-
-                  <div className="flex items-center justify-center gap-2 bg-blue-50 rounded-full px-4 py-2 md:px-6 md:py-3 shadow-sm">
-                    <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-blue-500" />
-                    <span className="text-sm md:text-base font-medium">Licensed & Insured</span>
-                  </div>
-
-                  <div className="flex items-center justify-center gap-2 bg-blue-50 rounded-full px-4 py-2 md:px-6 md:py-3 shadow-sm">
-                    <Award className="h-5 w-5 md:h-6 md:w-6 text-blue-500" />
-                    <span className="text-sm md:text-base font-medium">Award-Winning Service</span>
+                  <div className="flex w-full justify-center md:w-auto">
+                    <div className="flex items-center justify-center gap-2 bg-blue-50 rounded-full px-4 py-2 md:px-6 md:py-3 shadow-sm mt-2 md:mt-0">
+                      <Award className="h-5 w-5 md:h-6 md:w-6 text-blue-500" />
+                      <span className="text-sm md:text-base font-medium">Award-Winning Service</span>
+                    </div>
                   </div>
                 </motion.div>
               </motion.div>

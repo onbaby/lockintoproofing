@@ -77,7 +77,7 @@ export default function Header() {
         </div>
 
         {/* Nav - absolute center on desktop */}
-        <div className="hidden md:flex absolute left-[48%] top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8">
+        <div className="hidden lg:flex absolute left-[48%] top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8">
           {/* Services Dropdown */}
           <div 
             className="relative group"
@@ -142,7 +142,7 @@ export default function Header() {
         </div>
 
         {/* Contact - right */}
-        <div className="hidden md:flex items-center gap-4 z-10 ml-auto">
+        <div className="hidden lg:flex items-center gap-4 z-10 ml-auto">
           <a
             href="tel:+14709151599"
             className="flex items-center gap-2 text-sm font-bold text-blue-800 hover:text-blue-600"
@@ -160,7 +160,7 @@ export default function Header() {
         </div>
 
         {/* Hamburger menu - right on mobile */}
-        <div className="flex md:hidden ml-auto z-10">
+        <div className="flex lg:hidden ml-auto z-10">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" aria-label="Menu">
