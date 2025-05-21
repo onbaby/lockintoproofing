@@ -905,7 +905,7 @@ export default function Home() {
                 <div className="hidden md:block absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" style={{ marginRight: '-1rem' }} />
                 
                 {/* Card container with horizontal scroll */}
-                <div className="relative flex overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory -mx-4 px-4">
+                <div className="relative flex overflow-x-auto pb-8 scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-200 snap-x snap-mandatory -mx-4 px-4">
                   <div className="flex gap-4 md:gap-6 px-0 md:px-12 min-w-max">
                   {[
                     {
@@ -1040,7 +1040,7 @@ export default function Home() {
                       onClick={(e) => handleAnchorClick(e, "/#contact")}
                       className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105"
                     >
-                      GET YOUR FREE QUOTE TODAY
+                      GET A FREE QUOTE
                     </a>
                     <a
                       href="tel:+14709151599"
