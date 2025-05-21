@@ -12,7 +12,7 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "RoofingContractor",
   "name": "American Top Roofing and Restoration",
-  "image": "https://www.americantoproofingandrestoration.com/images/new-logo.png", // Replace with absolute URL if possible
+  "image": "https://www.americantoproofingandrestoration.com/images/americantoof.png", // Replace with absolute URL if possible
   "@id": "", // Add your website URL here if you have one
   "url": "https://www.americantoproofingandrestoration.com", // Add your website URL here
   "telephone": "+14709151599",
@@ -92,7 +92,7 @@ export const metadata = {
   description:
     "From Roof Replacement & Gutter Repairs to Bathroom Remodeling—American Top Roofing & Restoration Serves All of Georgia. Get a Free Quote!",
   generator: 'v0.dev',
-  metadataBase: new URL('https://americantoproofing.com'),
+  metadataBase: new URL('https://americantoproofingandrestoration.com'),
   alternates: {
   },
   icons: {
