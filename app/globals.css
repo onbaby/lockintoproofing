@@ -61,6 +61,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden; /* Prevent horizontal scroll on mobile */
   }
 }
 
@@ -176,4 +177,61 @@ code, pre, .mono, .atkinson-mono {
     background-size: cover;
     background-position: center;
   }
+  
+  /* Better padding for mobile sections */
+  section {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  
+  /* Fix mobile text overflow issues */
+  h1, h2, h3, .hero-title {
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Mobile form adjustments */
+  input, select, textarea {
+    font-size: 16px !important; /* Prevent zoom on iOS */
+  }
+  
+  /* Fix cards overflow */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Fix lightbox on mobile devices */
+  #gallery-lightbox {
+    touch-action: none;
+  }
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 480px) {
+  h1, .hero-title {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  p {
+    font-size: 1rem !important;
+  }
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }

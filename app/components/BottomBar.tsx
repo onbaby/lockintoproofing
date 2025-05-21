@@ -45,10 +45,10 @@ export default function BottomBar() {
 
   return (
     <>
-      {/* Scroll to top button - now in top right */}
+      {/* Scroll to top button - fixed position */}
       <button
         onClick={scrollToTop}
-        className={`fixed top-4 right-4 z-50 bg-blue-900 border rounded-full shadow-lg flex items-center justify-center p-3 text-white transition-all duration-300 ease-in-out hover:bg-blue-800 ${
+        className={`fixed bottom-20 right-4 z-50 bg-blue-900 border rounded-full shadow-lg flex items-center justify-center p-3 text-white transition-all duration-300 ease-in-out hover:bg-blue-800 ${
           showScrollTop 
             ? "opacity-100 scale-100" 
             : "opacity-0 scale-75 pointer-events-none"
@@ -58,48 +58,46 @@ export default function BottomBar() {
         <ChevronUp className="h-5 w-5" />
       </button>
 
+      {/* Mobile bottom action bar */}
       <nav
-        className={`fixed bottom-4 right-4 z-50 bg-white border rounded-full shadow-lg flex items-center py-0 px-0 text-blue-900 w-auto transition-all duration-500 ease-in-out ${
+        className={`fixed bottom-0 left-0 right-0 z-50 bg-white border-t shadow-lg flex items-center justify-around py-2 px-2 text-blue-900 transition-all duration-500 ease-in-out ${
           isVisible 
             ? "opacity-100 translate-y-0" 
-            : "opacity-0 translate-y-8"
+            : "opacity-0 translate-y-16"
         }`}
-      role="navigation"
-      aria-label="Quick actions"
-        style={{ maxWidth: '260px' }}
-    >
-      {/* Call */}
-      <a
-        href="tel:+14709151599"
-          className="flex-1 flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-l-full py-2.5 px-5"
-        aria-label="Call us"
+        role="navigation"
+        aria-label="Quick actions"
       >
+        {/* Call */}
+        <a
+          href="tel:+14709151599"
+          className="flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-lg py-1.5 px-2 flex-1 text-center"
+          aria-label="Call us"
+        >
           <PhoneCall className="h-5 w-5 mb-0.5" />
           <span className="text-xs font-medium">Call</span>
-      </a>
-      {/* Divider */}
-        <div className="h-7 w-px bg-gray-300 self-center" />
-      {/* Text */}
-      <a
-        href="sms:+14709151599"
-          className="flex-1 flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 py-2.5 px-5"
-        aria-label="Text us"
-      >
+        </a>
+        
+        {/* Text */}
+        <a
+          href="sms:+14709151599"
+          className="flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-lg py-1.5 px-2 flex-1 text-center"
+          aria-label="Text us"
+        >
           <MessageCircle className="h-5 w-5 mb-0.5" />
           <span className="text-xs font-medium">Text</span>
-      </a>
-      {/* Divider */}
-        <div className="h-7 w-px bg-gray-300 self-center" />
-      {/* Email */}
-      <a
-        href="mailto:americantoproofingllc@gmail.com"
-          className="flex-1 flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-r-full py-2.5 px-5"
-        aria-label="Email us"
-      >
+        </a>
+        
+        {/* Email */}
+        <a
+          href="mailto:americantoproofingllc@gmail.com"
+          className="flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-gray-100 rounded-lg py-1.5 px-2 flex-1 text-center"
+          aria-label="Email us"
+        >
           <Mail className="h-5 w-5 mb-0.5" />
           <span className="text-xs font-medium">Email</span>
-      </a>
-    </nav>
+        </a>
+      </nav>
     </>
   );
 } 

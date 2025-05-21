@@ -3,7 +3,7 @@
 import type React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { PhoneCall, Mail, Clock, MapPin, Star, Menu, Award, Shield, CheckCircle, AlertCircle, ChevronDown } from "lucide-react"
+import { PhoneCall, Mail, Clock, MapPin, Star, Menu, Award, Shield, CheckCircle, AlertCircle, ChevronDown, ChevronLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -221,6 +221,27 @@ export default function Home() {
 
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0)
   const sliderRef = useRef<HTMLDivElement>(null)
+
+  // Add state for tracking current slide
+  // const [currentSlide, setCurrentSlide] = useState(0)
+
+  // Add scroll event handler for the carousel
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (sliderRef.current) {
+  //       const scrollLeft = sliderRef.current.scrollLeft;
+  //       const slideWidth = sliderRef.current.clientWidth;
+  //       const newSlide = Math.round(scrollLeft / slideWidth);
+  //       setCurrentSlide(newSlide);
+  //     }
+  //   };
+  // 
+  //   const slider = sliderRef.current;
+  //   if (slider) {
+  //     slider.addEventListener('scroll', handleScroll);
+  //     return () => slider.removeEventListener('scroll', handleScroll);
+  //   }
+  // }, []);
 
   // Auto-rotate services in the slider
   useEffect(() => {
@@ -615,30 +636,31 @@ export default function Home() {
           <section className="relative">
             <div className="absolute inset-0 bg-black/60 z-10" />
             <motion.div
-              className="relative z-20 mx-auto flex min-h-[600px] max-w-7xl flex-col items-center justify-center px-4 py-24 text-center text-white md:px-6"
+              className="relative z-20 mx-auto flex min-h-[500px] sm:min-h-[600px] max-w-7xl flex-col items-center justify-center px-4 py-16 sm:py-24 text-center text-white md:px-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
               <motion.h1 
-                className="mb-6 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl hero-title tracking-wider"
+                className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight hero-title tracking-wider"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                QUALITY ROOFING SOLUTIONS <br className="hidden sm:inline" />
+                QUALITY ROOFING <br className="hidden xs:inline" />
+                SOLUTIONS <br className="hidden sm:inline" />
                 FOR YOUR HOME
               </motion.h1>
               <motion.p
-                className="mb-8 max-w-3xl text-lg text-gray-200 sm:text-xl"
+                className="mb-6 sm:mb-8 max-w-3xl text-base sm:text-lg md:text-xl text-gray-200"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Protect and restore your biggest investment with American Top Roofing and Restoration, your trusted partner in GA. We do it better.
+                Protect and restore your biggest investment with American Top Roofing and Restoration, your trusted partner in GA.
               </motion.p>
               <motion.div
-                className="flex flex-col gap-4 sm:flex-row"
+                className="flex flex-col gap-4 sm:flex-row w-full max-w-xs sm:max-w-none justify-center"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -646,16 +668,16 @@ export default function Home() {
                 <a
                   href="/#contact"
                   onClick={(e) => handleAnchorClick(e, "/#contact")}
-                  className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105"
+                  className="w-full sm:w-auto rounded-md bg-blue-500 px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-bold text-white hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105"
                 >
                   GET A FREE QUOTE
                 </a>
                 <a
                   href="tel:+14709151599"
-                  className="flex items-center justify-center gap-2 rounded-md bg-blue-800 px-8 py-3 text-lg font-bold text-white hover:bg-blue-700 transition-all duration-300 ease-in-out hover:scale-105"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-md bg-blue-800 px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-bold text-white hover:bg-blue-700 transition-all duration-300 ease-in-out hover:scale-105"
                 >
                   <PhoneCall className="h-5 w-5" />
-                  CALL US NOW
+                  CALL NOW
                 </a>
               </motion.div>
             </motion.div>
@@ -807,109 +829,108 @@ export default function Home() {
                 </p>
               </motion.div>
 
-              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {[
-                  {
-                    title: "ROOF REPLACEMENT",
-                    description: "Durable, weather-resistant roof installations using premium materials for Georgia homes — done fast, done right.",
-                    image: "/images-compressed/roofreplacement.webp",
-                    link: "/services/roof-replacement",
-                    alt: "Professional roof replacement service in Georgia by American Top Roofing",
-                  },
-                  {
-                    title: "ROOF REPAIRS",
-                    description:
-                      "Expert roof repairs in Georgia for leaks, damaged shingles, and other issues with quick response times.",
-                    image: "/images/roofrepair.webp",
-                    link: "/services/roof-repairs",
-                    alt: "Expert roof repair service for leaks and shingles in Georgia",
-                  },
-                  {
-                    title: "GUTTER SERVICES",
-                    description: "Professional gutter installation, repairs, and gutter guard systems to protect your home from water damage.",
-                    image: "/images/gutter-install-upd.png",
-                    link: "/services/gutter-services",
-                    alt: "Professional gutter installation and repair services in Georgia",
-                  },
-                  {
-                    title: "BATHROOM REMODELING",
-                    description:
-                      "Complete bathroom renovation services including fixtures, tiling, plumbing, and custom designs.",
-                    image: "/images-compressed/bathroom-remodeling.webp",
-                    link: "/services/bathroom-remodeling",
-                    alt: "Complete bathroom remodeling service in Georgia",
-                  },
-                  {
-                    title: "FLOORING",
-                    description:
-                      "Professional installation of hardwood, laminate, tile, and vinyl flooring for any room in your home.",
-                    image: "/images-compressed/flooring-installation.webp",
-                    link: "/services/flooring",
-                    alt: "Hardwood, laminate, tile, and vinyl flooring installation in Georgia",
-                  },
-                  {
-                    title: "PAINTING",
-                    description: "Interior and exterior painting services to enhance and protect your property.",
-                    image: "/images/paintingjob.webp",
-                    link: "/services/painting",
-                    alt: "Interior and exterior home painting service in Georgia",
-                  },
-                ].map((service, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex flex-col overflow-hidden rounded-lg bg-white shadow-md transition-all hover:shadow-lg"
-                    whileHover={{ 
-                      scale: 1.02,
-                      transition: { duration: 0.2 }
-                    }}
-                  >
-                    <motion.div 
-                      className="relative h-0 w-full pb-[66.67%] overflow-hidden rounded-t-lg"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Image
-                        src={service.image || "/placeholder.svg"}
-                        alt={service.alt || service.title}
-                        fill
-                        className="absolute inset-0 h-full w-full object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        priority={index < 3}
-                      />
-                    </motion.div>
-                    <div className="flex flex-1 flex-col p-6">
-                      <h3 className="mb-2 text-center text-2xl font-medium hero-title tracking-wider">{service.title}</h3>
-                      <p className="mb-6 flex-1 text-center text-gray-600">{service.description}</p>
-                      <Link
-                        href={service.link}
-                        className="mx-auto mt-auto rounded-md bg-blue-500 px-6 py-2 text-center font-medium text-white transition-colors hover:bg-blue-600"
-                      >
-                        Learn more
-                      </Link>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="relative">
+                {/* Swipe left to see more indicator - show on all screens */}
+                <div className="flex justify-center mb-4">
+                  <p className="text-sm text-gray-500 flex items-center">
+                    <span>Swipe left to see more</span>
+                    <ChevronLeft className="h-4 w-4 ml-1 rotate-180" />
+                  </p>
+                </div>
                 
-                {/* Siding service card - centered on desktop */}
-                <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-md transition-all hover:shadow-lg lg:col-start-2 lg:col-span-1 sm:col-span-2 sm:mx-auto lg:mx-0">
-                  <div className="relative h-0 w-full pb-[66.67%] overflow-hidden rounded-t-lg">
-                    <Image
-                      src="/images/siding.jpeg"
-                      alt="Professional siding installation and repair services in Georgia"
-                      fill
-                      className="absolute inset-0 h-full w-full object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <h3 className="mb-2 text-center text-2xl font-medium hero-title tracking-wider">SIDING</h3>
-                    <p className="mb-6 flex-1 text-center text-gray-600">Professional siding installation, repair, and replacement to boost curb appeal and energy efficiency.</p>
-                    <Link
-                      href="/services/siding"
-                      className="mx-auto mt-auto rounded-md bg-blue-500 px-6 py-2 text-center font-medium text-white transition-colors hover:bg-blue-600"
+                {/* Add gradient overlays for fade effect */}
+                <div className="hidden md:block absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" style={{ marginLeft: '-1rem' }} />
+                <div className="hidden md:block absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" style={{ marginRight: '-1rem' }} />
+                
+                {/* Card container with horizontal scroll */}
+                <div className="relative flex overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory -mx-4 px-4">
+                  <div className="flex gap-4 md:gap-6 px-0 md:px-12 min-w-max">
+                  {[
+                    {
+                      title: "ROOF REPLACEMENT",
+                      description: "Durable, weather-resistant roof installations using premium materials for Georgia homes — done fast, done right.",
+                      image: "/images-compressed/roofreplacement.webp",
+                      link: "/services/roof-replacement",
+                      alt: "Professional roof replacement service in Georgia by American Top Roofing",
+                    },
+                    {
+                      title: "ROOF REPAIRS",
+                      description:
+                        "Expert roof repairs in Georgia for leaks, damaged shingles, and other issues with quick response times.",
+                      image: "/images/roofrepair.webp",
+                      link: "/services/roof-repairs",
+                      alt: "Expert roof repair service for leaks and shingles in Georgia",
+                    },
+                    {
+                      title: "GUTTER SERVICES",
+                      description: "Professional gutter installation, repairs, and gutter guard systems to protect your home from water damage.",
+                      image: "/images/gutter-install-upd.png",
+                      link: "/services/gutter-services",
+                      alt: "Professional gutter installation and repair services in Georgia",
+                    },
+                    {
+                      title: "BATHROOM REMODELING",
+                      description:
+                        "Complete bathroom renovation services including fixtures, tiling, plumbing, and custom designs.",
+                      image: "/images-compressed/bathroom-remodeling.webp",
+                      link: "/services/bathroom-remodeling",
+                      alt: "Complete bathroom remodeling service in Georgia",
+                    },
+                    {
+                      title: "FLOORING",
+                      description:
+                        "Professional installation of hardwood, laminate, tile, and vinyl flooring for any room in your home.",
+                      image: "/images-compressed/flooring-installation.webp",
+                      link: "/services/flooring",
+                      alt: "Hardwood, laminate, tile, and vinyl flooring installation in Georgia",
+                    },
+                    {
+                      title: "PAINTING",
+                      description: "Interior and exterior painting services to enhance and protect your property.",
+                      image: "/images/paintingjob.webp",
+                      link: "/services/painting",
+                      alt: "Interior and exterior home painting service in Georgia",
+                    },
+                    {
+                      title: "SIDING",
+                      description: "Professional siding installation, repair, and replacement to boost curb appeal and energy efficiency.",
+                      image: "/images/siding.jpeg",
+                      link: "/services/siding",
+                      alt: "Professional siding installation and repair services in Georgia",
+                    },
+                  ].map((service, index) => (
+                    <motion.div
+                      key={index}
+                      className="flex flex-col overflow-hidden rounded-lg bg-white shadow-md transition-all hover:shadow-lg flex-shrink-0 w-[280px] sm:w-[340px] md:w-[380px] snap-center"
+                      whileHover={{ 
+                        scale: 1.02,
+                        transition: { duration: 0.2 }
+                      }}
                     >
-                      Learn more
-                    </Link>
+                      <motion.div 
+                        className="relative h-[170px] w-full overflow-hidden rounded-t-lg"
+                      >
+                        <Image
+                          src={service.image || "/placeholder.svg"}
+                          alt={service.alt || service.title}
+                          fill
+                          className="absolute inset-0 h-full w-full object-cover"
+                          sizes="(max-width: 768px) 280px, (max-width: 1200px) 340px, 380px"
+                          priority={index < 3}
+                        />
+                      </motion.div>
+                      <div className="flex flex-1 flex-col p-4 md:p-6">
+                        <h3 className="mb-2 text-center text-xl md:text-2xl font-medium hero-title tracking-wider">{service.title}</h3>
+                        <p className="mb-6 flex-1 text-center text-sm md:text-base text-gray-600">{service.description}</p>
+                        <Link
+                          href={service.link}
+                          className="mx-auto mt-auto rounded-md bg-blue-500 px-4 py-2 text-center text-sm md:text-base font-medium text-white transition-colors hover:bg-blue-600"
+                        >
+                          Learn more
+                        </Link>
+                      </div>
+                    </motion.div>
+                  ))}
                   </div>
                 </div>
               </div>
@@ -1503,7 +1524,7 @@ export default function Home() {
           <section id="contact" className="py-16 md:py-24">
             <div className="container px-2 sm:px-4 md:px-6 max-w-full">
               <motion.div
-                className="mb-12 text-center"
+                className="mb-8 md:mb-12 text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1539,10 +1560,10 @@ export default function Home() {
                       </p>
                     </div>
                   ) : (
-                    <form className="space-y-6" onSubmit={handleSubmit}>
-                      <div className="grid gap-6 sm:grid-cols-2">
+                    <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+                      <div className="grid gap-4 md:gap-6 sm:grid-cols-2">
                         <div>
-                          <label htmlFor="first-name" className="mb-2 block text-sm font-medium">
+                          <label htmlFor="first-name" className="mb-1 md:mb-2 block text-sm font-medium">
                             First Name <span className="text-red-500">*</span>
                           </label>
                           <input
@@ -1550,7 +1571,7 @@ export default function Home() {
                             type="text"
                             value={formData.firstName}
                             onChange={handleInputChange}
-                            className={`w-full rounded-md border ${formErrors.firstName ? "border-red-500" : "border-gray-300"} px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
+                            className={`w-full rounded-md border ${formErrors.firstName ? "border-red-500" : "border-gray-300"} px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                             required
                           />
                           {formErrors.firstName && (
@@ -1560,7 +1581,7 @@ export default function Home() {
                           )}
                         </div>
                         <div>
-                          <label htmlFor="last-name" className="mb-2 block text-sm font-medium">
+                          <label htmlFor="last-name" className="mb-1 md:mb-2 block text-sm font-medium">
                             Last Name <span className="text-red-500">*</span>
                           </label>
                           <input
@@ -1568,7 +1589,7 @@ export default function Home() {
                             type="text"
                             value={formData.lastName}
                             onChange={handleInputChange}
-                            className={`w-full rounded-md border ${formErrors.lastName ? "border-red-500" : "border-gray-300"} px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
+                            className={`w-full rounded-md border ${formErrors.lastName ? "border-red-500" : "border-gray-300"} px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                             required
                           />
                           {formErrors.lastName && (
@@ -1579,9 +1600,9 @@ export default function Home() {
                         </div>
                       </div>
 
-                      <div className="grid gap-6 sm:grid-cols-2">
+                      <div className="grid gap-4 md:gap-6 sm:grid-cols-2">
                         <div>
-                          <label htmlFor="email" className="mb-2 block text-sm font-medium">
+                          <label htmlFor="email" className="mb-1 md:mb-2 block text-sm font-medium">
                             Email <span className="text-red-500">*</span>
                           </label>
                           <input
@@ -1589,7 +1610,7 @@ export default function Home() {
                             type="email"
                             value={formData.email}
                             onChange={handleInputChange}
-                            className={`w-full rounded-md border ${formErrors.email ? "border-red-500" : "border-gray-300"} px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
+                            className={`w-full rounded-md border ${formErrors.email ? "border-red-500" : "border-gray-300"} px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                             required
                           />
                           {formErrors.email && (
@@ -1599,7 +1620,7 @@ export default function Home() {
                           )}
                         </div>
                         <div>
-                          <label htmlFor="phone" className="mb-2 block text-sm font-medium">
+                          <label htmlFor="phone" className="mb-1 md:mb-2 block text-sm font-medium">
                             Phone <span className="text-red-500">*</span>
                           </label>
                           <input
@@ -1608,7 +1629,7 @@ export default function Home() {
                             value={formData.phone}
                             onChange={handleInputChange}
                             placeholder="(123) 456-7890"
-                            className={`w-full rounded-md border ${formErrors.phone ? "border-red-500" : "border-gray-300"} px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
+                            className={`w-full rounded-md border ${formErrors.phone ? "border-red-500" : "border-gray-300"} px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                             required
                           />
                           {formErrors.phone && (
@@ -1620,7 +1641,7 @@ export default function Home() {
                       </div>
 
                       <div>
-                        <label htmlFor="address" className="mb-2 block text-sm font-medium">
+                        <label htmlFor="address" className="mb-1 md:mb-2 block text-sm font-medium">
                           Address <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -1628,7 +1649,7 @@ export default function Home() {
                           type="text"
                           value={formData.address}
                           onChange={handleInputChange}
-                          className={`w-full rounded-md border ${formErrors.address ? "border-red-500" : "border-gray-300"} px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
+                          className={`w-full rounded-md border ${formErrors.address ? "border-red-500" : "border-gray-300"} px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                           required
                         />
                         {formErrors.address && (
@@ -1639,14 +1660,14 @@ export default function Home() {
                       </div>
 
                       <div>
-                        <label htmlFor="service" className="mb-2 block text-sm font-medium">
+                        <label htmlFor="service" className="mb-1 md:mb-2 block text-sm font-medium">
                           Service Needed <span className="text-red-500">*</span>
                         </label>
                         <select
                           id="service"
                           value={formData.service}
                           onChange={handleInputChange}
-                          className={`w-full rounded-md border ${formErrors.service ? "border-red-500" : "border-gray-300"} px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
+                          className={`w-full rounded-md border ${formErrors.service ? "border-red-500" : "border-gray-300"} px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                           required
                         >
                           <option value="">Select a service</option>
@@ -1669,15 +1690,15 @@ export default function Home() {
                       </div>
 
                       <div>
-                        <label htmlFor="message" className="mb-2 block text-sm font-medium">
+                        <label htmlFor="message" className="mb-1 md:mb-2 block text-sm font-medium">
                           Additional Information
                         </label>
                         <textarea
                           id="message"
-                          rows={4}
+                          rows={3}
                           value={formData.message}
                           onChange={handleInputChange}
-                          className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                         ></textarea>
                       </div>
 
@@ -1711,7 +1732,7 @@ export default function Home() {
 
                     <div className="space-y-4">
                       <div className="flex items-start">
-                        <PhoneCall className="mr-4 h-6 w-6 text-blue-300" />
+                        <PhoneCall className="mr-4 h-6 w-6 text-blue-300 shrink-0" />
                         <div>
                           <p className="font-medium">Phone</p>
                           <a href="tel:+14709151599" className="text-xl font-bold hover:underline">
@@ -1722,17 +1743,17 @@ export default function Home() {
                       </div>
 
                       <div className="flex items-start">
-                        <Mail className="mr-4 h-6 w-6 text-blue-300" />
+                        <Mail className="mr-4 h-6 w-6 text-blue-300 shrink-0" />
                         <div>
                           <p className="font-medium">Email</p>
-                          <a href="mailto:americantoproofingllc@gmail.com" className="hover:underline">
+                          <a href="mailto:americantoproofingllc@gmail.com" className="hover:underline break-words">
                             americantoproofingllc@gmail.com
                           </a>
                         </div>
                       </div>
 
                       <div className="flex items-start">
-                        <MapPin className="mr-4 h-6 w-6 text-blue-300" />
+                        <MapPin className="mr-4 h-6 w-6 text-blue-300 shrink-0" />
                         <div>
                           <p className="font-medium">Address</p>
                           <address className="not-italic">
@@ -1742,7 +1763,7 @@ export default function Home() {
                       </div>
 
                       <div className="flex items-start">
-                        <Clock className="mr-4 h-6 w-6 text-blue-300" />
+                        <Clock className="mr-4 h-6 w-6 text-blue-300 shrink-0" />
                         <div>
                           <p className="font-medium">Business Hours</p>
                           <p>Monday - Friday: 8am - 7pm</p>
