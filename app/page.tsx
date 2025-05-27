@@ -742,20 +742,12 @@ export default function Home() {
               </motion.div>
             </motion.div>
             <div className="absolute inset-0 -z-10 overflow-hidden hero-video-container">
-              <video
-                id="hero-video"
-                src="/videos/Sequence 01_6.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                poster="/images/professional-installation.jpeg"
+              <Image
+                src="/images/hero-roof-replacement.jpeg"
+                alt="Hero Roof Replacement"
+                fill
                 className="absolute inset-0 h-full w-full object-cover"
-                style={{ position: 'relative', zIndex: 1 }}
-              >
-                Your browser does not support the video tag.
-              </video>
+              />
             </div>
           </section>
 

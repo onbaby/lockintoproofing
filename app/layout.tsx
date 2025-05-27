@@ -13,7 +13,7 @@ const structuredData = {
   "@type": "RoofingContractor",
   "name": "American Top Roofing and Restoration",
   "image": "https://www.americantoproofingandrestoration.com/images/americantoof.png", // Replace with absolute URL if possible
-  "@id": "", // Add your website URL here if you have one
+  "@id": "https://www.americantoproofingandrestoration.com",
   "url": "https://www.americantoproofingandrestoration.com", // Add your website URL here
   "telephone": "+14709151599",
   "address": {
@@ -21,13 +21,13 @@ const structuredData = {
     "streetAddress": "3332 Stone point way",
     "addressLocality": "Buford", // Assuming based on service area, adjust if needed
     "addressRegion": "GA",
-    "postalCode": "", // Add zip code if available
+    "postalCode": "30519",
     "addressCountry": "US"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 0, // Add latitude if known
-    "longitude": 0 // Add longitude if known
+    "latitude": 34.1207,
+    "longitude": -83.9932
   },
   "openingHoursSpecification": [
     {
@@ -98,8 +98,8 @@ export const metadata = {
   icons: {
     icon: [
       { url: '/favicon/favicon.ico', sizes: 'any' },
-      { url: '/favicon/favicon.ico', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon/favicon.ico', sizes: '180x180', type: 'image/png' },
+      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon/favicon-180x180.png', sizes: '180x180', type: 'image/png' }
     ],
     apple: [
       { url: '/favicon/favicon.ico', sizes: '180x180', type: 'image/png' },
