@@ -444,6 +444,41 @@ export default function Home() {
     }
   }, [lightboxOpen]);
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Adjust the time as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <motion.div
+          animate={{
+            y: [0, -20, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <Image
+            src="/images/americantoof copy.png"
+            alt="Loading"
+            width={200}
+            height={200}
+            className="object-contain"
+          />
+        </motion.div>
+      </div>
+    );
+  }
+
   return (
     <>
       <VideoAutoplay />
