@@ -190,7 +190,7 @@ export default function RoofReplacementPage() {
                 >
                   <Link
                     href="/#contact"
-                    className="rounded-md bg-blue-500 px-8 py-3 text-lg font-bold text-white hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105"
+                    className="inline-block rounded-md bg-blue-500 px-4 sm:px-8 py-3 text-base sm:text-lg font-bold text-white hover:bg-blue-600 transition-all duration-300 ease-in-out hover:scale-105 whitespace-normal text-center"
                   >
                     Get Your Free Roof Replacement Estimate Today!
                   </Link>
