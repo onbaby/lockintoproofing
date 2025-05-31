@@ -445,16 +445,26 @@ export default function Home() {
   }, [lightboxOpen]);
 
   const [loading, setLoading] = useState(true);
+  const [hasVisited, setHasVisited] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Check if user has visited before
+    const visited = localStorage.getItem('hasVisited');
+    if (visited) {
       setLoading(false);
-    }, 2000); // Adjust the time as needed
-
-    return () => clearTimeout(timer);
+      setHasVisited(true);
+    } else {
+      // First visit - show loading and set visited flag
+      const timer = setTimeout(() => {
+        setLoading(false);
+        setHasVisited(true);
+        localStorage.setItem('hasVisited', 'true');
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
-  if (loading) {
+  if (loading && !hasVisited) {
     return (
       <div className="flex flex-col items-center justify-center h-screen">
         <motion.div
