@@ -1572,7 +1572,7 @@ export default function Home() {
                     {
                       question: "How long does a typical roof replacement take?",
                       answer:
-                        "Most residential roof replacements can be completed in 1-3 days, depending on the size and complexity of your roof. Larger homes or those with complex roof designs may take longer. We'll provide you with a specific timeline during your consultation.",
+                        "We get most residential roof replacements done in just one day. Unless your roof has a really complex layout, we’ll have it finished and cleaned up by the end of the day. You’ll get a clear timeline during your consultation.",
                     },
                     {
                       question: "Do you offer warranties on your roofing work?",
@@ -1913,7 +1913,7 @@ export default function Home() {
                   />
                 </div>
                 <p className="mb-6 text-gray-400">
-                  Professional roofing services in Georgia you can trust. Serving homeowners and businesses throughout the state since 2005.
+                  Professional roofing and restoration services in Georgia you can trust.
                 </p>
                 <div className="flex space-x-4">
                   <a
@@ -2074,6 +2074,10 @@ export default function Home() {
             </div>
 
             <div className="mt-12 border-t border-gray-800 pt-8">
+            <p className="text-center text-sm text-gray-400">
+                Website Made By <a href='https://sclay.net' target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:text-white">Sclay&trade;</a>
+              </p>
+
               <p className="text-center text-sm text-gray-400">
                 &copy; {new Date().getFullYear()} Top American Roofing &amp; Restoration. All rights reserved.
               </p>
